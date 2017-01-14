@@ -1,0 +1,4 @@
+ANOTANDO TODOS OS PASSOA ADOTADOS PARA CONSTRUÇÃO DO SITE.
+
+1. Testar css e js pelos atalhos oferecidos pelo rails  OK.
+2. Construir todos os migrations 
