@@ -1,4 +1,12 @@
 ANOTANDO TODOS OS PASSOA ADOTADOS PARA CONSTRUÇÃO DO SITE.
 
-1. Testar css e js pelos atalhos oferecidos pelo rails  OK.
+
+1. Testar css e js pelos atalhos oferecidos pelo rails  "OK".
+commit :f0beaa1e12a35e6b6dc7c27926b317c8ec761ff1 -> Add home controller and testing js and css assets
+
+
 2. Construir todos os migrations 
+Ideia é adicionar todos os elementos iniciais de cada model, sem adicionar as foreings keys que deverá ser feito após 
+todos os models prontos, assim ao criar um modelo basta apenas adicionarmos os elementos de cada um sem se preocupar com
+os relacionamentos a principio
+
