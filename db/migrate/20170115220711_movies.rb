@@ -1,6 +1,6 @@
-class CreateMoviesTable < ActiveRecord::Migration
+class Movies < ActiveRecord::Migration
   def change
-    create_table :movies_tables do |t|
+  	create_table :movies do |t|
     	t.string :original_title
     	t.string :aka # also known as: outros títulos para o filme 
     	t.string :IMDB # link para o IMDB
@@ -20,6 +20,7 @@ class CreateMoviesTable < ActiveRecord::Migration
     	# categories_id -- um filme tem apenas uma categoria, um filme pertence a uma categoria, longa, curta, série vtshow
     	# regions_id -- região do filme, um filme tem apenas uma região de origem 
 
+        # mains um nay to many com a tabela stars
     end
   end
 end

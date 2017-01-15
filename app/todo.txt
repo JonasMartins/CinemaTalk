@@ -6,7 +6,16 @@ commit :f0beaa1e12a35e6b6dc7c27926b317c8ec761ff1 -> Add home controller and test
 
 
 2. Construir todos os migrations 
+
 Ideia é adicionar todos os elementos iniciais de cada model, sem adicionar as foreings keys que deverá ser feito após 
 todos os models prontos, assim ao criar um modelo basta apenas adicionarmos os elementos de cada um sem se preocupar com
 os relacionamentos a principio
 
+commit :f51b1b2ec0adb7b1fc4db2f246ff5309c4dc9904 -> Add CreateMoviesTable migration
+proximo: criar tabelas vizinhas ao movies
+
+* criando associações many to many entre filmes e generos  "OK" 
+* criando arquivo de migrate para decadas, categorias e regiões  "OK"
+
+* criação das validações para estas classes
+* preencher essa primeira fase no arquivo seeds
