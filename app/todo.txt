@@ -18,9 +18,23 @@ proximo: criar tabelas vizinhas ao movies
 * criando arquivo de migrate para decadas, categorias e regiões  "OK"
 * add coluna sinopse a filmes "OK"
 * finalizando relacionamentos entre: filmes, generos, categorias e decadas "OK"
-* finalizando filmes e strelas 
 
-commit
+commit :da412912140b3db05c110473c8018232986d2b7a -> Create seeds, add relation between movies, decades, genres and categories
+
+* relacionamento entre filmes e estrelas "OK"
+
+commit :bcd46a12eda68db9013b3f1ca41e6a565b8bd4f5 -> add mtm relationship between movies and stars
+
+* relacionamento entre filmes e diretores "OK"
+* relacionamento entre filmes e roteiristas "OK"
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# OBS: roteiritas, stars e diretores, serão bastante parecidos, vão apenas ter uma pagina incial
+estilo facebook, ou imdb com os creditos quando eles exercerão determinada ação por exemplo:
+ator a, vai ter trabalhos como roteirista e como diretor, deve haver a opção de inserir nas tres tabelas
+ao menos que o individio de fato exerça apenas uma função mas pode ser depois alterada na edição
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 
 * criação das validações para estas classes
 * preencher essa primeira fase no arquivo seeds
