@@ -18,6 +18,7 @@ proximo: criar tabelas vizinhas ao movies
 * criando arquivo de migrate para decadas, categorias e regiões  "OK"
 * add coluna sinopse a filmes "OK"
 * finalizando relacionamentos entre: filmes, generos, categorias e decadas "OK"
+* finalizando filmes e strelas 
 
 commit
 

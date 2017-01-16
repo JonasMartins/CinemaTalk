@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116130851) do
+ActiveRecord::Schema.define(version: 20170116135352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 20170116130851) do
     t.integer "genre_id"
   end
 
+  create_table "movie_stars", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "star_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string  "original_title"
     t.string  "aka"
@@ -56,6 +61,16 @@ ActiveRecord::Schema.define(version: 20170116130851) do
 
   create_table "regions", force: :cascade do |t|
     t.string "region"
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.date   "birth_date"
+    t.date   "death_date"
+    t.string "birth_name"
+    t.string "nickname"
+    t.text   "bio"
+    t.string "hometown"
+    t.string "country"
   end
 
 end
