@@ -1,0 +1,35 @@
+[{
+	"id":1,
+	"region":"African"
+},{
+	"id":2,
+	"region":"Central American"
+},{
+	"id":3,
+	"region":"North American"
+},{
+	"id":4,
+	"region":"South American"
+},{
+	"id":5,
+	"region":"Asian"
+},{
+	"id":6,
+	"region":"Western Europe"
+},{
+	"id":7,
+	"region":"Eastern Europe"
+},{
+	"id":8,
+	"region":"Oceania"
+},{
+	"id":9,
+	"region":"Middle East"
+},{
+	"id":10,
+	"region":"Soviet"
+},{
+	"id":11,
+	"region":"Indian"
+}
+]

@@ -1,0 +1,68 @@
+[{
+	"id":1,
+	"genre":"Action"
+},{
+	"id":2,
+	"genre":"Adventure"
+},{
+	"id":3,
+	"genre":"Animation"
+},{
+	"id":4,
+	"genre":"Comedy"
+},{
+	"id":5,
+	"genre":"Crime"
+},{
+	"id":6,
+	"genre":"Drama"
+},{
+	"id":7,
+	"genre":"Fantasy"
+},{
+	"id":8,
+	"genre":"Historical"
+},{
+	"id":9,
+	"genre":"Historical Fiction"
+},{
+	"id":10,
+	"genre":"Horror"
+},{
+	"id":11,
+	"genre":"Musical"
+},{
+	"id":12,
+	"genre":"Mystery"
+},{
+	"id":13,
+	"genre":"Philosophical"
+},{
+	"id":14,
+	"genre":"Police"
+},{
+	"id":15,
+	"genre":"Political"
+},{
+	"id":16,
+	"genre":"Romance"
+},{
+	"id":17,
+	"genre":"Saga"
+},{
+	"id":18,
+	"genre":"Satira"
+},{
+	"id":19,
+	"genre":"Science Fiction"
+},{
+	"id":20,
+	"genre":"Thriller"
+},{
+	"id":21,
+	"genre":"Urban"
+},{
+	"id":22,
+	"genre":"Western"
+}
+]

@@ -6,11 +6,28 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Genre.destroy_all
+#Genre.destroy_all
 
 # Meus seeds para a tabela genres sem a possibilidade de acrescentar outro tipo de gereno
-Genre.create!([{genre: "Action"},{genre: "Adventure"},{genre: "Animation"},{genre: "Comedy"},
-	{genre: "Crime"},{genre: "Drama"},{genre: "Fantasy"},{genre: "Historical"},
-	{genre: "Historical Fiction"},{genre: "Horror"},{genre: "Mystery"},{genre: "Philosophical"},
-	{genre: "Political"},{genre: "Romance"},{genre: "Saga"},{genre: "Musical"},{genre: "Satira"}
-	{genre: "Science Fiction"},{genre: "Thriller"},{genre: "Urban"},{genre: "Western"}])
+# Genre.create!([{genre: "Action"},{genre: "Adventure"},{genre: "Animation"},{genre: "Comedy"},
+# 	{genre: "Crime"},{genre: "Drama"},{genre: "Fantasy"},{genre: "Historical"},
+# 	{genre: "Historical Fiction"},{genre: "Horror"},{genre: "Mystery"},{genre: "Philosophical"},
+# 	{genre: "Political"},{genre: "Romance"},{genre: "Saga"},{genre: "Musical"},{genre: "Satira"}
+# 	{genre: "Science Fiction"},{genre: "Thriller"},{genre: "Urban"},{genre: "Western"}])
+
+require 'json'
+
+# Regions
+Region.destroy_all
+JSON.parse(open("#{Rails.root}/db/database_json/regions.json").read).each do |region|
+	i = Region.new(region)
+	i.id = region['id']
+	i.save!
+end
+
+Category.destroy_all
+JSON.parse(open("#{Rails.root}/db/database_json/categories.json").read).each do |category|
+	i = Category.new(category)
+	i.id = category['id']
+	i.save!
+end

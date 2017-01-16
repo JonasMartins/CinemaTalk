@@ -21,6 +21,8 @@ class Movies < ActiveRecord::Migration
     	# regions_id -- região do filme, um filme tem apenas uma região de origem 
 
         # mains um nay to many com a tabela stars
+
+        # add synopsis em filmes
     end
   end
 end

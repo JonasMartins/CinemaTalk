@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115231323) do
+ActiveRecord::Schema.define(version: 20170116130851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 20170115231323) do
     t.decimal "sum_critics_score",   precision: 5, scale: 2
     t.decimal "users_amount_score",  precision: 5, scale: 2
     t.decimal "critic_amount_score", precision: 5, scale: 2
+    t.text    "synopsis"
+    t.integer "decade_id"
+    t.integer "category_id"
   end
 
   create_table "regions", force: :cascade do |t|
