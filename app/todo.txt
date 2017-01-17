@@ -39,6 +39,11 @@ commit :17747922f3ffa55d7ff78c0dac142018d8081619 -> add mtm relationship between
 
 
 
+Terminando todos os migrations e relacionamentos versão 1 "OK"
+faltam algumas coisas ainda.
+commit: c2a393c5ec3fd007687c5613802835c75e61f668 -> Finishing schema and relations v1
+
+
 * criação das validações para estas classes
 * preencher essa primeira fase no arquivo seeds
 
