@@ -35,6 +35,9 @@ ator a, vai ter trabalhos como roteirista e como diretor, deve haver a opção d
 ao menos que o individio de fato exerça apenas uma função mas pode ser depois alterada na edição
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+commit :17747922f3ffa55d7ff78c0dac142018d8081619 -> add mtm relationship between movies and directors and writers
+
+
 
 * criação das validações para estas classes
 * preencher essa primeira fase no arquivo seeds

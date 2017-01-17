@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116142738) do
+ActiveRecord::Schema.define(version: 20170117130957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20170116142738) do
 
   create_table "categories", force: :cascade do |t|
     t.string "categorie"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.text    "body"
   end
 
   create_table "decades", force: :cascade do |t|
@@ -83,6 +89,13 @@ ActiveRecord::Schema.define(version: 20170116142738) do
     t.string "region"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "user_id"
+    t.string  "title"
+    t.text    "body"
+  end
+
   create_table "screewriters", force: :cascade do |t|
     t.date   "birth_date"
     t.date   "death_date"
@@ -101,6 +114,21 @@ ActiveRecord::Schema.define(version: 20170116142738) do
     t.text   "bio"
     t.string "hometown"
     t.string "country"
+  end
+
+  create_table "user_levels", force: :cascade do |t|
+    t.string "level"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "user_level_id"
+    t.date    "birth_date"
+    t.date    "death_date"
+    t.string  "birth_name"
+    t.string  "nickname"
+    t.text    "bio"
+    t.string  "hometown"
+    t.string  "country"
   end
 
 end

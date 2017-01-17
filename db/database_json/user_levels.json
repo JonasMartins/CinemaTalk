@@ -1,0 +1,10 @@
+[{
+	"id":1,
+	"level":"Basic"
+},{
+	"id":2,
+	"level":"Critic"
+},{
+	"id":3,
+	"level":"Admin"
+}]
