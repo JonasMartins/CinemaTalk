@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117130957) do
+ActiveRecord::Schema.define(version: 20170117150957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,13 +37,15 @@ ActiveRecord::Schema.define(version: 20170117130957) do
   end
 
   create_table "directors", force: :cascade do |t|
-    t.date   "birth_date"
-    t.date   "death_date"
-    t.string "birth_name"
-    t.string "nickname"
-    t.text   "bio"
-    t.string "hometown"
-    t.string "country"
+    t.date    "birth_date"
+    t.date    "death_date"
+    t.string  "birth_name"
+    t.string  "nickname"
+    t.text    "bio"
+    t.string  "hometown"
+    t.string  "country"
+    t.boolean "also_star",         default: false
+    t.boolean "also_screenwriter", default: false
   end
 
   create_table "genres", force: :cascade do |t|
@@ -96,24 +98,28 @@ ActiveRecord::Schema.define(version: 20170117130957) do
     t.text    "body"
   end
 
-  create_table "screewriters", force: :cascade do |t|
-    t.date   "birth_date"
-    t.date   "death_date"
-    t.string "birth_name"
-    t.string "nickname"
-    t.text   "bio"
-    t.string "hometown"
-    t.string "country"
+  create_table "screenwriters", force: :cascade do |t|
+    t.date    "birth_date"
+    t.date    "death_date"
+    t.string  "birth_name"
+    t.string  "nickname"
+    t.text    "bio"
+    t.string  "hometown"
+    t.string  "country"
+    t.boolean "also_director", default: false
+    t.boolean "also_star",     default: false
   end
 
   create_table "stars", force: :cascade do |t|
-    t.date   "birth_date"
-    t.date   "death_date"
-    t.string "birth_name"
-    t.string "nickname"
-    t.text   "bio"
-    t.string "hometown"
-    t.string "country"
+    t.date    "birth_date"
+    t.date    "death_date"
+    t.string  "birth_name"
+    t.string  "nickname"
+    t.text    "bio"
+    t.string  "hometown"
+    t.string  "country"
+    t.boolean "also_director",     default: false
+    t.boolean "also_screenwriter", default: false
   end
 
   create_table "user_levels", force: :cascade do |t|

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/edit'
+
   root 'home#index'
 
   resources :movies, except: :destroy
@@ -7,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :directors, except: :destroy
 
-  resources :screenwriters, except: :destroy
+  resources :screewriters, except: :destroy
 
   resources :reviews, except: :destroy
 
