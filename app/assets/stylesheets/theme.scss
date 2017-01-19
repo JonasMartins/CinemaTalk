@@ -1,0 +1,65 @@
+$grey21 :#363636;
+$yellow2 :#EEEE00;
+body {
+
+   /* 
+   background-color: #eee;
+   background-image: image-url('room-237-carpet.jpg');
+   background-attachment: fixed; 
+   
+   isso tudo pode ser substituido nessa linha abaixo 
+   background: #eee image-url('room-237-carpet.jpg') repeat fixed;
+		
+   */
+   background-color: $grey21;
+   margin: 5px;
+}
+
+
+.navbar-default {
+	background-color: black;
+	border-color: black;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: $yellow2;
+  background-color: $grey21;
+}
+.navbar-default .navbar-nav>li>a {
+  color: $yellow2;
+  &:hover{
+  	color: $yellow2;
+  	font-style: bold;
+  }
+}
+
+.dropdown-menu {
+	background-color: black;
+}
+.dropdown-menu > li > a{
+	color: $yellow2;
+	&:hover{
+		background: darken($grey21, 5%);
+		color: $yellow2;
+		border-color: darken($grey21, 5%);
+	}
+}
+/* finalmente ao clicar no dropdow a cor fica no estilo do site */
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	color: $yellow2;
+	background-color: $grey21;
+}
+
+#main-frame{
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  opacity: .80
+}
+#sidebar{
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  opacity: .80
+}
+
+
