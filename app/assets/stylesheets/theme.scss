@@ -14,7 +14,10 @@ body {
    background-color: $grey21;
    margin: 5px;
 }
-
+/* spaço para o conteudo aparecer todo abaixo da navbar */
+.navbar-space{
+	padding-top: 45px;
+}
 
 .navbar-default {
 	background-color: black;
@@ -62,4 +65,7 @@ body {
   opacity: .80
 }
 
-
+.h4, h4 {
+  text-align: right;
+}
+ 

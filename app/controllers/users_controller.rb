@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   end
 
   def new
+  	@user = User.new
+  	@countries = UsersHelper::get_countries
   end
 
   def edit
