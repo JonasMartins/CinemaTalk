@@ -9,5 +9,7 @@ class ScreenwritersController < ApplicationController
   end
 
   def new
+  	@screenwriter = Screenwriter.new
+  	@countries = UsersHelper::get_countries
   end
 end

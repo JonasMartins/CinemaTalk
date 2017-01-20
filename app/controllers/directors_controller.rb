@@ -9,5 +9,7 @@ class DirectorsController < ApplicationController
   end
 
   def new
+  	@director = Director.new
+  	@countries = UsersHelper::get_countries
   end
 end

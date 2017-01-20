@@ -9,5 +9,7 @@ class StarsController < ApplicationController
   end
 
   def new
+  	@star = Star.new
+  	@countries = UsersHelper::get_countries
   end
 end

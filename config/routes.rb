@@ -1,55 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-
-  get 'reviews/show'
-
-  get 'reviews/edit'
-
-  get 'reviews/new'
-
-  get 'screenwriters/index'
-
-  get 'screenwriters/show'
-
-  get 'screenwriters/edit'
-
-  get 'screenwriters/new'
-
-  get 'directors/index'
-
-  get 'directors/show'
-
-  get 'directors/edit'
-
-  get 'directors/new'
-
-  get 'stars/index'
-
-  get 'stars/show'
-
-  get 'stars/edit'
-
-  get 'stars/new'
-
-  get 'movies/index'
-
-  get 'movies/show'
-
-  get 'movies/edit'
-
-  get 'movies/new'
-
-  get 'regions/show'
-
-  get 'genres/show'
-
-  get 'decades/show'
-
-  get 'users/index'
-
-  get 'users/new'
-
-  get 'users/edit'
 
   root 'home#index'
 
@@ -59,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :directors, except: :destroy
 
-  resources :screewriters, except: :destroy
+  resources :screenwriters, except: :destroy
 
   resources :reviews, except: :destroy
 
