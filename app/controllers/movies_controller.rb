@@ -10,6 +10,8 @@ class MoviesController < ApplicationController
 
   def new
   	@movie = Movie.new
-  	@countries = UsersHelper::get_countries
+    @regions = MoviesHelper::get_regions
+    @categories = MoviesHelper::get_categories
+    @decades = MoviesHelper::get_decades
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117150957) do
+ActiveRecord::Schema.define(version: 20170121004340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20170117150957) do
     t.text    "synopsis"
     t.integer "decade_id"
     t.integer "category_id"
+    t.integer "region_id"
   end
 
   create_table "regions", force: :cascade do |t|

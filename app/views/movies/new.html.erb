@@ -25,12 +25,20 @@
 				</div>
 
 				<div class="form-group">
-					<%= f.label :decade_id %>
-					<%= f.select :decade_id, @countries.each{|key|}, include_blank: false, class: "form-control form-inline" %>
-					<%= f.label :category_id %>
-					<%= f.select :category_id, @countries.each{|key|}, include_blank: false, class: "form-control form-inline" %>
+					<%= f.label :decade_id %>&nbsp;
+					<%= f.select :decade_id, @categories.collect{|categorie| categorie['categorie'] }, include_blank: false, class: "form-control form-inline" %>
+					<%= f.label :category_id %>&nbsp;
+					<%= f.select :category_id, @decades.collect{|decades| decades['decade'] }, include_blank: false, class: "form-control form-inline" %>
+					<%= f.label :region_id %>&nbsp;
+					<%= f.select :region_id, @regions.collect{|region| region['region'] }, include_blank: false, class: "form-control form-inline" %>
 				</div>	 
-				
+				<strong>Genres of this Movie</strong>
+				<br/>
+				<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre do |i| %>
+					<% i.label(class: "checkbox-inline input_checkbox "){ i.check_box(class: "checkbox") + i.text } %>
+				<% end %>
+				<br/><br/>
+				<!-- gender checkboxes  -->
 				<div class="form-group">
 					<%= f.submit 'Save', class: "btn btn-success" %>
 				</div>

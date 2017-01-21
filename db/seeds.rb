@@ -31,3 +31,24 @@ JSON.parse(open("#{Rails.root}/db/database_json/categories.json").read).each do 
 	i.id = category['id']
 	i.save!
 end
+
+Decade.destroy_all
+JSON.parse(open("#{Rails.root}/db/database_json/decades.json").read).each do |decade|
+	i = Decade.new(decade)
+	i.id = decade['id']
+	i.save!
+end
+
+Genre.destroy_all
+JSON.parse(open("#{Rails.root}/db/database_json/genres.json").read).each do |genre|
+	i = Genre.new(genre)
+	i.id = genre['id']
+	i.save!
+end
+
+UserLevel.destroy_all
+JSON.parse(open("#{Rails.root}/db/database_json/user_levels.json").read).each do |user|
+	i = UserLevel.new(user)
+	i.id = user['id']
+	i.save!
+end
