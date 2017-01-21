@@ -52,3 +52,49 @@ commit: 20c3fbc18deaa46e12f180981834e955e9e908a4 -> routes finished
 * criação das validações para estas classes
 * preencher essa primeira fase no arquivo seeds
 
+
+
+****************************************************************************************************************
+
+MUDANDO OS PLANOS....
+
+Apenas adicionando as shortcuts para o que foi feito durante a aplicação:
+
+###FONTES CUSTOMIZADAS
+
+em  
+config/application.rb, adicionando as linhas:
+
+    config.assets.enable = true
+    config.assets.paths << Rails.root.join('/app/assets/fonts')
+
+no style.css criamos as novas font-family:
+
+@font-face {
+  font-family: "Prisma";
+  src:url(asset-path('assets/Prisma'));
+} 
+
+agora podemos acessar essa font-family para qq elemento
+
+### UPLOAD DE IMAGENS 
+
+add essas duas gems:
+
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'mini_magick'
+
+depois rails generate uploader Picture
+
+depois adicionamos no model que queremos adicionar a imagem :
+
+onde porfile_picture é o nome da coluna da table aonde vai ficar a imagem
+
+mount_uploader :profile_picture, PictureUploader
+validate :picture_size
+
+
+erro em PictureUploader unitilized variable fazemos o seguinte:
+
+em config/enviroments/enviroment.rb adicionamos:
+

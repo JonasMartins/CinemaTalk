@@ -48,3 +48,7 @@ end
 
 # #### webservises recomendations 
 gem 'puma'
+
+# upload de arquivos
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'mini_magick'

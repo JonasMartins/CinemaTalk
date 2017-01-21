@@ -69,10 +69,6 @@ body {
   text-align: right;
 }
 @font-face {
-  font-family: "riesling";
-  src:url(asset-path('assets/riesling'));
-} 
-@font-face {
   font-family: "Prisma";
   src:url(asset-path('assets/Prisma'));
 } 
@@ -86,9 +82,13 @@ body {
 } 
 
 #logo-index{
+  color: $yellow2;
   font-family: "SeasideResortNF";
 }
 
 h1, h2, h3, h4{
   font-family: "PoiretOne-Regular";
+}
+label, strong button, input, select, textarea {
+  font-family: "Sans Serif";
 }
