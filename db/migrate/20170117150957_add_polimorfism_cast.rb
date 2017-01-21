@@ -6,6 +6,5 @@ class AddPolimorfismCast < ActiveRecord::Migration
   	add_column :directors, :also_screenwriter, :boolean, default: false
   	add_column :screenwriters, :also_director, :boolean, default: false
   	add_column :screenwriters, :also_star, :boolean, default: false
-
   end
 end

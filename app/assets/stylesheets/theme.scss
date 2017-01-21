@@ -68,3 +68,27 @@ body {
 .h4, h4 {
   text-align: right;
 }
+@font-face {
+  font-family: "riesling";
+  src:url(asset-path('assets/riesling'));
+} 
+@font-face {
+  font-family: "Prisma";
+  src:url(asset-path('assets/Prisma'));
+} 
+@font-face {
+  font-family: "PoiretOne-Regular";
+  src:url(asset-path('assets/PoiretOne-Regular'));
+} 
+@font-face {
+  font-family: "SeasideResortNF";
+  src:url(asset-path('assets/SeasideResortNF'));
+} 
+
+#logo-index{
+  font-family: "SeasideResortNF";
+}
+
+h1, h2, h3, h4{
+  font-family: "PoiretOne-Regular";
+}
