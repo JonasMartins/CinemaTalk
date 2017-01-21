@@ -1,6 +1,6 @@
 class CreateScreewriters < ActiveRecord::Migration
   def change
-    create_table :screewriters do |t|
+    create_table :screenwriters do |t|
     	t.date :birth_date
     	t.date :death_date
     	t.string :birth_name
