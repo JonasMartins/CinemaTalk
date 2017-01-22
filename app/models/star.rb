@@ -11,13 +11,8 @@ validates :bio, presence: true, length: { within: 20...5000 }
 validates :country, presence: true
 validates :hometown, presence: true
 
-
-
 mount_uploader :profile_picture, PictureUploader
 validate :picture_size
-
-
-
 
 
 	private

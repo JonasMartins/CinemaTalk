@@ -1,58 +1,37 @@
+<%= render 'shared/errors', obj: @star %>
 <div class="row">
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
-  	<form>
-  		<h4>Create a new Star</h4>
-	  	<%= form_for(@star, url: {action: "create"}, html: {multipart: true}) do |f| %>
-				<div class="form-group">
-					<%= f.label :birth_name %>
-					<%= f.text_field :birth_name, class: "form-control" , placeholder: "full name" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :birth_date %>
-					<%= f.date_field :birth_date , class: "form-control"%>
-				</div>
+	  	<h4>Create a new Star</h4>
+	  	<%= form_for(@star) do |f| %>
+				<%= f.label :birth_name, class: "form-group" %>
+				<%= f.text_field :birth_name, class: "form-control form-group" , placeholder: "full name" %><br />
+				<%= f.label :birth_date, class: "form-group" %>
+				<%= f.date_field :birth_date , class: "form-control"%><br />
 
-				<div class="form-group">
-					<%= f.label :death_date %>
-					<%= f.date_field :death_date , class: "form-control"%>
-				</div>
-				
-				<div class="form-group">
-					<%= f.label :nickname %>
-					<%= f.text_field :nickname  , class: "form-control",placeholder: "full name"%>
-				</div>
-				
-				<div class="form-group">
-					<%= f.label :bio %>
-					<%= f.text_area :bio  , class: "form-control",placeholder: "Artist Biography", rows: 10 %>
-				</div>
+				<%= f.label :death_date, class: "form-group" %>
+				<%= f.date_field :death_date , class: "form-control form-control"%><br />
+			
+				<%= f.label :nickname, class: "form-group" %>
+				<%= f.text_field :nickname  , class: "form-control form-control",placeholder: "full name"%><br />
+			
+				<%= f.label :bio, class: "form-group" %>
+				<%= f.text_area :bio  , class: "form-control form-control",placeholder: "Artist Biography", rows: 10 %><br />
 
-				<div class="form-group">
-					<%= f.label(:also_director, "Also Director") %>
-					<%= f.check_box :also_director, class: 'checkbox-inline' %>
-					<%= f.label( :also_screenwriter, "Also Screenwriter") %>
-					<%= f.check_box :also_screenwriter, class: "checkbox-inline " %>
-				</div>
-				
-				<div class="form-group">
-					<%= f.label :country %>
-					<%= f.select :country, @countries.each{|key|}, include_blank: false, class: "form-control" %>
-				</div>	
-				<div class="form-group">
-					<%= f.label :hometown %>
-					<%= f.text_field :hometown, class: "form-control",placeholder: "full name" %>
-				</div>
+				<%= f.label :also_director, "Also Director", class:"form-group" %>
+				<%= f.check_box :also_director, class: 'checkbox-inline' %>
+				<%= f.label :also_screenwriter, "Also Screenwriter", class:"form-group"  %>
+				<%= f.check_box :also_screenwriter, class: "checkbox-inline" %><br />
+			
+				<%= f.label :country, class:"form-group" %>
+				<%= f.select :country, @countries.each{|key|}, include_blank: 'Choose her/his country' %><br />
 
-				<div class="form-group">
-					<strong>Profile Picture</strong><br />
-					<%= f.file_field :profile_picture, accept: 'image/jpeg,image/gif,image/png' %>
-				</div>
+				<%= f.label :hometown, class:"form-group" %>
+				<%= f.text_field :hometown,placeholder: "full name", class:"form-control" %><br />
 
-				<div class="form-group">
-					<%= f.submit 'Save', class: "btn btn-success" %>
-				</div>
-			<% end %>
-  	</form>
+				<strong>Profile Picture</strong><br />
+				<%= f.file_field :profile_picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-group' %>
+				<%= f.submit 'Save', class: "btn btn-success form-control" %><br /><br />
+		<% end %>
 
   </div>
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
@@ -80,11 +59,3 @@
     </p>
   </div>
  </div>
-<script>
-  $(function() {
-    $('#toggle-two').bootstrapToggle({
-      on: 'Enabled',
-      off: 'Disabled'
-    });
-  })
-</script>

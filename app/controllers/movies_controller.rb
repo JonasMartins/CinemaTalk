@@ -14,4 +14,6 @@ class MoviesController < ApplicationController
     @categories = MoviesHelper::get_categories
     @decades = MoviesHelper::get_decades
   end
+
+
 end

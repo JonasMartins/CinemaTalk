@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :notes
   root 'home#index'
 
   resources :movies, except: :destroy
@@ -12,12 +13,11 @@ Rails.application.routes.draw do
 
   resources :reviews, except: :destroy
 
- 	resources :users, except: :destroy 
+  resources :users, except: :destroy 
 
  	#  A OPÇÃO INDEX SERVE PARA TODOS DA SEGUINTE MANEIRA, AO DIGITAR O NOME DELES NA BARRA DE BUSCA
  	# 	E AO BUSCAR NOS ARQUIVOS JSON PODEMOS MOSTRAR UM LINK COM ALGUNS RESULTADOS APRESENTADOS, 
  	# 	MAS DEVEMOS FILTRAR SEMPRE POIS NÃO PODEMOS JUTAR OS TIPOS EM APENAS UM INDEX
-
 
   resources :decades, only: [:show] #procurar por decadas
   resources :genres, only: [:show] #procurar por generos
