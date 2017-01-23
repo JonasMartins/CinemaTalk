@@ -1,5 +1,12 @@
 class StarsController < ApplicationController
+  
+  # não vai fazer muita coisa depois
   def index
+    @stars = Star.all
+    
+  end
+
+  def get_json
     @stars = Star.all
     render json: @stars # vai salvando todas os objetos criados em formato json pronto para 
     # ser pesquisado pela barra de busca como?

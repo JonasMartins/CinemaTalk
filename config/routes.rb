@@ -29,6 +29,12 @@ Rails.application.routes.draw do
   get '/logout', to: 'logins#destroy'
 
 
+  # com essa rota posso ir para uma pagina onde tem o json dos objetos estrela
+  # basta agora restringir esse link e dar um jeito de acessar o json dele
+  # fazer o mesmo para todos os outros campos 
+  get '/stars-get-json', to: 'stars#get_json'
+
+
   # rake routes | grep "key"
 
 
