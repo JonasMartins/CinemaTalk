@@ -1,8 +1,9 @@
+require 'json'
+
 class Star < ActiveRecord::Base
 
 has_many :movie_stars
 has_many :movies, through: :movie_stars
-
 
 validates :birth_name, presence: true, length: {minumum: 5, maximum: 100}
 validates :birth_date, presence: true

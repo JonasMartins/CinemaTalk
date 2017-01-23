@@ -1,17 +1,18 @@
 class StarsController < ApplicationController
   def index
     @stars = Star.all
+    render json: @stars # vai salvando todas os objetos criados em formato json pronto para 
+    # ser pesquisado pela barra de busca como?
   end
 
   def show
     @star = Star.find(params[:id])
-    flash[:success] = "Your Actor was created!"
   end
 
   def new
     #@star = Star.new({:birth_name => 'Default'}) valores default
-    @star = Star.new    
     @countries = UsersHelper::get_countries
+    @star = Star.new    
   end
 
   def create
@@ -19,8 +20,9 @@ class StarsController < ApplicationController
     if @star.save
       # flash uma especie de notificação
       flash[:success] = "Your Actor was created!"
+      redirect_to stars_path(@star)
     else
-      @countries = UsersHelper::get_countries
+      @countries = UsersHelper::get_countries      
       render :new
     end
   end
@@ -42,7 +44,6 @@ class StarsController < ApplicationController
       render :edit
     end
   end
-
   private
 
     def star_params

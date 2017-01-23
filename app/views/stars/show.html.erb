@@ -1,16 +1,11 @@
 <div class="row">
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
-		<p> 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
-        laoreet. Cras ut ante a nunc rutrum iaculis. Donec eu neque nunc. Pellentesque pharetra nibh scelerisque tellus tincidunt
-        in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
-        sollicitudin purus. 
-    </p>
-    Nome deste ator:
-	<%= @star.birth_name %>
-	<br />
-    id deste ator:
-    <%= @star.id %>
+    <div class="thumbnail col col-md-4 col-sm-4 col-xs-4">
+      <%= image_tag(@star.profile_picture.url, class: "img-responsive media-object", 
+      alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@star.nickname}") if @star.profile_picture? %>
+      <%= image_tag(image_path(@star.country), class: "img-responsive media-object" )%>
+    </div>
+
   </div>
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
   	<p> 
