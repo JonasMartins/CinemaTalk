@@ -6,10 +6,39 @@
         in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
         sollicitudin purus. 
     </p>
-		<% @stars.each do |star| %>
-			<%= star.birth_name %>
-		<%end%>  	
+    <!--  mudar isso para um especie de toggle  -->
+
+    <%= link_to 'testando....', {:controller => 'stars', :action => 'index', :star_id => '2'}, id: 'ajax-button2' %>
+    
+
+    <div id="searcharea">
+      <label for="search">Live Search</label>
+      <p>Enter the name or info about the speaker.</p>
+      <input type="search" name="search" id="search" placeholder="name or info" />
+    </div>
+
+
+    <div>
+      <% if !@star.nil?   %>
+        <ol id='stars', class="list-unstyled">
+         <%= render(partial: 'stars/star', collection: @stars ) %>
+        </ol>
+      <% end %>
+    </div>
+
+    <button id="ajax-button" type="button">Submit</button>
+    <div id=location>
+      
+    </div>
+  
+      <ol id='stars', class="list-unstyled">
+      <!--  quando quiser renderizar apenas um objeto dizemos object: 
+      quando vários, usamos collection:-->
+       <%= render(partial: 'stars/star', collection: @stars ) %>
+      </ol>
+
   </div>
+
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
   	<p> 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
@@ -31,5 +60,76 @@
         augue consectetur nisl adipiscing accumsan. Quisque semper justo nec nibh venenatis ut feugiat dolor mattis. In lacus
         magna, rutrum at congue vitae, imperdiet a purus.
     </p>
+    <div id="update">
+      <h1>Speakers</h1>
+    </div> 
   </div>
  </div>
+ <script type="text/javascript">  
+  /*
+  function getStar(){
+    // Using XMLHttpRequest
+    var xhr = new XMLHttpRequest();  
+    xhr.open("GET", "http://localhost:3000/stars-get-json", true);  
+    xhr.onreadystatechange = function () {
+      if(xhr.readyState < 4) {
+        showLoading();
+      }
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        outputLocation(xhr.responseText);
+        //console.log(xhr.responseText);
+      }
+    };
+    xhr.send();  
+  }
+  function showLoading(){
+    var target = document.getElementById('location');
+    target.innerHTML = 'Loading...';
+  }
+  function outputLocation(data) {
+    var target = document.getElementById('location');
+    var json = JSON.parse(data);
+    
+    var address = json[0].id
+    target.innerHTML = address;
+    //var output = '<a href="">';
+    //output +='This is a link';
+    //output += address; 
+    //output += '</a>';
+    //target.innerHTML = output;
+
+    // quero apenas passar o id para o parametro e enviar para o 
+    // controller assim que for clicado no botão
+
+  }
+
+  var button = document.getElementById ("ajax-button");
+  button.addEventListener("click", getStar);
+
+  */
+  $('#search').keyup(function() { /* apenas aqui ao clicar qq coisa na barra de pesquisa
+  a função literal é executada e todo os dados vindos do json são executados, mas sem a 
+  qualidade de ser uma pesquisa e sim apenas um trigger */
+  
+  var searchField = $('#search').val();/* pegando o valor que é digitado dentro 
+  do input cujo id = search, as letras que forem digitadas lá serão salvas nessa variável */
+  var myExp = new RegExp(searchField, "i");/*este i significa case insentive, sem distinção entre A ou a*/
+  
+  $.getJSON('http://localhost:3000/stars-get-json', function(data) {
+    var output = '<ul class="searchresults">';
+    $.each(data, function(key, val) {
+      if(val.nickname.search(myExp) != -1 ) { 
+        output += '<li>';
+        output += '<h2>'+ val.nickname +'</h2>';
+        //output += '<img src="images/'+ val.shortname +'_tn.jpg" alt="'+ val.name +'" />';
+        //output += '<p>'+ val.id +'</p>';
+        output += '</li>';
+      }
+    });
+    output += '</ul>';
+    $('#update').html(output);
+    //console.log(output)
+    }); //get JSON
+  }); 
+
+</script> 

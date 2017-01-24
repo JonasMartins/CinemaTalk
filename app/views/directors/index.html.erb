@@ -26,10 +26,6 @@
           magna, rutrum at congue vitae, imperdiet a purus.
       </p>
 
-    <button id="ajax-button" type="button">Submit</button>
-    <div id=location>
-    	
-    </div>
   </div>
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
   	<p> 
@@ -55,37 +51,3 @@
 
   </div>
  </div>
-<script type="text/javascript">  
-	function getStar(){
-		// Using XMLHttpRequest
-		var xhr = new XMLHttpRequest();  
-		xhr.open("GET", "http://localhost:3000/stars-get-json", true);  
-		xhr.onreadystatechange = function () {
-	    if(xhr.readyState < 4) {
-	      showLoading();
-	    }
-	    if(xhr.readyState == 4 && xhr.status == 200) {
-	      outputLocation(xhr.responseText);
-	    	//console.log(xhr.responseText);
-	    }
-	  };
-		xhr.send();  
-	}
-
-	function showLoading(){
-    var target = document.getElementById('location');
-    target.innerHTML = 'Loading...';
-  }
- 	function outputLocation(data) {
-    var target = document.getElementById('location');
-    var json = JSON.parse(data);
-    var address = json[0].nickname
-    target.innerHTML = address;
-  }
-
-  var button = document.getElementById ("ajax-button");
-  button.addEventListener("click", getStar);
-
-
-
-</script> 

@@ -2,8 +2,12 @@ class StarsController < ApplicationController
   
   # não vai fazer muita coisa depois
   def index
+    # esse stars.all deve ser substituido por um grupo de objetos 
+    # que devem estar de acordo com uma certa busca e não todos de uma vez
     @stars = Star.all
-    
+    if params[:star_id]
+      @star = Star.find(params[:star_id])
+    end
   end
 
   def get_json
@@ -34,7 +38,6 @@ class StarsController < ApplicationController
     end
   end
 
-
   def edit
     @countries = UsersHelper::get_countries
     @star = Star.find(params[:id])
@@ -55,6 +58,6 @@ class StarsController < ApplicationController
 
     def star_params
       params.fetch(:star).permit(:birth_name, :birth_date, :death_date, :nickname, :bio, 
-        :profile_picture, :country, :hometown, :also_director, :also_screenwriter)
+        :profile_picture, :country, :hometown, :also_director, :also_screenwriter, :star_id)
     end
 end

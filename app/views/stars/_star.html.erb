@@ -1,0 +1,12 @@
+<!-- tudas as estrelas, depois temos que limitar de acordo com uma busca? -->
+<!-- gerando a imagem da estrela, depois de estar dentro de uma form, desse jeito
+		agora podemos usar de uma forma que o ajax possa gerar essa imagem de alguma forma
+		na hora da busca apenas mandando renderizar assim commo foi feito com os comentários 
+		no projeto anterior -->
+<li>
+  <div class="thumbnail col col-md-2 col-sm-2 col-xs-2">
+  <%= image_tag(star.profile_picture.url, class: "img-responsive media-object", 
+  	alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{star.nickname}") if star.profile_picture? %>
+  	<%= image_tag(image_path(star.country), class: "img-responsive media-object" )%>
+	</div>
+</li>
