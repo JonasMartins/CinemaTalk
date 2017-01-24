@@ -38,4 +38,8 @@ Rails.application.routes.draw do
   # rake routes | grep "key"
 
 
+  # test request
+  # match '/curl_example' => 'stars#curl_get_example', via: :get
+  # match '/curl_example' => 'stars#curl_post_example', via: :post
+
 end

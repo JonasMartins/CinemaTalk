@@ -1,2 +1,91 @@
-<h1>Directors#index</h1>
-<p>Find me in app/views/directors/index.html.erb</p>
+
+<div class="row">
+  <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
+	    <h1>
+         Lorem ipsum dolor sit amet
+      </h1>
+
+      <p> 
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
+          laoreet. Cras ut ante a nunc rutrum iaculis. Donec eu neque nunc. Pellentesque pharetra nibh scelerisque tellus tincidunt
+          in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
+          sollicitudin purus. 
+      </p>
+      <p> 
+          Ut a nunc lacus, eu faucibus dolor. Maecenas condimentum tincidunt dolor, vitae sodales justo lacinia ut. Nulla facilisi.
+          Vivamus hendrerit, turpis sit amet auctor auctor, nibh purus aliquam lacus, sed pretium arcu nunc in neque. Proin
+          sollicitudin risus ac urna malesuada adipiscing. Donec auctor bibendum fringilla.
+      </p>
+      <h2>
+          Phasellus vitae ligula elit
+      </h2>
+      <p> 
+          Phasellus vitae ligula elit. Integer vel augue vitae arcu semper suscipit. Ut sit amet purus vel lectus placerat
+          porttitor. Suspendisse potenti. Fusce elementum massa nec magna tristique et blandit erat lacinia. Vestibulum fermentum
+          augue consectetur nisl adipiscing accumsan. Quisque semper justo nec nibh venenatis ut feugiat dolor mattis. In lacus
+          magna, rutrum at congue vitae, imperdiet a purus.
+      </p>
+
+    <button id="ajax-button" type="button">Submit</button>
+    <div id=location>
+    	
+    </div>
+  </div>
+  <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
+  	<p> 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
+        laoreet. Cras ut ante a nunc rutrum iaculis. Donec eu neque nunc. Pellentesque pharetra nibh scelerisque tellus tincidunt
+        in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
+        sollicitudin purus. 
+    </p>
+    <p> 
+        Ut a nunc lacus, eu faucibus dolor. Maecenas condimentum tincidunt dolor, vitae sodales justo lacinia ut. Nulla facilisi.
+        Vivamus hendrerit, turpis sit amet auctor auctor, nibh purus aliquam lacus, sed pretium arcu nunc in neque. Proin
+        sollicitudin risus ac urna malesuada adipiscing. Donec auctor bibendum fringilla.
+    </p>
+    <h2>
+        Phasellus vitae ligula elit
+    </h2>
+    <p> 
+        Phasellus vitae ligula elit. Integer vel augue vitae arcu semper suscipit. Ut sit amet purus vel lectus placerat
+        porttitor. Suspendisse potenti. Fusce elementum massa nec magna tristique et blandit erat lacinia. Vestibulum fermentum
+        augue consectetur nisl adipiscing accumsan. Quisque semper justo nec nibh venenatis ut feugiat dolor mattis. In lacus
+        magna, rutrum at congue vitae, imperdiet a purus.
+    </p>
+
+  </div>
+ </div>
+<script type="text/javascript">  
+	function getStar(){
+		// Using XMLHttpRequest
+		var xhr = new XMLHttpRequest();  
+		xhr.open("GET", "http://localhost:3000/stars-get-json", true);  
+		xhr.onreadystatechange = function () {
+	    if(xhr.readyState < 4) {
+	      showLoading();
+	    }
+	    if(xhr.readyState == 4 && xhr.status == 200) {
+	      outputLocation(xhr.responseText);
+	    	//console.log(xhr.responseText);
+	    }
+	  };
+		xhr.send();  
+	}
+
+	function showLoading(){
+    var target = document.getElementById('location');
+    target.innerHTML = 'Loading...';
+  }
+ 	function outputLocation(data) {
+    var target = document.getElementById('location');
+    var json = JSON.parse(data);
+    var address = json[0].nickname
+    target.innerHTML = address;
+  }
+
+  var button = document.getElementById ("ajax-button");
+  button.addEventListener("click", getStar);
+
+
+
+</script> 
