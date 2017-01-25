@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   # fazer o mesmo para todos os outros campos 
   get '/stars-get-json', to: 'stars#get_json'
 
-
+  post '/stars', to: 'stars#ajax'
   # rake routes | grep "key"
 
 

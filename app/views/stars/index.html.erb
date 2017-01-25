@@ -7,9 +7,11 @@
         sollicitudin purus. 
     </p>
     <!--  mudar isso para um especie de toggle  -->
-
-    <%= link_to 'testando....', {:controller => 'stars', :action => 'index', :star_id => '2'}, id: 'ajax-button2' %>
+    <%= link_to 'waiting', {:controller => 'stars', :action => 'index'}, id: 'ajax-button2', class: "btn btn-default" %>
     
+    <button id="ajax" class="btn btn-info">
+      AJAX
+    </button>
 
     <div id="searcharea">
       <label for="search">Live Search</label>
@@ -17,11 +19,14 @@
       <input type="search" name="search" id="search" placeholder="name or info" />
     </div>
 
+    <div id="results">
+    </div>
+
 
     <div>
       <% if !@star.nil?   %>
-        <ol id='stars', class="list-unstyled">
-         <%= render(partial: 'stars/star', collection: @stars ) %>
+        <ol id='stars' class="list-unstyled">
+         <%= render(partial: 'stars/star', object: @star ) %>
         </ol>
       <% end %>
     </div>
@@ -32,15 +37,16 @@
     </div>
   
       <ol id='stars', class="list-unstyled">
-      <!--  quando quiser renderizar apenas um objeto dizemos object: 
-      quando vários, usamos collection:-->
-       <%= render(partial: 'stars/star', collection: @stars ) %>
+        <!--  quando quiser renderizar apenas um objeto dizemos object: 
+        quando vários, usamos collection:-->
+       
+        <%= render(partial: 'stars/star', collection: @stars ) %>
       </ol>
 
   </div>
 
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
-  	<p> 
+    <p> 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
         laoreet. Cras ut ante a nunc rutrum iaculis. Donec eu neque nunc. Pellentesque pharetra nibh scelerisque tellus tincidunt
         in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
@@ -60,9 +66,8 @@
         augue consectetur nisl adipiscing accumsan. Quisque semper justo nec nibh venenatis ut feugiat dolor mattis. In lacus
         magna, rutrum at congue vitae, imperdiet a purus.
     </p>
-    <div id="update">
-      <h1>Speakers</h1>
-    </div> 
+      <div id="update">
+      </div> 
   </div>
  </div>
  <script type="text/javascript">  
@@ -108,31 +113,71 @@
 
   */
   $('#search').keyup(function() {
-  var searchField = $('#search').val();
-  var myExp = new RegExp(searchField, "i");
-  
-  $.getJSON('http://localhost:3000/stars-get-json', function(data) {
-    var output = '<ul class="searchresults">';
-    $.each(data, function(key, val) {
-      if(val.nickname.search(myExp) != -1 ) { /* posso adicionar um && para pesquisar apenas após uma certa quantidade de letras*/
-        console.log("entrou "+myExp);
-        console.log('status_da_busca: '+val.nickname.search(myExp));
-        output += '<li>';
-        output += '<h2>'+ val.nickname +'</h2>';
-        output += '<p>' + val.id + '</p>'
-        //output += '<img src="images/'+ val.shortname +'_tn.jpg" alt="'+ val.name +'" />';
-        //output += '<p>'+ val.id +'</p>';
-        output += '</li>';
-        output += '</ul>';
-      }if(searchField.length == 0) {/* field em branco */
-        output = '<ul class="searchresults">';
-        output += '</ul>';
-      }else{/* não encontrou nada com a letra*/
-        output += '</ul>';
-      }
-    });
-    $('#update').html(output);
-    }); //get JSON
-  }); 
+    var searchField = $('#search').val();
+    var myExp = new RegExp(searchField, "i");
+    /* obviamente esse localhost deu merda na hora de mandar pro heroku, esse localhost deve ser dinâmico......*/
+    $.getJSON('http://localhost:3000/stars-get-json', function(data) {
+      var output = '<ul class="searchresults list-unstyled">';
+      $.each(data, function(key, val) {
+        if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
 
+          output += '<li>';
+          output += '<strong>'+ val.nickname +'</strong>';
+          output += '</li>';
+          
+          // AO inves de mandar um link com valores temos que mandar renderizar de alguma forma 
+          // um partial com os valores do json encontrado
+          
+
+        }if(searchField.length == 0) {/* field em branco */
+          output = '<ul class="searchresults list-unstyled">';
+          output += '</ul>';
+        }else{/* não encontrou nada com a letra*/
+          output += '</ul>';
+        }
+        output += '</ul>';
+      });
+      $('#results').html(output);
+      }); //get JSON  
+
+    });
+    
+  $('#ajax').on('click',function(){
+      $.ajax({
+        type: 'post',
+        url: '<%=  url_for :action => "index" %>',
+        data: {
+          star_id: 2
+        },
+        beforeSend : function() {
+          //$('#output').innerHTML = 'waiting for ajax';
+          console.log('before');
+          },
+        success : function(){
+          //$('#output').innerHTML = 'Success';
+          console.log('sucess');
+        }        
+      });
+    });
+
+
+    //$('#testing').on("click", function(){
+      //console.log('worked');
+      //this.css("border","3px solid red");
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '<%=  url_for :action => "index" %>',
+      //   data: {
+      //     'star_id' :2
+      //   },
+      //   beforeSend : function() {
+      //     //$('#output').innerHTML = 'waiting for ajax';
+      //     console.log('before');
+      //     },
+      //   success : function(){
+      //     //$('#output').innerHTML = 'Success';
+      //     console.log('sucess');
+      //   }
+      // });
+    //});
 </script> 
