@@ -3,19 +3,11 @@ class StarsController < ApplicationController
   def index
     # esse stars.all deve ser substituido por um grupo de objetos 
     # que devem estar de acordo com uma certa busca e não todos de uma vez
-    @stars = Star.all
     
     # Só instancia quando eu de alguma forma tiver esse star_id
     # tenho que passa-lo via ajax, que é achado depois de gerar uma pesquisa
     # nos arquivos json com os resultados da busca
    
-    # respond_to do |format|
-    #   format.html {  } 
-    #   format.js 
-    # end
-    if params[:star_id]
-      @star = Star.find(params[:star_id])
-    end
   end
 
   def get_json

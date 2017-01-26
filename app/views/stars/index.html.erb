@@ -6,45 +6,43 @@
         in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
         sollicitudin purus. 
     </p>
-    <!--  mudar isso para um especie de toggle  -->
-    <%= link_to 'waiting', {:controller => 'stars', :action => 'index'}, id: 'ajax-button2', class: "btn btn-default" %>
     
-    <button id="ajax" class="btn btn-info">
-      AJAX
-    </button>
-
     <div id="searcharea">
       <label for="search">Live Search</label>
       <p>Enter the name or info about the speaker.</p>
       <input type="search" name="search" id="search" placeholder="name or info" />
     </div>
 
+    Domain:
+    <%= request.protocol + request.host %>
+    <%= request.protocol + request.host_with_port %>
+
     <div id="results">
     </div>
 
 
-    <div>
+    <!-- <div>
       <% if !@star.nil?   %>
         <ol id='stars' class="list-unstyled">
          <%= render(partial: 'stars/star', object: @star ) %>
         </ol>
       <% end %>
-    </div>
+    </div> -->
 
+  <!-- 
     <button id="ajax-button" type="button">Submit</button>
     <div id=location>
       
     </div>
-  
       <ol id='stars', class="list-unstyled">
-        <!--  quando quiser renderizar apenas um objeto dizemos object: 
-        quando vários, usamos collection:-->
+          quando quiser renderizar apenas um objeto dizemos object: 
+        quando vários, usamos collection:
        
         <%= render(partial: 'stars/star', collection: @stars ) %>
-      </ol>
+      </ol> 
+  </div>-->
 
   </div>
-
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
     <p> 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
@@ -122,13 +120,10 @@
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
 
           output += '<li>';
-          output += '<strong>'+ val.nickname +'</strong>';
+          output += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
           output += '</li>';
-          
           // AO inves de mandar um link com valores temos que mandar renderizar de alguma forma 
           // um partial com os valores do json encontrado
-          
-
         }if(searchField.length == 0) {/* field em branco */
           output = '<ul class="searchresults list-unstyled">';
           output += '</ul>';
@@ -142,23 +137,11 @@
 
     });
     
-  $('#ajax').on('click',function(){
-      $.ajax({
-        type: 'post',
-        url: '<%=  url_for :action => "index" %>',
-        data: {
-          star_id: 2
-        },
-        beforeSend : function() {
-          //$('#output').innerHTML = 'waiting for ajax';
-          console.log('before');
-          },
-        success : function(){
-          //$('#output').innerHTML = 'Success';
-          console.log('sucess');
-        }        
-      });
-    });
+
+  //https://blog.codeship.com/unobtrusive-javascript-via-ajax-rails/
+  //https://launchschool.com/blog/the-detailed-guide-on-how-ajax-works-with-ruby-on-rails
+  //https://richonrails.com/articles/basic-ajax-in-ruby-on-rails
+
 
 
     //$('#testing').on("click", function(){
