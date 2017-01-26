@@ -1,5 +1,7 @@
 class StarsController < ApplicationController
-  # não vai fazer muita coisa depois
+
+  before_action :set_star, only: [:show, :edit, :update]
+  
   def index
     # esse stars.all deve ser substituido por um grupo de objetos 
     # que devem estar de acordo com uma certa busca e não todos de uma vez
@@ -17,13 +19,13 @@ class StarsController < ApplicationController
   end
 
   def show
-    @star = Star.find(params[:id])
+    #@star = Star.find(params[:id])
   end
 
   def new
     #@star = Star.new({:birth_name => 'Default'}) valores default
-    @countries = UsersHelper::get_countries
     @star = Star.new    
+    @countries = UsersHelper::get_countries
   end
 
   def create
@@ -31,7 +33,7 @@ class StarsController < ApplicationController
     if @star.save
       # flash uma especie de notificação
       flash[:success] = "Your Actor was created!"
-      redirect_to stars_path(@star)
+      redirect_to star_path(@star)
     else
       @countries = UsersHelper::get_countries      
       render :new
@@ -39,16 +41,14 @@ class StarsController < ApplicationController
   end
 
   def edit
+    #@star = Star.find(params[:id])
     @countries = UsersHelper::get_countries
-    @star = Star.find(params[:id])
   end 
 
   def update
-     # find the recipe to save
     if @star.update(star_params)
-      flash[:success] = "Your Recipe was updated Succesfully!"
-      #back to recipe that just have been updated
-      redirect_to root_path
+      flash[:success] = "Your star was updated Succesfully!"
+      redirect_to star_path(@star)
     else
       @countries = UsersHelper::get_countries
       render :edit
@@ -58,6 +58,9 @@ class StarsController < ApplicationController
 
     def star_params
       params.fetch(:star).permit(:birth_name, :birth_date, :death_date, :nickname, :bio, 
-        :profile_picture, :country, :hometown, :also_director, :also_screenwriter, :star_id)
+        :profile_picture, :country, :hometown, :also_director, :also_screenwriter, :gender)
+    end
+    def set_star
+      @star = Star.find(params[:id])
     end
 end

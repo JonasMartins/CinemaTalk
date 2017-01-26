@@ -99,3 +99,15 @@ erro em PictureUploader unitilized variable fazemos o seguinte:
 em config/enviroments/enviroment.rb adicionamos:
 
 
+
+
+
+#COMANDO SERIALIZER:
+
+rails g serializer user
+
+
+
+
+
+

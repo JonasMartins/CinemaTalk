@@ -6,19 +6,18 @@
         in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
         sollicitudin purus. 
     </p>
-    
+    <!-- 
     <div id="searcharea">
       <label for="search">Live Search</label>
       <p>Enter the name or info about the speaker.</p>
       <input type="search" name="search" id="search" placeholder="name or info" />
     </div>
-
+    -->
+<!-- 
     Domain:
     <%= request.protocol + request.host %>
     <%= request.protocol + request.host_with_port %>
-
-    <div id="results">
-    </div>
+ -->
 
 
     <!-- <div>
@@ -44,7 +43,7 @@
 
   </div>
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
-    <p> 
+     <p> 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
         laoreet. Cras ut ante a nunc rutrum iaculis. Donec eu neque nunc. Pellentesque pharetra nibh scelerisque tellus tincidunt
         in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
@@ -63,104 +62,10 @@
         porttitor. Suspendisse potenti. Fusce elementum massa nec magna tristique et blandit erat lacinia. Vestibulum fermentum
         augue consectetur nisl adipiscing accumsan. Quisque semper justo nec nibh venenatis ut feugiat dolor mattis. In lacus
         magna, rutrum at congue vitae, imperdiet a purus.
-    </p>
-      <div id="update">
-      </div> 
+    </p> 
+    <div id="results">             
+    </div>
+    
   </div>
  </div>
- <script type="text/javascript">  
-  /*
-  function getStar(){
-    // Using XMLHttpRequest
-    var xhr = new XMLHttpRequest();  
-    xhr.open("GET", "http://localhost:3000/stars-get-json", true);  
-    xhr.onreadystatechange = function () {
-      if(xhr.readyState < 4) {
-        showLoading();
-      }
-      if(xhr.readyState == 4 && xhr.status == 200) {
-        outputLocation(xhr.responseText);
-        //console.log(xhr.responseText);
-      }
-    };
-    xhr.send();  
-  }
-  function showLoading(){
-    var target = document.getElementById('location');
-    target.innerHTML = 'Loading...';
-  }
-  function outputLocation(data) {
-    var target = document.getElementById('location');
-    var json = JSON.parse(data);
-    
-    var address = json[0].id
-    target.innerHTML = address;
-    //var output = '<a href="">';
-    //output +='This is a link';
-    //output += address; 
-    //output += '</a>';
-    //target.innerHTML = output;
-
-    // quero apenas passar o id para o parametro e enviar para o 
-    // controller assim que for clicado no botão
-
-  }
-
-  var button = document.getElementById ("ajax-button");
-  button.addEventListener("click", getStar);
-
-  */
-  $('#search').keyup(function() {
-    var searchField = $('#search').val();
-    var myExp = new RegExp(searchField, "i");
-    /* obviamente esse localhost deu merda na hora de mandar pro heroku, esse localhost deve ser dinâmico......*/
-    $.getJSON('http://localhost:3000/stars-get-json', function(data) {
-      var output = '<ul class="searchresults list-unstyled">';
-      $.each(data, function(key, val) {
-        if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
-
-          output += '<li>';
-          output += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
-          output += '</li>';
-          // AO inves de mandar um link com valores temos que mandar renderizar de alguma forma 
-          // um partial com os valores do json encontrado
-        }if(searchField.length == 0) {/* field em branco */
-          output = '<ul class="searchresults list-unstyled">';
-          output += '</ul>';
-        }else{/* não encontrou nada com a letra*/
-          output += '</ul>';
-        }
-        output += '</ul>';
-      });
-      $('#results').html(output);
-      }); //get JSON  
-
-    });
-    
-
-  //https://blog.codeship.com/unobtrusive-javascript-via-ajax-rails/
-  //https://launchschool.com/blog/the-detailed-guide-on-how-ajax-works-with-ruby-on-rails
-  //https://richonrails.com/articles/basic-ajax-in-ruby-on-rails
-
-
-
-    //$('#testing').on("click", function(){
-      //console.log('worked');
-      //this.css("border","3px solid red");
-      // $.ajax({
-      //   type: 'POST',
-      //   url: '<%=  url_for :action => "index" %>',
-      //   data: {
-      //     'star_id' :2
-      //   },
-      //   beforeSend : function() {
-      //     //$('#output').innerHTML = 'waiting for ajax';
-      //     console.log('before');
-      //     },
-      //   success : function(){
-      //     //$('#output').innerHTML = 'Success';
-      //     console.log('sucess');
-      //   }
-      // });
-    //});
-</script> 
+ 

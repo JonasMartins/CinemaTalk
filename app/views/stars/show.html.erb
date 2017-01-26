@@ -5,7 +5,8 @@
       alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@star.nickname}") if @star.profile_picture? %>
       <%= image_tag(image_path(@star.country), class: "img-responsive media-object" )%>
     </div>
-
+    <%=  link_to 'Edit this profile:', edit_star_path(@star) %>
+    Name:<%= @star.nickname %>
   </div>
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
   	<p> 

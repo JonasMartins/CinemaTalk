@@ -14,9 +14,15 @@
 				<%= f.label :nickname, class: "form-group" %>
 				<%= f.text_field :nickname  , class: "form-control form-control",placeholder: "full name"%><br />
 			
+				<%= f.label :gender, "Male", class:"form-group" %>
+				<%= f.radio_button :gender, 'male' %>
+
+				<%= f.label :gender, "Female", class:"form-group" %>
+				<%= f.radio_button :gender, 'female' %><br/>
+
 				<%= f.label :bio, class: "form-group" %>
 				<%= f.text_area :bio  , class: "form-control form-control",placeholder: "Artist Biography", rows: 10 %><br />
-
+				
 				<%= f.label :also_director, "Also Director", class:"form-group" %>
 				<%= f.check_box :also_director, class: 'checkbox-inline' %>
 				<%= f.label :also_screenwriter, "Also Screenwriter", class:"form-group"  %>

@@ -92,3 +92,7 @@ h1, h2, h3, h4{
 label, strong button, input, select, textarea {
   font-family: "Sans Serif";
 }
+
+.searchresults > li > a {
+  font-style: bold;
+}
