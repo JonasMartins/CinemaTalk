@@ -10,9 +10,6 @@ class StarsController < ApplicationController
     # tenho que passa-lo via ajax, que é achado depois de gerar uma pesquisa
     # nos arquivos json com os resultados da busca
     
-    @star = Star.find(2)
-    @test = 'testing'
-
     respond_to do |format|
       format.html {   } # se o cliente quiser html, esse bloco é executado
       format.js 
@@ -66,7 +63,7 @@ class StarsController < ApplicationController
 
     def star_params
       params.fetch(:star).permit(:birth_name, :birth_date, :death_date, :nickname, :bio, 
-        :profile_picture, :country, :hometown, :also_director, :also_screenwriter, :gender)
+        :profile_picture, :country, :hometown, :also_director, :also_screenwriter, :gender, :star_id)
     end
     def set_star
       @star = Star.find(params[:id])

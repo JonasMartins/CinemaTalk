@@ -10,7 +10,8 @@
       <p>Which category are you interested in?</p>
       <select id="category-select">
         <option disabled selected>Please select</option>
-        <option value="1"><%= link_to 'Furniture', @categories  %>   </option>
+        <option>
+        </option>
         <option value="2">Lighting</option>
         <option value="3">Accessories</option>
       </select>
@@ -18,8 +19,10 @@
       </select>
     </div>
     <br />
-    <%= link_to 'AJAX ME', :id => 'ajax-button', :class => 'btn btn-default', :method => 'index', remote: true %>
+    <% @var = 'variavel' %>
+    <%= link_to 'AJAX ME', :id => 'ajax-button', :class => 'btn btn-default', :method => 'index', :star_id => 2,remote: true %>
     <div id="ajax">
+
       
     </div>
 
