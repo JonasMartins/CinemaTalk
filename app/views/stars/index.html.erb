@@ -6,6 +6,24 @@
         in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
         sollicitudin purus. 
     </p>
+    <div id="form">
+      <p>Which category are you interested in?</p>
+      <select id="category-select">
+        <option disabled selected>Please select</option>
+        <option value="1"><%= link_to 'Furniture', @categories  %>   </option>
+        <option value="2">Lighting</option>
+        <option value="3">Accessories</option>
+      </select>
+      <select id="subcategory-select">
+      </select>
+    </div>
+    <br />
+    <%= link_to 'AJAX ME', :id => 'ajax-button', :class => 'btn btn-default', :method => 'index', remote: true %>
+    <div id="ajax">
+      
+    </div>
+
+
     <!-- 
     <div id="searcharea">
       <label for="search">Live Search</label>
@@ -18,15 +36,6 @@
     <%= request.protocol + request.host %>
     <%= request.protocol + request.host_with_port %>
  -->
-
-
-    <!-- <div>
-      <% if !@star.nil?   %>
-        <ol id='stars' class="list-unstyled">
-         <%= render(partial: 'stars/star', object: @star ) %>
-        </ol>
-      <% end %>
-    </div> -->
 
   <!-- 
     <button id="ajax-button" type="button">Submit</button>

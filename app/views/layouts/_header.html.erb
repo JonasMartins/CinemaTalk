@@ -33,7 +33,7 @@
             </ul>
             <form class="navbar-form navbar-left">
               <input id="search" type="text" class="form-control" placeholder="Search">
-            </form>            
+            </form>    
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list"></a>
@@ -74,8 +74,6 @@
           }if(val.also_screenwriter){
             output +=', Screenwriter</li>';
           }
-          // AO inves de mandar um link com valores temos que mandar renderizar de alguma forma 
-          // um partial com os valores do json encontrado
         }if(searchField.length == 0) {/* field em branco */
           output = '<ul class="searchresults list-unstyled">';
           output += '</ul>';

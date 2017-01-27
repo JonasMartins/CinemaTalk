@@ -9,6 +9,14 @@ class StarsController < ApplicationController
     # Só instancia quando eu de alguma forma tiver esse star_id
     # tenho que passa-lo via ajax, que é achado depois de gerar uma pesquisa
     # nos arquivos json com os resultados da busca
+    
+    @star = Star.find(2)
+    @test = 'testing'
+
+    respond_to do |format|
+      format.html {   } # se o cliente quiser html, esse bloco é executado
+      format.js 
+    end
    
   end
 
