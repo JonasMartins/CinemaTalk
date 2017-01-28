@@ -1,19 +1,11 @@
-<div class="row">
-	<div class="col-md-12">
-		<% flash.each do |message_type, message| %>
-			<div class="alert alert-<%= message_type %>"><%= message %>
-				<a class="close" data-dismiss="alert">&#215;</a>
-			</div>
-		<% end %>
+<% flash.each do |message_type, message| %>
+	<div class="alert alert-<%= message_type %>"><%= message %>
+		<a class="close" data-dismiss="alert">&#215;</a>
 	</div>
-</div>
+<% end %>
 
-<!-- fazer a menssagem sumir depois de um tempo -->
-<!-- 
+
 <script type="text/javascript">
-$(function(){
-		$(".alert-success" ).fadeOut(7000);
-		$(".alert-danger" ).fadeOut(10000);
-	});
+		$(".alert-success" ).fadeOut(3000);
+		$(".alert-danger" ).fadeOut(3000);
 </script>
- -->
