@@ -1,0 +1,69 @@
+<div class="row">
+	<%= render 'shared/errors', obj: @movie %>
+  <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
+	  <h4>Add a new Movie</h4>
+    <%= form_for(@movie, html: {multipart: true }) do |f| %>
+	   <%= f.label :original_title, class: "form-group" %>
+     <%= f.text_field :original_title, class: "form-control" , placeholder: "movie original title" %>
+     <%= f.label :aka , class: "form-group"%>
+     <%= f.text_field :aka, class: "form-control" , placeholder: "Also known as" %>
+     <%= f.label :IMDB, class: "form-group" %>
+     <%= f.text_field :IMDB, class: "form-control" , placeholder: "movie IMDB link" %>
+     <%= f.label :length, class: "form-group" %>
+     <%= f.text_field :length, class: "form-control",placeholder: "Movie length in mminutes" %>
+     <%= f.label :synopsis, class: "form-group" %>
+     <%= f.text_area :synopsis, class: "form-control",placeholder: "Movie synopsis", rows: 10 %><br>
+     
+     <%= f.label :color, "Colorful", class:"form-group" %>
+     <%= f.radio_button :color, 'colorful' %>
+
+     <%= f.label :color, "B&W", class:"form-group" %>
+     <%= f.radio_button :color, 'b&W' %><br>
+
+ 		 <%= f.label :decade_id, class: "form-group" %>
+     <%= f.select :decade_id, options_for_select(@decades.map{ |i| [i['decade'], i['id'] ] }),
+      include_blank: false, class: "form-control form-inline" %>
+     
+     <%= f.label :category_id , class: "form-group"%>
+     <%= f.select :category_id, options_for_select(@categories.map{ |i| [i['categorie'], i['id'] ] }),
+      include_blank: false, class: "form-control form-inline" %>
+     
+     <%= f.label :region_id , class: "form-group"%>
+     <%= f.select :region_id, options_for_select(@regions.map{ |i| [i['region'], i['id'] ] }),
+      include_blank: false, class: "form-control form-inline" %><br>
+
+
+     <%= f.label :genre_ids, class:"form-group", value:"Choose the Movie's Genres"%><br>
+     <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre do |i| %>
+      <% i.label(class: "checkbox-inline input_checkbox "){ i.check_box(class: "checkbox") + i.text }%>
+     <% end %>
+     <br><br>
+     
+     <%= f.label :poster, class:"form-group" %>
+     <%= f.file_field :poster, accept: 'image/jpeg,image/gif,image/png' , class: "form-group"%><br>
+     <%= f.submit 'Save', class: "btn btn-success form-control"%>
+    <% end %>
+  </div>
+  <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
+  	<p> 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae enim justo. Mauris eget augue id lorem consequat
+        laoreet. Cras ut ante a nunc rutrum iaculis. Donec eu neque nunc. Pellentesque pharetra nibh scelerisque tellus tincidunt
+        in volutpat augue semper. Proin luctus sem ac arcu convallis vel ultrices felis scelerisque. Duis vitae sem eros, non
+        sollicitudin purus. 
+    </p>
+    <p> 
+        Ut a nunc lacus, eu faucibus dolor. Maecenas condimentum tincidunt dolor, vitae sodales justo lacinia ut. Nulla facilisi.
+        Vivamus hendrerit, turpis sit amet auctor auctor, nibh purus aliquam lacus, sed pretium arcu nunc in neque. Proin
+        sollicitudin risus ac urna malesuada adipiscing. Donec auctor bibendum fringilla.
+    </p>
+    <h2>
+        Phasellus vitae ligula elit
+    </h2>
+    <p> 
+        Phasellus vitae ligula elit. Integer vel augue vitae arcu semper suscipit. Ut sit amet purus vel lectus placerat
+        porttitor. Suspendisse potenti. Fusce elementum massa nec magna tristique et blandit erat lacinia. Vestibulum fermentum
+        augue consectetur nisl adipiscing accumsan. Quisque semper justo nec nibh venenatis ut feugiat dolor mattis. In lacus
+        magna, rutrum at congue vitae, imperdiet a purus.
+    </p>
+  </div>
+ </div>

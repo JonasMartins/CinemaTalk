@@ -16,7 +16,6 @@
 # 	{genre: "Science Fiction"},{genre: "Thriller"},{genre: "Urban"},{genre: "Western"}])
 
 require 'json'
-=begin
 # Regions
 Region.destroy_all
 JSON.parse(open("#{Rails.root}/db/database_json/regions.json").read).each do |region|
@@ -50,13 +49,5 @@ UserLevel.destroy_all
 JSON.parse(open("#{Rails.root}/db/database_json/user_levels.json").read).each do |user|
 	i = UserLevel.new(user)
 	i.id = user['id']
-	i.save!
-end
-=end
-
-Star.destroy_all
-JSON.parse(open("#{Rails.root}/db/database_json/stars.json").read).each do |star|
-	i = Star.new(star)
-	i.id = star['id']
 	i.save!
 end

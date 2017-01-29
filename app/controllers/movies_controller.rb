@@ -10,6 +10,9 @@ class MoviesController < ApplicationController
   end
 
   def edit
+    @regions = MoviesHelper::get_regions
+    @categories = MoviesHelper::get_categories
+    @decades = MoviesHelper::get_decades
   end
 
   def new
@@ -37,7 +40,7 @@ class MoviesController < ApplicationController
   def update
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html #{ redirect_to @movie, notice: 'movie was successfully created.' }
+        format.html { redirect_to movie_path(@movie) }#{ redirect_to @movie, notice: 'movie was successfully created.' }
         format.json #{ render :show, status: :created, location: @movie }
         format.js
       else
