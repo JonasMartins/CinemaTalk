@@ -1,5 +1,6 @@
 $grey21 :#363636;
 $yellow2 :#EEEE00;
+$silver :#C0C0C0;
 body {
 
    /* 
@@ -11,7 +12,7 @@ body {
    background: #eee image-url('room-237-carpet.jpg') repeat fixed;
 		
    */
-   background-color: $grey21;
+  background-color: $silver;
    margin: 5px;
  }
 /* spaço para o conteudo aparecer todo abaixo da navbar */

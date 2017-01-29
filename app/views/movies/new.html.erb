@@ -1,52 +1,41 @@
 <div class="row">
+	<%= render 'shared/errors', obj: @movie %>
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
-  	<form>
-  		<h4>Add a new Movie</h4>
-	  	<%= form_for(@movie, url: {action: "create"}, html: {multipart: true, class: "form-inline" }) do |f| %>
-				<div class="form-group">
-					<%= f.label :original_title %>
-					<%= f.text_field :original_title, class: "form-control" , placeholder: "movie original title" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :aka %>
-					<%= f.text_field :aka, class: "form-control" , placeholder: "Also known as" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :IMDB %>
-					<%= f.text_field :IMDB, class: "form-control" , placeholder: "movie IMDB link" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :length %>
-					<%= f.text_field :length, class: "form-control",placeholder: "Movie length in mminutes" %>
-				</div>
-				<div class="form-group">
-					<%= f.label :synopsis %>
-					<%= f.text_area :synopsis, class: "form-control",placeholder: "Movie synopsis", rows: 10 %>
-				</div>
+		<h4>Add a new Movie</h4>
+  	<%= form_for(@movie, url: {action: "create"}, html: {multipart: true }) do |f| %>
+				<%= f.label :original_title, class: "form-group" %>
+				<%= f.text_field :original_title, class: "form-control" , placeholder: "movie original title" %>
+				<%= f.label :aka , class: "form-group"%>
+				<%= f.text_field :aka, class: "form-control" , placeholder: "Also known as" %>
+				<%= f.label :IMDB, class: "form-group" %>
+				<%= f.text_field :IMDB, class: "form-control" , placeholder: "movie IMDB link" %>
+				<%= f.label :length, class: "form-group" %>
+				<%= f.text_field :length, class: "form-control",placeholder: "Movie length in mminutes" %>
+				<%= f.label :synopsis, class: "form-group" %>
+				<%= f.text_area :synopsis, class: "form-control",placeholder: "Movie synopsis", rows: 10 %>
 
-				<div class="form-group">
-					<%= f.label :decade_id %>&nbsp;
-					<%= f.select :decade_id, @decades.collect{|decades| decades['decade'] }, include_blank: false, class: "form-control form-inline" %>&nbsp;
-					<%= f.label :category_id %>&nbsp;
-					<%= f.select :category_id, @categories.collect{|categorie| categorie['categorie'] }, include_blank: false, class: "form-control form-inline" %>&nbsp;
-					<%= f.label :region_id %>&nbsp;
-					<%= f.select :region_id, @regions.collect{|region| region['region'] }, include_blank: false, class: "form-control form-inline" %>
-				</div>	 
-				<div class="form-group">
-					<strong>Genres of this Movie: </strong>
-					<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre do |i| %>
-						<% i.label(class: "checkbox-inline input_checkbox "){ i.check_box(class: "checkbox") + i.text } %>
-					<% end %>
-				</div>
-				<div class="form-group">
-					<strong>Movie's Poster</strong><br />
-					<%= f.file_field :poster, accept: 'image/jpeg,image/gif,image/png' %>
-				</div>
-				<div class="form-group">
-					<%= f.submit 'Save', class: "btn btn-success" %>
-				</div>
-			<% end %>
-  	</form>
+				<%= f.label :color, "Colorful", class:"form-group" %>
+				<%= f.radio_button :color, 'colorful' %>
+
+				<%= f.label :color, "B&W", class:"form-group" %>
+				<%= f.radio_button :color, 'b&w' %><br/>
+
+				<%= f.label :decade_id, class: "form-group" %>
+				<%= f.select :decade_id, @decades.collect{|decades| decades['decade'] }, include_blank: false, class: "form-control form-inline" %>
+				<%= f.label :category_id , class: "form-group"%>
+				<%= f.select :category_id, @categories.collect{|categorie| categorie['categorie'] }, include_blank: false, class: "form-control form-inline" %>
+				<%= f.label :region_id , class: "form-group"%>
+				<%= f.select :region_id, @regions.collect{|region| region['region'] }, include_blank: false, class: "form-control form-inline" %><br>
+		
+				<%= f.label :genre_ids, class:"form-group", value:"Choose the Movie's Genres"%><br>
+				<%= f.collection_check_boxes :genre_ids, Genre.all, :id, :genre do |i| %>
+					<% i.label(class: "checkbox-inline input_checkbox "){ i.check_box(class: "checkbox") + i.text }%>
+				<% end %>
+				<br><br>
+				<%= f.label :poster, class:"form-group" %>
+				<%= f.file_field :poster, accept: 'image/jpeg,image/gif,image/png' , class: "form-group"%><br>
+				<%= f.submit 'Save', class: "btn btn-success form-control"%>
+		<% end %>
   </div>
   <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
   	<p> 

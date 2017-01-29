@@ -22,4 +22,25 @@ has_many :stars, through: :movie_stars
 has_many :reviews
 
 
+validates :original_title, presence: true
+validates :aka, presence: true
+validates :IMDB, presence: true
+validates :synopsis, presence: true, length: { within: 20...5000 } 	
+validates :color, presence: true
+validates :decade_id, presence: true
+validates :category_id, presence: true
+validates :category_id, presence: true
+validates :region_id, presence: true
+
+
+mount_uploader :poster, PictureUploader
+validate :picture_size
+
+	private
+		def picture_size
+			if poster.size > 4.megabytes
+				errors.add(:poster, "Image must be less than 4MB")
+			end
+		end
+
 end

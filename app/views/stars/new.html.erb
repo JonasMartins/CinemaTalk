@@ -21,22 +21,22 @@
 		<%= f.radio_button :gender, 'female' %><br/>
 
 		<%= f.label :bio, class: "form-group" %>
-		<%= f.text_area :bio  , class: "form-control form-control",placeholder: "Artist Biography", rows: 10 %><br />
+		<%= f.text_area :bio  , class: "form-control form-control",placeholder: "Artist Biography", rows: 10 %>
 
 		<%= f.label :also_director, "Also Director", class:"form-group" %>
 		<%= f.check_box :also_director, class: 'checkbox-inline' %>
 		<%= f.label :also_screenwriter, "Also Screenwriter", class:"form-group"  %>
-		<%= f.check_box :also_screenwriter, class: "checkbox-inline" %><br />
+		<%= f.check_box :also_screenwriter, class: "checkbox-inline" %>
 
 		<%= f.label :country, class:"form-group" %>
-		<%= f.select :country, @countries.each{|key|}, include_blank: 'Choose her/his country' %><br />
+		<%= f.select :country, @countries.each{|key|}, include_blank: 'Choose her/his country' %>
 
 		<%= f.label :hometown, class:"form-group" %>
-		<%= f.text_field :hometown,placeholder: "full name", class:"form-control" %><br />
+		<%= f.text_field :hometown,placeholder: "full name", class:"form-control" %>
 
-		<strong>Profile Picture</strong><br />
+		<strong>Profile Picture</strong><br>
 		<%= f.file_field :profile_picture, accept: 'image/jpeg,image/gif,image/png', class: 'form-group' %>
-		<%= f.submit 'Save', class: "btn btn-success form-control" %><br /><br />
+		<%= f.submit 'Save', class: "btn btn-success form-control" %>
 		<% end %>
 
 	</div>
