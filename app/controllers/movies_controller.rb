@@ -15,6 +15,11 @@ class MoviesController < ApplicationController
     @decades = MoviesHelper::get_decades
   end
 
+  def get_json
+    @movies = Movie.all
+    render json: @movies
+  end
+
   def new
   	@movie = Movie.new
     @regions = MoviesHelper::get_regions

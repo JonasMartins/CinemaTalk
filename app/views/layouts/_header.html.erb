@@ -33,6 +33,7 @@
             </ul>
             <form class="navbar-form navbar-left">
               <input id="search" type="text" class="form-control" placeholder="Search">
+              <div id="results2"></div>
             </form>    
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -54,14 +55,18 @@
 </header>
 <!-- Busca dinamica -->
 <script type="text/javascript">
-   $('#search').keyup(function() {
-    var searchField = $('#search').val();
-    var myExp = new RegExp(searchField, "i");
-    $.getJSON('http://localhost:3000/stars-get-json', function(data) {
+ $('#search').keyup(function() {
+  var searchField = $('#search').val();
+  var myExp = new RegExp(searchField, "i");
+
+  /* SEARCH STARS */
+  $.when(
+    $.getJSON('http://localhost:3000/stars-get-json')
+    ).done(function(star){
       var output = '<ul class="searchresults list-unstyled">';
-      $.each(data, function(key, val) {
+      $.each(star, function(key, val) {
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
-          output += '<h2>Results:</h2>';
+          output += '<h2>Stars Results:</h2>';
           output += '<li>';
           output += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
           output += '</li>';
@@ -77,13 +82,66 @@
         }if(searchField.length == 0) {/* field em branco */
           output = '<ul class="searchresults list-unstyled">';
           output += '</ul>';
-        }else if((val.nickname.search(myExp) == -1 )&& (searchField.length > 2)){/* não encontrou nada com a letra*/
-          output += '<h2>Not Found!</h2>';
-          output += '</ul>';
-        }
+        }// else if((val.nickname.search(myExp) == -1 )&& (searchField.length > 2)){ não encontrou nada com a letra
+        //   output += '<h2>Not Found!</h2>';
+        //   output += '</ul>';
+        // }
         output += '</ul>';
+        output += '<hr>';
       });
       $('#results').html(output);
-      }); //get JSON  
-    });    
+    }); 
+
+  /*  SEARCH MOVIES */
+  $.when(
+    $.getJSON('http://localhost:3000/movies-get-json')
+    ).done(function(movie){
+      var output2 = '<ul class="searchresults list-unstyled">';
+      $.each(movie, function(key, val) {
+        if((val.aka.search(myExp) != -1 ) && (searchField.length > 2)){
+          output2 += '<h2>Movies Results:</h2>';
+          output2 += '<li>';
+          output2 += '<a href="<%= request.protocol + request.host_with_port %>/movies/'+val.id+'">'+val.aka +'</a>';
+          output2 += '</li>';
+        }
+        output2 += '</ul>';
+      });    
+      $('#results').append(output2);
+    });
+
+  });    
 </script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+  $( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
