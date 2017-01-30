@@ -1,12 +1,57 @@
 <div class="row">
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
-    <div class="thumbnail col col-md-4 col-sm-4 col-xs-4">
+    <section class="media">
+      <div class="thumbnail col col-md-4 col-sm-4 col-xs-4">
       <%= image_tag(@star.profile_picture.url, class: "img-responsive media-object", 
       alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@star.nickname}") if @star.profile_picture? %>
       <%= image_tag(image_path(@star.country), class: "img-responsive media-object" )%>
     </div>
-    <%=  link_to 'Edit this profile:', edit_star_path(@star) %>
-    Name:<%= @star.nickname %>
+    <div class="media-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover table-condensed ">
+        <thead>
+          <tr><h2 style="text-align: center;"><%= @star.nickname %></h2> </tr>
+        </thead>
+          <tbody>    
+            <tr class="info">
+              <th scope="row">Birth Name</th>
+              <td><%= @star.birth_name %></td>
+            </tr>            
+            <tr>
+              <th scope="row">Birth date</th>
+              <td><%= @star.birth_date %> </td>
+            </tr>
+            <% if @star.death_date %>
+              <tr class="info">
+                <th scope="row">Death date</th>
+                <td><%= @star.death_date  %></td>
+              </tr>
+            <% end %>
+            <% if (@star.also_director || @star.also_screenwriter) %>
+              <tr>
+                <th scope="row">Other</th>
+                <% if @star.also_director %>
+                  <td>Also director</td>
+                <% end %>
+                <% if @star.also_screenwriter %>
+                  <td>Also screenwriter</td>
+                <% end %>
+              </tr>
+            <% end %>
+            <tr class="info">
+              <th scope="row">Hometown</th>
+              <td><%= @star.hometown  %></td>
+            </tr>
+            <tr>
+              <th scope="row">Bio</th>
+              <td><%= @star.bio %></td>
+            </tr>
+          </tbody>
+          </table>
+          <%=  link_to 'Edit this profile:', edit_star_path(@star) %>
+        </div>
+      </div>
+    </section>
   </div>
   <%=  render 'layouts/sidebar' %>
  </div>
