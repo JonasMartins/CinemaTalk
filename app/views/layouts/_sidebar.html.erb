@@ -1,0 +1,66 @@
+ <div class="col-md-3  col-lg-3 col-sm-3" id="sidebar" >
+    <div>
+       <h2 id="sidebar">Live Search</h2> 
+    </div>
+    <input id="search" type="text" class="form-control" placeholder="movies, stars, directors...">
+    <div id="results">             
+    </div>        
+  </div>
+<!-- Busca dinamica -->
+<script type="text/javascript">
+ $('#search').keyup(function() {
+  var searchField = $('#search').val();
+  var myExp = new RegExp(searchField, "i");
+
+  /* SEARCH STARS */
+  $.when(
+    $.getJSON('http://localhost:3000/stars-get-json')
+    ).done(function(star){
+      var output = '<ul class="searchresults list-unstyled">';
+      $.each(star, function(key, val) {
+        if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
+          output += '<h3>Stars Results:</h3>';
+          output += '<li>';
+          output += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
+          output += '</li>';
+          if(val.gender){
+            output +='<li>Career: Actor';
+          }else{
+            output +='<li>Actress';
+          }if(val.also_director){
+            output +=', Director ';
+          }if(val.also_screenwriter){
+            output +=', Screenwriter</li>';
+          }
+        }if(searchField.length == 0) {/* field em branco */
+          output = '<ul>';
+          output += '</ul>';
+        }// else if((val.nickname.search(myExp) == -1 )&& (searchField.length > 2)){ não encontrou nada com a letra
+        //   output += '<h2>Not Found!</h2>';
+        //   output += '</ul>';
+        // }
+        output += '</ul>';
+        output += '<hr>';
+      });
+      $('#results').html(output);
+    }); 
+
+  /*  SEARCH MOVIES */
+  $.when(
+    $.getJSON('http://localhost:3000/movies-get-json')
+    ).done(function(movie){
+      var output2 = '<ul class="searchresults list-unstyled">';
+      $.each(movie, function(key, val) {
+        if((val.aka.search(myExp) != -1 ) && (searchField.length > 2)){
+          output2 += '<h3>Movies Results:</h3>';
+          output2 += '<li>';
+          output2 += '<a href="<%= request.protocol + request.host_with_port %>/movies/'+val.id+'">'+val.aka +'</a>';
+          output2 += '</li>';
+        }
+        output2 += '</ul>';
+      });    
+      $('#results').append(output2);
+    });
+
+  });    
+</script>
