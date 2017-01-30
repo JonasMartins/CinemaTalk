@@ -8,7 +8,6 @@ module MoviesHelper
 	categories = File.read("#{Rails.root}/db/database_json/categories.json")
 	@categories_json = JSON.parse(categories)
 
-
 	def self.get_regions
 		return @regions_json
 	end

@@ -6,7 +6,11 @@
 	   <%= f.label :original_title, class: "form-group" %>
      <%= f.text_field :original_title, class: "form-control" , placeholder: "movie original title" %>
      <%= f.label :aka , class: "form-group"%>
-     <%= f.text_field :aka, class: "form-control" , placeholder: "Also known as" %>
+     <%= f.text_field :aka, class: "form-control" , placeholder: "Also known as" %><br>
+    
+     <%= f.label :year, class: "form-group" %>
+     <%= f.select :year, options_for_select(1900..2017), include_blank: false, class: "form-control form-inline" %><br>
+    
      <%= f.label :IMDB, class: "form-group" %>
      <%= f.text_field :IMDB, class: "form-control" , placeholder: "movie IMDB link" %>
      <%= f.label :length, class: "form-group" %>

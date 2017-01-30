@@ -21,25 +21,29 @@
 								<td><%= link_to "This movie on IMDb",  @movie.IMDB, :target => '_blank' %> </td>
 							</tr>
 							<tr class="info">
+								<th scope="row">Year</th>
+								<td><%= @movie.year %> </td>
+							</tr>
+							<tr>
 								<th scope="row">Region</th>
 								<td><%= Region.find(@movie.region_id).region  %></td>
 							</tr>
-							<tr>
+							<tr class="info">
 								<th scope="row">Length</th>
 								<td><%= @movie.length  %></td>
 							</tr>
-							<tr class="info">
+							<tr >
 								<th scope="row">Category</th>
 								<td><%= Category.find(@movie.category_id).categorie  %></td>
 							</tr>
-							<tr>
+							<tr class="info">
 								<th scope="row">Genres</th>
 								<td><% @movie.genres.each do |_genre|  %>
 											<%= _genre.genre %>
 										<% end %>
 								</td>
 							</tr>
-							<tr class="info">
+							<tr>
 						  	<th scope="row">Synopsis</th>
 						  	<td><p class="hidden-sm"><%= @movie.synopsis %></p></td>
 						  </tr>	

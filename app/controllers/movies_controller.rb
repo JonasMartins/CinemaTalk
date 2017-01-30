@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
 
   before_action :set_movie, only: [:show, :edit, :update]
-
   def index
     @mvies = Movie.all
   end
@@ -68,10 +67,9 @@ class MoviesController < ApplicationController
   private
     def movie_params
       params.require(:movie).permit(:original_title, :aka, :IMDB, :length, :synopsis, 
-        :color, :decade_id, :category_id, :region_id, :poster, genre_ids: [])
+        :color, :decade_id, :category_id, :region_id, :poster, :year, genre_ids: [])
       end
     def set_movie
       @movie = Movie.find(params[:id])
     end
-
 end
