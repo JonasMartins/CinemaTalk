@@ -1,6 +1,7 @@
 $grey21 :#363636;
 $yellow2 :#EEEE00;
 $silver :#C0C0C0;
+$default :#222;
 body {
 
    /* 
@@ -28,7 +29,7 @@ body {
   color: $yellow2;
   background-color: $grey21;
 }
-.navbar-default .navbar-nav>li>a {
+.navbar-inverse .navbar-nav>li>a {
   color: $yellow2;
   &:hover{
   	color: $yellow2;
@@ -37,7 +38,7 @@ body {
 }
 
 .dropdown-menu {
-	background-color: black;
+	background-color: $default;
 }
 .dropdown-menu > li > a{
 	color: $yellow2;

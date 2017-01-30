@@ -29,7 +29,6 @@ validates :synopsis, presence: true, length: { within: 20...5000 }
 validates :color, presence: true
 validates :decade_id, presence: true
 validates :category_id, presence: true
-validates :category_id, presence: true
 validates :region_id, presence: true
 
 
