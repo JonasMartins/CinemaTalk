@@ -110,4 +110,29 @@ label, strong button, input, select, textarea {
 #btn-errors {
   display :none; 
 }
+.welcome{
+  text-align: center;
+  font-family: 'Prisma';
+  color: $yellow2;
+  font-size: 35px;
+}
+.black-bkg {
+  border: 2px solid $yellow2;
+  border-radius: 10px;
+  background-color: black;
+  opacity: .9;
+  border-color: $yellow2;
+}
+.welcome-text {
+  margin: 25px 50px;
+  color: $yellow2;
+  font-family: 'PoiretOne-Regular';
+  text-indent: 20px;
+  word-spacing: 2px;  
+  line-height: 1.1;
+  font-size: 30px;
+  text-align: justify;  
+  -moz-text-align-last: right; /* Code for Firefox */
+  text-align-last: left;
+}
 
