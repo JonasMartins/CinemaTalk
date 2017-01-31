@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130003151) do
+ActiveRecord::Schema.define(version: 20170131232602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,9 +159,7 @@ ActiveRecord::Schema.define(version: 20170130003151) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "user_level_id"
     t.date     "birth_date"
-    t.date     "death_date"
     t.string   "birth_name"
     t.string   "nickname"
     t.text     "bio"
@@ -169,6 +167,7 @@ ActiveRecord::Schema.define(version: 20170130003151) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_level_id", default: 1
   end
 
 end

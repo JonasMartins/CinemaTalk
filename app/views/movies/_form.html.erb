@@ -1,7 +1,7 @@
 <div class="row">
 	<%= render 'shared/errors', obj: @movie %>
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
-	  <h4>Add a new Movie</h4>
+    <br>
     <%= form_for(@movie, html: {multipart: true }) do |f| %>
 	   <%= f.label :original_title, class: "form-group" %>
      <%= f.text_field :original_title, class: "form-control" , placeholder: "movie original title" %>

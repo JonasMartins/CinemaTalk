@@ -52,7 +52,6 @@ class StarsController < ApplicationController
 
   def update
     if @star.update(star_params)
-      flash[:success] = "Your star was updated Succesfully!"
       redirect_to star_path(@star)
     else
       @countries = UsersHelper::get_countries

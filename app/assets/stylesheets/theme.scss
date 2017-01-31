@@ -98,9 +98,6 @@ h1, h2, h3, h4{
   font-family: "PoiretOne-Regular";
   color: black;
 }
-label, strong button, input, select, textarea {
-  font-family: "Sans Serif";
-}
 
 .searchresults > li > a {
   font-style: bold;
@@ -136,3 +133,35 @@ label, strong button, input, select, textarea {
   text-align-last: left;
 }
 
+.btn-signup {
+  background-color: darken($yellow2, 15%);
+  border-radius: 0px;
+  border: 2px solid black; 
+  &:hover{
+    background: darken($yellow2, 30%);
+    color: black; 
+    border-color: darken($grey21, 15%);
+  }
+}
+a.btn.btn-lg.btn-signup{
+  color: black;
+  font-family: 'SeasideResortNF';
+  font-size: 200%;
+  &:hover{
+    border: 2px solid white;
+    color: white;
+  }
+}
+
+// label.form-group {
+//   font-size: 50%;
+//   font-family: 'Arial';
+// }
+// select#star_country {
+//   font-size: 50%;
+//   font-family: 'Arial';
+// }
+// input#star_profile_picture.form-group{
+//  font-size: 50%;
+//   font-family: 'Arial'; 
+// }

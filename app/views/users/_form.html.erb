@@ -1,1 +1,29 @@
-_form
+<%= render 'shared/errors', obj: @user %>
+<div class="row">
+  <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
+  		<br>
+ 	  	<%= form_for(@user, html: {multipart: true }) do |f| %>
+				<!-- if current user.level = 3, então surge uma opção de alterar a conta para nivel 2
+				no caso critico de filmes -->	
+				<%= f.label :birth_name, class: "form-group" %>
+				<%= f.text_field :birth_name, class: "form-control form-group" , placeholder: "full name" %><br />
+
+				<%= f.label :birth_date, class: "form-group" %>
+				<%= f.date_field :birth_date , class: "form-control"%><br />
+
+				<%= f.label :nickname, class: "form-group" %>
+				<%= f.text_field :nickname  , class: "form-control form-control",placeholder: "nickname"%><br />
+				
+				<!-- if bio apenas para criticos de cinema -->
+
+				<%= f.label :country, class:"form-group" %>
+				<%= f.select :country, @countries.each{|key|}, include_blank: 'Pick your country' %><br />
+
+				<%= f.label :hometown, class:"form-group" %>
+				<%= f.text_field :hometown, class:"form-control" %><br />
+
+				<%= f.submit 'Save', class: "btn btn-success form-control" %><br />
+			<% end %>
+  </div>
+ <%=  render 'layouts/sidebar' %>
+ </div>
