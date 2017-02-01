@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.fetch(:user).permit(:user_level,:birth_name, :birth_date,:nickname, :bio, 
-        :country, :hometown)
+        :country, :hometown, :email, :password)
     end
     def set_user
       @user = User.find(params[:id])

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   resources :reviews, except: :destroy
 
-  resources :users, except: :destroy 
+  resources :users, only: [:show, :edit, :index]
+
+  get '/register', to: 'users#new' 
 
  	#  A OPÇÃO INDEX SERVE PARA TODOS DA SEGUINTE MANEIRA, AO DIGITAR O NOME DELES NA BARRA DE BUSCA
  	# 	E AO BUSCAR NOS ARQUIVOS JSON PODEMOS MOSTRAR UM LINK COM ALGUNS RESULTADOS APRESENTADOS, 

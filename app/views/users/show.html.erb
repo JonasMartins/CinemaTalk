@@ -25,6 +25,10 @@
               <td><%= @user.birth_date %> </td>
             </tr>
             <tr>
+             <th scope="row">Country</th>
+             <td><%= @user.country[3...-4] %></td>
+           </tr>
+            <tr>
               <th scope="row">Hometown</th>
               <td><%= @user.hometown  %></td>
             </tr>

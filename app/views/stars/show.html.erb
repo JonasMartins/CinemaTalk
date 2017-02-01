@@ -38,6 +38,10 @@
                 <% end %>
               </tr>
             <% end %>
+            <tr>
+              <th scope="row">Country</th>
+              <td><%= @star.country[3...-4] %></td>
+            </tr>
             <tr class="info">
               <th scope="row">Hometown</th>
               <td><%= @star.hometown  %></td>
