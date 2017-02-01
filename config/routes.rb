@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:show] #procurar por generos
   resources :regions, only: [:show] # procurar por regiões 
 
-  # Creating Login/logout action routes: ISSO VEM DEPOIS DO PASSWORD SETADO	
+
   get '/login', to: 'logins#new' 
   post '/login', to: 'logins#create'
   get '/logout', to: 'logins#destroy'
