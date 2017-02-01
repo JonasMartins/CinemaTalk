@@ -6,6 +6,7 @@ class LoginsController < ApplicationController
 =end
   def new
   	# apenas renderiza o template de new para receber as informações
+    redirect_to root_path
   end
   
   def create
@@ -24,7 +25,7 @@ class LoginsController < ApplicationController
   	
   	else
   		flash.now[:danger] = "Something Wrong, Your email or password does not match!"
-  		render 'new'
+  		redirect_to root_path
   	end
   end  
 
