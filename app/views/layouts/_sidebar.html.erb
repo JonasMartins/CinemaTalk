@@ -16,7 +16,7 @@
   $.when(
     $.getJSON('http://localhost:3000/stars-get-json')
     ).done(function(star){
-      var output = '<ul class="searchresults list-unstyled">';
+      var output = '<ul class="list-unstyled">';
       $.each(star, function(key, val) {
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
           output += '<h3>Stars Results:</h3>';
@@ -33,15 +33,15 @@
             output +=', Screenwriter</li>';
           }
         }if(searchField.length == 0) {/* field em branco */
-          output = '<ul>';
-          output += '</ul>';
+          output = '<ul class="list-unstyled">';
+          
         }// else if((val.nickname.search(myExp) == -1 )&& (searchField.length > 2)){ não encontrou nada com a letra
         //   output += '<h2>Not Found!</h2>';
         //   output += '</ul>';
         // }
-        output += '</ul>';
-        output += '<hr>';
+        
       });
+      output += '</ul>';
       $('#results').html(output);
     }); 
 
@@ -49,18 +49,20 @@
   $.when(
     $.getJSON('http://localhost:3000/movies-get-json')
     ).done(function(movie){
-      var output2 = '<ul class="searchresults list-unstyled">';
+      var output2 = '<ul class="list-unstyled">';
       $.each(movie, function(key, val) {
         if((val.aka.search(myExp) != -1 ) && (searchField.length > 2)){
           output2 += '<h3>Movies Results:</h3>';
           output2 += '<li>';
           output2 += '<a href="<%= request.protocol + request.host_with_port %>/movies/'+val.id+'">'+val.aka +'</a>';
           output2 += '</li>';
+          output2 += '<li>';
+          output2 += 'Year:'+val.year
+          output2 += '</li>';
         }
-        output2 += '</ul>';
       });    
-      $('#results').append(output2);
+    output2 += '</ul>';
+    $('#results').append(output2);
     });
-
   });    
 </script>

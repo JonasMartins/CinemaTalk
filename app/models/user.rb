@@ -23,8 +23,7 @@ validates :email, presence: true, length:
 format: {with: VALID_EMAIL_REGEX}
 
 has_secure_password
-
-validates :password, presence: true, length: { minimum: 8 }
+validates :password_digest, presence: true, length: { minimum: 8 }
 validates_confirmation_of :password
 
 

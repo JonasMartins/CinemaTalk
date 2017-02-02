@@ -34,9 +34,16 @@
             </tr>
             <% if @user.bio %>
 	            <tr>
-	              <th scope="row">Bio</th>
-	              <td><%= @user.bio %></td>
-	            </tr>
+              <th scope="row">Bio</th>
+              <td >
+                <div class="scroll-bar-wrap">
+                  <div class="scroll-box">
+                    <%= @user.bio %>
+                  </div>
+                   <div class="cover-bar"></div>
+                </div>
+              </td>
+            </tr>
 	          <% end %>
           </tbody>
           </table>

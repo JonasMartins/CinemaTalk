@@ -48,7 +48,14 @@
             </tr>
             <tr>
               <th scope="row">Bio</th>
-              <td><%= @star.bio %></td>
+              <td >
+                <div class="scroll-bar-wrap">
+                  <div class="scroll-box">
+                    <%= @star.bio %>
+                  </div>
+                   <div class="cover-bar"></div>
+                </div>
+              </td>
             </tr>
           </tbody>
           </table>

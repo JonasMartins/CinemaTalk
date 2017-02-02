@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :reviews, except: :destroy
 
-  resources :users, only: [:show, :edit, :index]
+  resources :users, except: :destroy
 
   get '/register', to: 'users#new' 
 
