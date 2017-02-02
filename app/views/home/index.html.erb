@@ -13,9 +13,11 @@
       <p class="welcome-text ">Register now and comment critics, give your opinion about movies by adding your own rate to each of them, search for your favorite actor or director and share with the knowledge of the seventh art!
       </p>  
       <br>
-      <div style="text-align:center;">
-        <%= link_to "Sign Up", register_path, class: "btn btn-lg btn-signup" %>
-      </div>
+      <% if !logged_in? %>
+        <div style="text-align:center;">
+          <%= link_to "Sign Up", register_path, class: "btn btn-lg btn-signup" %>
+        </div>
+      <% end %>
       <br>
     </div>
   </div> 

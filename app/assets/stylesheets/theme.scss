@@ -2,6 +2,11 @@ $grey21 :#363636;
 $yellow2 :#EEEE00;
 $silver :#C0C0C0;
 $default :#222;
+
+// tables
+$PowderBlue :#B0E0E6;
+$CadetBlue :#5F9EA0;
+
 body {
 
    /* 
@@ -170,4 +175,19 @@ a.btn.btn-lg.btn-signup{
     color: white;
     border: 2px solid white;  
   }
+}
+// TABLE STRIPED
+.stripe1 {
+    background-color: $PowderBlue;
+    font-weight: bold;
+    color: black;
+}
+.stripe2 {
+    background-color: $CadetBlue;
+    font-weight: bold;
+    color: black;
+}
+.highlight {
+    #background-color: #ffcc00;
+    #font-weight: bold;
 }
