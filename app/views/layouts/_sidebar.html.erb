@@ -64,5 +64,29 @@
     output2 += '</ul>';
     $('#results').append(output2);
     });
+
+  /*  SEARCH Directors */
+  $.when(
+    $.getJSON('http://localhost:3000/directors-get-json')
+    ).done(function(movie){
+      var output3 = '<ul class="list-unstyled">';
+      $.each(movie, function(key, val) {
+        if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
+          output3 += '<h3>Directors Results:</h3>';
+          output3 += '<li>';
+          output3 += '<a href="<%= request.protocol + request.host_with_port %>/directors/'+val.id+'">'+val.nickname +'</a>';
+          output3 += '</li>';
+          output3 += '<li> Career:';
+          if(val.also_star){
+            output3 +=' Movie Star ';
+          }if(val.also_screenwriter){
+            output3 +=', Screenwriter</li>';
+          }
+          output3 += '</li>';
+        }
+      });    
+    output3 += '</ul>';
+    $('#results').append(output3);
+    });
   });    
 </script>

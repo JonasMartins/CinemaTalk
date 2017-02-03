@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
-  before_action :set_movie, only: [:grade, :grade_uniquiness?, :show, :edit, :update]
   helper_method :grade_uniquiness?
+  before_action :set_movie, only: [:grade, :grade_uniquiness?, :show, :edit, :update]
 
   def index
     @mvies = Movie.all
@@ -29,9 +29,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @regions = MoviesHelper::get_regions
-    @categories = MoviesHelper::get_categories
-    @decades = MoviesHelper::get_decades
+    
   end
 
   def get_json
@@ -41,9 +39,6 @@ class MoviesController < ApplicationController
 
   def new
   	@movie = Movie.new
-    @regions = MoviesHelper::get_regions
-    @categories = MoviesHelper::get_categories
-    @decades = MoviesHelper::get_decades
   end
 
   def create
@@ -114,5 +109,8 @@ class MoviesController < ApplicationController
       end
     def set_movie
       @movie = Movie.find(params[:id])
+      @regions = MoviesHelper::get_regions
+      @categories = MoviesHelper::get_categories
+      @decades = MoviesHelper::get_decades
     end
 end

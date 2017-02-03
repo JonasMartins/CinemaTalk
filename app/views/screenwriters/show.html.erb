@@ -1,2 +1,70 @@
-<h1>Screenwriters#show</h1>
-<p>Find me in app/views/screenwriters/show.html.erb</p>
+<div class="row">
+  <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
+    <section class="media">
+      <div class="thumbnail col col-md-4 col-sm-4 col-xs-4">
+      <%= image_tag(@screenwriter.profile_picture.url, class: "img-responsive media-object", 
+      alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@screenwriter.nickname}") if @screenwriter.profile_picture? %>
+      <%= image_tag(image_path(@screenwriter.country), class: "img-responsive media-object" )%>
+    </div>
+    <div class="media-body">
+    <div class="table-responsive">
+      <table id="striped" class="table table-bordered table-condensed ">
+        <thead>
+          <tr><h2 style="text-align: center;"><%= @screenwriter.nickname %></h2> </tr>
+        </thead>
+          <tbody>    
+            <tr >
+              <th scope="row">Birth Name</th>
+              <td><%= @screenwriter.birth_name %></td>
+            </tr>            
+            <tr>
+              <th scope="row">Birth date</th>
+              <td><%= @screenwriter.birth_date %> </td>
+            </tr>
+            <% if @screenwriter.death_date %>
+              <tr >
+                <th scope="row">Death date</th>
+                <td><%= @screenwriter.death_date  %></td>
+              </tr>
+            <% end %>
+            <% if (@screenwriter.also_star || @screenwriter.also_director) %>
+              <tr>
+                <th scope="row">Other</th>
+                <% if @screenwriter.also_star %>
+                  <td>Also star<% if @screenwriter.also_director %>, director</td>
+                  <% else %>
+                  	</td>
+                  <% end %>
+                <% end %>
+              </tr>
+            <% end %>
+            <tr>
+              <th scope="row">Country</th>
+              <td><%= @screenwriter.country[3...-4] %></td>
+            </tr>
+            <tr >
+              <th scope="row">Hometown</th>
+              <td><%= @screenwriter.hometown  %></td>
+            </tr>
+            <tr>
+              <th scope="row">Bio</th>
+              <td >
+                <div class="scroll-bar-wrap">
+                  <div class="scroll-box">
+                    <%= @screenwriter.bio %>
+                  </div>
+                   <div class="cover-bar"></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          </table>
+          <% if logged_in? && current_user.user_level_id > 1%>
+            <%=  link_to 'Edit this profile:', edit_screenwriter_path(@screenwriter), class: "btn btn-lg btn-signup"%>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+  <%=  render 'layouts/sidebar' %>
+ </div>

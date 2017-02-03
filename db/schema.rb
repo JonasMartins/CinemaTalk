@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203145521) do
+ActiveRecord::Schema.define(version: 20170203194523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170203145521) do
     t.boolean  "also_screenwriter", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_picture"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -137,10 +138,11 @@ ActiveRecord::Schema.define(version: 20170203145521) do
     t.text     "bio"
     t.string   "hometown"
     t.string   "country"
-    t.boolean  "also_director", default: false
-    t.boolean  "also_star",     default: false
+    t.boolean  "also_director",   default: false
+    t.boolean  "also_star",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_picture"
   end
 
   create_table "stars", force: :cascade do |t|

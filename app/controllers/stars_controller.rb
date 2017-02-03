@@ -2,14 +2,7 @@ class StarsController < ApplicationController
 
   before_action :set_star, only: [:show, :edit, :update]
   
-  def index
-    # esse stars.all deve ser substituido por um grupo de objetos 
-    # que devem estar de acordo com uma certa busca e não todos de uma vez
-    
-    # Só instancia quando eu de alguma forma tiver esse star_id
-    # tenho que passa-lo via ajax, que é achado depois de gerar uma pesquisa
-    # nos arquivos json com os resultados da busca
-    
+  def index    
     respond_to do |format|
       format.html {   } # se o cliente quiser html, esse bloco é executado
       format.js 
@@ -24,11 +17,9 @@ class StarsController < ApplicationController
   end
 
   def show
-    #@star = Star.find(params[:id])
   end
 
   def new
-    #@star = Star.new({:birth_name => 'Default'}) valores default
     @star = Star.new    
     @countries = UsersHelper::get_countries
   end
@@ -36,8 +27,6 @@ class StarsController < ApplicationController
   def create
     @star = Star.new(star_params)
     if @star.save
-      # flash uma especie de notificação
-      flash[:success] = "Your Actor was created!"
       redirect_to star_path(@star)
     else
       @countries = UsersHelper::get_countries      

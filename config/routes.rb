@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   # fazer o mesmo para todos os outros campos 
   get '/stars-get-json', to: 'stars#get_json'
   get '/movies-get-json', to: 'movies#get_json'
-
+  get '/directors-get-json', to: 'directors#get_json' 
+  get '/screenwriters-get-json', to: 'screenwriters#get_json'
   # rake routes | grep "key"
 
 
