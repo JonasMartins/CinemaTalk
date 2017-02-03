@@ -19,10 +19,10 @@
      <%= f.text_area :synopsis, class: "form-control",placeholder: "Movie synopsis", rows: 10 %><br>
      
      <%= f.label :color, "Colorful", class:"form-group" %>
-     <%= f.radio_button :color, 'colorful' %>
+     <%= f.radio_button :color, true %>
 
-     <%= f.label :color, "B&W", class:"form-group" %>
-     <%= f.radio_button :color, 'bew' %><br>
+     <%= f.label :color, "Black and White", class:"form-group" %>
+     <%= f.radio_button :color, false %><br>
 
  		 <%= f.label :decade_id, class: "form-group" %>
      <%= f.select :decade_id, options_for_select(@decades.map{ |i| [i['decade'], i['id'] ] }),

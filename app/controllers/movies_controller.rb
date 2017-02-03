@@ -9,13 +9,23 @@ class MoviesController < ApplicationController
 
   def show
     
-    sum_critic ||= Grade.where(movie_id: @movie.id)
+    sum_critic ||= Grade.where("user_level = 2 AND movie_id = #{@movie.id}").sum(:rating)
+    sum_public ||= Grade.where("user_level = 1 AND movie_id = #{@movie.id}").sum(:rating)
     
-    if sum_critic.length == 0    
+    if sum_critic.to_f == 0    
       @critic_media = '?'
     else
-      @critic_media = sum_critic.first.rating
+      @count_critic ||= Grade.where("user_level = 2 AND movie_id = #{@movie.id}").count
+      @critic_media = sum_critic.to_f/@count_critic #media
     end
+
+    if sum_public.to_f == 0    
+      @public_media = '?'
+    else
+      @count_public ||= Grade.where("user_level = 2 AND movie_id = #{@movie.id}").count
+      @public_media = sum_public.to_f/@count_public #media
+    end
+
   end
 
   def edit
@@ -76,7 +86,7 @@ class MoviesController < ApplicationController
 
   def grade
     @grade = Grade.new
-    @grade = Grade.create(rating: params[:rating], user: current_user, movie: @movie) #current user curtiu. 
+    @grade = Grade.create(rating: params[:rating], user: current_user, movie: @movie, user_level: current_user.user_level_id)  
     respond_to do |format|
       if @grade.valid?
         format.html { }

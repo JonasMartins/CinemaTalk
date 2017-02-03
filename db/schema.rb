@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202163638) do
+ActiveRecord::Schema.define(version: 20170203145521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170202163638) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "rating",     precision: 5, scale: 2
+    t.integer  "user_level"
   end
 
   create_table "movie_directors", force: :cascade do |t|
@@ -99,11 +100,6 @@ ActiveRecord::Schema.define(version: 20170202163638) do
     t.string   "aka"
     t.string   "IMDB"
     t.string   "length"
-    t.string   "color"
-    t.decimal  "sum_users_score",     precision: 5, scale: 2
-    t.decimal  "sum_critics_score",   precision: 5, scale: 2
-    t.decimal  "users_amount_score",  precision: 5, scale: 2
-    t.decimal  "critic_amount_score", precision: 5, scale: 2
     t.text     "synopsis"
     t.integer  "decade_id"
     t.integer  "category_id"
@@ -112,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170202163638) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "year"
+    t.boolean  "color",          default: true
   end
 
   create_table "notes", force: :cascade do |t|
