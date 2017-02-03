@@ -4,7 +4,7 @@ belongs_to :user_level
 
 has_many :comments
 has_many :reviews
-
+has_many :grades
 
 before_save { self.email = email.downcase }
 

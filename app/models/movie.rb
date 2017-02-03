@@ -7,7 +7,7 @@ belongs_to :region
 
  # nem sempre um filme tem apenas um diretor......
 has_many :movie_directors
-has_many :diretors, through: :movie_directors
+has_many :directors, through: :movie_directors
 
 # muitos roteirias
 has_many :movie_screenwriters
@@ -20,7 +20,7 @@ has_many :movie_stars
 has_many :stars, through: :movie_stars
 
 has_many :reviews
-
+has_many :grades
 
 validates :original_title, presence: true
 validates :aka, presence: true
@@ -34,6 +34,18 @@ validates :region_id, presence: true
 
 mount_uploader :poster, PictureUploader
 validate :picture_size
+
+=begin
+
+# calculo de likes/dislkes
+def thumbs_up_total
+	self.likes.where(like: true).size
+end
+
+def thumbs_down_total
+	self.likes.where(like: false).size
+end
+=end
 
 	private
 		def picture_size

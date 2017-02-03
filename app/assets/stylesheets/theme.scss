@@ -141,11 +141,14 @@ h1, h2, h3, h4{
 .btn-signup {
   background-color: darken($yellow2, 15%);
   border-radius: 0px;
-  border: 2px solid black; 
+  font-family: 'SeasideResortNF';
+  font-size: 200%;
+  color: black; 
   &:hover{
     background: darken($yellow2, 30%);
-    color: black; 
     border-color: darken($grey21, 15%);
+    border: 2px solid white;
+    color: white;
   }
 }
 a.btn.btn-lg.btn-signup{
@@ -230,3 +233,33 @@ a.btn.btn-lg.btn-signup{
   -webkit-transition: all .5s;
 }
 /* END NICE SCROLLBAR  */
+
+#rate{
+  color: black;
+  background-color: darken($yellow2, 15%);
+  font-family: 'SeasideResortNF';
+  font-size: 200%;
+  &:hover{
+    border: 2px solid white;
+    background-color: darken($yellow2, 30%);
+    color: white;
+  }
+}
+h3#rate{
+  margin: 0px;
+}
+#rating{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 65px;
+  height:50px;
+  font-family: 'SeasideResortNF';
+  font-size: 240%;
+  border-color: 3px solid black;
+}
+
+/* 
+.thumbnail{
+  background-color: $grey21;
+}
+ */

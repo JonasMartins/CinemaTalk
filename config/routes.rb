@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :notes
   root 'home#index'
 
-  resources :movies, except: :destroy
+  resources :movies, except: :destroy do 
+    member do
+      post 'grade'
+    end 
+  end
 
   resources :stars, except: :destroy
 
@@ -13,7 +17,8 @@ Rails.application.routes.draw do
 
   resources :reviews, except: :destroy
 
-  resources :users, except: :destroy
+  resources :users, except: :destroy 
+    
 
   get '/register', to: 'users#new' 
 

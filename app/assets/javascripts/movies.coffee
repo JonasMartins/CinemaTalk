@@ -4,5 +4,5 @@
 # beautiful turbolinks
 $(document).on 'turbolinks:load', ->
   $('#striped tr:even').addClass 'stripe1'
-  $('#striped tr:odd').addClass 'stripe2'
+  $('#striped tr:odd').addClass 'stripe2'  
   return

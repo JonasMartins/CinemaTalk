@@ -1,15 +1,33 @@
 <div class="row">
+	<%= render 'shared/errors', obj: @movie %>
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
-    <section class="media">
-			<div class="thumbnail col col-md-4 col-sm-4 col-xs-4">
-	      <%= image_tag(@movie.poster.url, class: "img-responsive media-object pull-left", 
+    <div class="media">
+			<div class="thumbnail col col-md-4 col-sm-4 col-xs-4 ">
+	      <%= image_tag(@movie.poster.url, class: "img-responsive media-object", 
 	      alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@movie.original_title}") if @movie.poster? %>
+      <h3 id="rate">Critic:&nbsp;<%= @critic_media %></h3>
+    	<h3 id="rate">Public:&nbsp;&nbsp;&nbsp;6.1</h3>
+    	<br>
+    	<% if logged_in? %>
+	    	<div style="text-align:center;">
+	    		<button class="btn btn-lg btn-signup", id="grade-toggle">Rate It</button>
+	    	</div>
+    	<% end %>
+    	<section style="text-align:center;" id="grade-input">
+					<%= form_tag( {controller: 'movies', action: 'grade'}, remote: true, method: 'post') do %>   		
+    				<%= text_field_tag :rating %><br>
+    			<%= submit_tag 'vote', class:"form-group btn-lg btn-success"%>
+    		<% end %>
+    	</section>
+    	<!-- ajax -->
+    	<div id="message" style="text-align:center;"></div>
 	    </div>
+			
 			<div class="media-body">
-				<div class="table-responsive">
+				<div class="table-responsive ">
         	<table id="striped" class="table table-bordered table-condensed ">
 	        	<thead>
-	        		<tr> <h2 style="text-align: center;"><%= @movie.original_title %></h2> </tr>
+	        		<tr> <h1 style="text-align: center;"><%= @movie.original_title %></h1> </tr>
 	        	</thead>
 	        	<tbody>    
 	        		<tr >
@@ -19,6 +37,13 @@
 							<tr>
 								<th scope="row">IMDb</th>
 								<td><%= link_to "This movie on IMDb",  @movie.IMDB, :target => '_blank' %> </td>
+							</tr>
+							<tr >
+								<th scope="row">Director</th>
+								<td><% @movie.directors.each do |_director| %> 
+										<%= _director.nickaname %>
+										<% end %>
+								</td>
 							</tr>
 							<tr >
 								<th scope="row">Year</th>
@@ -43,9 +68,16 @@
 										<% end %>
 								</td>
 							</tr>
-							<t>
-						  	<th scope="row">Synopsis</th>
-						  	<td><p class="hidden-sm scroll_style"><%= @movie.synopsis %></p></td>
+							<tr>
+							<th scope="row">Synopsis</th>
+              	<td >
+                	<div class="scroll-bar-wrap">
+                  	<div class="hidden-sm scroll-box">
+                    	<%= @movie.synopsis %>
+                  	</div>
+                		<div class="cover-bar"></div>
+              	 	</div>
+              	</td>
 						  </tr>	
 						</tbody>
 			  	</table>
@@ -53,9 +85,19 @@
             <%=  link_to 'Edit this profile:', edit_movie_path(@movie), class: "btn btn-lg btn-signup"%>
           <% end %>
 			  </div>
-			</div>
-  	</section>
+			</div>			
+  	</div>
   
   </div>
   <%=  render 'layouts/sidebar' %>
  </div>
+
+ <script type="text/javascript">
+
+	$('#grade-toggle').click(function() {
+	  $('#grade-input').fadeToggle(500, function() {
+	    $('#grade').focus();
+	  });
+	});
+   
+ </script>

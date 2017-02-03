@@ -1,11 +1,19 @@
 class MoviesController < ApplicationController
 
-  before_action :set_movie, only: [:show, :edit, :update]
+  before_action :set_movie, only: [:grade, :show, :edit, :update]
   def index
     @mvies = Movie.all
   end
 
   def show
+    
+    sum_critic ||= Grade.where(movie_id: @movie.id)
+    
+    if sum_critic.length == 0    
+      @critic_media = '?'
+    else
+      @critic_media = sum_critic.first.rating
+    end
   end
 
   def edit
@@ -54,6 +62,20 @@ class MoviesController < ApplicationController
       end
     end
   end
+
+  def grade
+    @grade = Grade.new
+    @grade = Grade.create(rating: params[:rating], user: current_user, movie: @movie) #current user curtiu. 
+    respond_to do |format|
+      if @grade.valid?
+        format.html { }
+        format.js
+      else
+        format.html { }
+        format.js
+      end
+    end
+  end  
 
   def destroy
     @movie.destroy

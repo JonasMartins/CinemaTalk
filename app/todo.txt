@@ -111,3 +111,5 @@ rails g serializer user
 
 
 
+    	<!--  	<%= form_tag( {controller: 'movies', action: 'grade'}, method: 'post') do %> -->
+
