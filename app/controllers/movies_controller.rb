@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
 
-  before_action :set_movie, only: [:grade, :show, :edit, :update]
+  before_action :set_movie, only: [:grade, :grade_uniquiness?, :show, :edit, :update]
+  helper_method :grade_uniquiness?
+
   def index
     @mvies = Movie.all
   end
@@ -62,6 +64,15 @@ class MoviesController < ApplicationController
       end
     end
   end
+
+  # assegurar que o botão de votar só aparece se o user não tiver votado ainda.
+  def grade_uniquiness?
+    grade ||= Grade.where("user_id = #{current_user.id} AND movie_id = #{@movie.id}")
+    if grade.length > 0 
+      return true
+    end
+  end
+
 
   def grade
     @grade = Grade.new

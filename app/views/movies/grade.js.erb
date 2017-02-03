@@ -1,14 +1,11 @@
-var errors = <%= @movie.errors.count %>;
 
-if(errors > 0){
-	$("#message").html("<h2>You only can vote once!</h2>");	
-		$('#grade-input').fadeOut(1000, function() {
+$("#message").html("<h3 id='vote-computed'>Vote Computed</h2>");
+	$('#grade-input').fadeOut(3000, function() {
+	  $('#btn-vote').fadeOut(500, function() {
+	  	$(this).remove();
+	  	});
 	  });
-}else {
-	$("#message").html("<h2>Vote Computed</h2>");
-	$('#grade-input').fadeOut(2000, function() {
-	  });
-}
+
 setTimeout(function(){
 	$("#message").fadeOut(3000, function(){
 		$(this).remove();

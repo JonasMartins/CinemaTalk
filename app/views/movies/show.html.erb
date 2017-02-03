@@ -7,16 +7,21 @@
 	      alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{@movie.original_title}") if @movie.poster? %>
       <h3 id="rate">Critic:&nbsp;<%= @critic_media %></h3>
     	<h3 id="rate">Public:&nbsp;&nbsp;&nbsp;6.1</h3>
+    	
+    	<% if logged_in? && grade_uniquiness? %>
+    		<h3 id="vote-computed">You already gave your note to this movie!</h3>
+    	<% end %>
     	<br>
-    	<% if logged_in? %>
-	    	<div style="text-align:center;">
-	    		<button class="btn btn-lg btn-signup", id="grade-toggle">Rate It</button>
+    	<% if logged_in? && !grade_uniquiness? %>
+	    	<div id="btn-vote" style="text-align:center;">
+	    		<button class="btn btn-lg btn-signup", id="grade-toggle">Rate It!</button>
 	    	</div>
     	<% end %>
+
     	<section style="text-align:center;" id="grade-input">
 					<%= form_tag( {controller: 'movies', action: 'grade'}, remote: true, method: 'post') do %>   		
-    				<%= text_field_tag :rating %><br>
-    			<%= submit_tag 'vote', class:"form-group btn-lg btn-success"%>
+    				<%= select_tag :rating, options_for_select((10..100).map { |n| n.to_f / 10 }) %><br>
+    			<%= submit_tag 'vote', class:"form-group btn-lg btn-success",  data: { confirm: 'Confirm? You can only rate once!' }%>
     		<% end %>
     	</section>
     	<!-- ajax -->
@@ -82,7 +87,7 @@
 						</tbody>
 			  	</table>
 			  	<% if logged_in? && current_user.user_level_id > 1%>
-            <%=  link_to 'Edit this profile:', edit_movie_path(@movie), class: "btn btn-lg btn-signup"%>
+            <%=  link_to 'Edit this Movie:', edit_movie_path(@movie), class: "btn btn-lg btn-signup"%>
           <% end %>
 			  </div>
 			</div>			

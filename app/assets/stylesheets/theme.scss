@@ -248,14 +248,18 @@ a.btn.btn-lg.btn-signup{
 h3#rate{
   margin: 0px;
 }
-#rating{
+h3#vote-computed{
+  color: green;
+  font-family: 'Arial';
+}
+select#rating{
   margin-top: 10px;
   margin-bottom: 5px;
   width: 65px;
-  height:50px;
+  //height:50px;
   font-family: 'SeasideResortNF';
-  font-size: 240%;
-  border-color: 3px solid black;
+  //font-size: 240%;
+  //border-color: 3px solid black;
 }
 
 /* 
