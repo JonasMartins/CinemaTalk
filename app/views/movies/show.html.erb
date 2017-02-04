@@ -108,22 +108,21 @@
 		    </p>
 		  </div>
 		  <h3 id="rate">Latest Review</h3>
-		  <%if @movie.reviews %>
-		  	<% author = User.find(@movie.reviews.last.user_id) %>
-			  <div>
-			  	<h1>"<%= @movie.reviews.last.title %>"</h1>
-			    <h3>Author: <%= link_to author.nickname, user_path(author) %></h3>
-			    <h4>Posted at: <%= time_ago_in_words(@movie.reviews.last.created_at)%> ago.</h4>
-			    <h4>Updated at: <%= time_ago_in_words(@movie.reviews.last.updated_at)%> ago.</h4>
-			    <p>
-			    	<%= @movie.reviews.last.body %>
-			    </p>
-			  </div>
-			 <%end%>
-		</div>
- 
+		  <%if @movie.reviews.length > 0 %>
+			  	<% author = User.find(@movie.reviews.last.user_id) %>
+				  <div>
+				  	<h1>"<%= @movie.reviews.last.title %>"</h1>
+				    <h3>Author: <%= link_to author.nickname, user_path(author) %></h3>
+				    <h4>Posted at: <%= time_ago_in_words(@movie.reviews.last.created_at)%> ago.</h4>
+				    <h4>Updated at: <%= time_ago_in_words(@movie.reviews.last.updated_at)%> ago.</h4>
+				    <p>
+				    	<%= @movie.reviews.last.body %>
+				    </p>
+				  </div>
+				</div>
+ 			<%end%>
 
-
+ 			</div>
   
   </div>
   <%=  render 'layouts/sidebar' %>
