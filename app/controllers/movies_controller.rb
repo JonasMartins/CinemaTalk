@@ -12,6 +12,8 @@ class MoviesController < ApplicationController
     sum_critic ||= Grade.where("user_level = 2 AND movie_id = #{@movie.id}").sum(:rating)
     sum_public ||= Grade.where("user_level = 1 AND movie_id = #{@movie.id}").sum(:rating)
     
+    # @movie.reviews
+    
     if sum_critic.to_f == 0    
       @critic_media = '?'
     else

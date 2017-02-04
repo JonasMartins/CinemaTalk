@@ -1,0 +1,25 @@
+<div class="row">
+  <%= render 'shared/errors', obj: @review  %>
+  <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
+    <h3 id="review-title">Hello <%= current_user.nickname %>! </h3>
+    <h3 id="review-title">Write your Critic for movie :</h3>
+    <h2 id="review-title">" <%= Movie.find(1).original_title %> "</h2>
+    
+    <%= form_for(@review) do |f| %>
+
+     <%= f.label :title, class: "form-group" %>
+     <%= f.text_field :title, class: "form-control" , placeholder: "review title" %><br>
+     
+     <%= f.hidden_field :movie_id, :value => params[:movie_id]   %>
+     
+     <%= f.hidden_field :user_id, :value => params[:user_id]   %>
+
+     <%= f.label :body, class: "form-group" %>
+     <%= f.text_area :body, class: "form-control", rows: 20 %><br>
+     
+     <%= f.submit 'Save', class: "btn btn-success form-control" %>
+   
+    <% end %>
+  </div>
+  <%=  render 'layouts/sidebar' %>
+ </div>
