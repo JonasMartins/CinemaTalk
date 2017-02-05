@@ -14,7 +14,7 @@
 
   /* SEARCH STARS */
   $.when(
-    $.getJSON('http://localhost:3000/stars-get-json')
+    $.getJSON("<%= request.protocol + request.host_with_port %>/stars-get-json")
     ).done(function(star){
       var output = '<ul class="list-unstyled">';
       $.each(star, function(key, val) {
@@ -47,7 +47,7 @@
 
   /*  SEARCH MOVIES */
   $.when(
-    $.getJSON('http://localhost:3000/movies-get-json')
+    $.getJSON("<%= request.protocol + request.host_with_port %>/movies-get-json")
     ).done(function(movie){
       var output2 = '<ul class="list-unstyled">';
       $.each(movie, function(key, val) {
@@ -67,7 +67,7 @@
 
   /*  SEARCH Directors */
   $.when(
-    $.getJSON('http://localhost:3000/directors-get-json')
+    $.getJSON("<%= request.protocol + request.host_with_port %>/directors-get-json")
     ).done(function(movie){
       var output3 = '<ul class="list-unstyled">';
       $.each(movie, function(key, val) {
