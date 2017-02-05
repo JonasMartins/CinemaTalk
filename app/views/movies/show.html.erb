@@ -91,7 +91,7 @@
 			  	<% if logged_in? && current_user.user_level_id > 1%>
             <%=  link_to 'Edit', edit_movie_path(@movie), class: "btn btn-lg btn-signup"%>
             <!-- sending parameters to action new on reviews controller -->
-            <%=  link_to 'Add Review', new_review_path(:movie_id => @movie.id, :user_id => current_user.id), class: "btn btn-lg btn-signup" %>
+            <%=  link_to 'Add Review', new_movie_review_path(@movie), class: "btn btn-lg btn-signup" %>
           <% end %>
 			  </div>
 			</div>			

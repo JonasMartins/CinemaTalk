@@ -5,14 +5,13 @@
     <h3 id="review-title">Write your Critic for movie :</h3>
     <h2 id="review-title">" <%= Movie.find(params[:movie_id]).original_title %> "</h2>
     
-    <%= form_for(@review) do |f| %>
+    <%= form_for [@movie, @review] do |f| %>
 
      <%= f.label :title, class: "form-group" %>
      <%= f.text_field :title, class: "form-control" , placeholder: "review title" %><br>
      
      <%= f.hidden_field :movie_id, :value => params[:movie_id]   %>
-     
-     <%= f.hidden_field :user_id, :value => params[:user_id]   %>
+     <%= f.hidden_field :user_id, :value => current_user.id   %>
 
      <%= f.label :body, class: "form-group" %>
      <%= f.text_area :body, class: "form-control", rows: 20 %><br>

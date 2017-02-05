@@ -1,13 +1,12 @@
 class ReviewsController < ApplicationController
    
   before_action :set_review, only: [:show, :edit, :update]
-
+  before_action :set_movie # todos usam esse método? 
+  
   def index
 
-  	@movie = Movie.find(params[:movie_id])
   	@reviews_amount = @movie.reviews.count
   	#@reviews = @movie.reviews
-  	
   end
 
   def show
@@ -21,6 +20,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+  	binding.pry
   	@review = Review.new(review_params)
     respond_to do |format|
       if @review.save
@@ -55,6 +55,9 @@ class ReviewsController < ApplicationController
     end
   	def set_review
   		@review = Review.find(params[:id])
+  	end
+  	def set_movie
+  		@movie = Movie.find(params[:movie_id])
   	end
 
 end
