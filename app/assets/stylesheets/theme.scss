@@ -18,17 +18,24 @@ body {
    background: #eee image-url('room-237-carpet.jpg') repeat fixed;
 		
    */
-  background-color: $silver;
+  background-color: #9FB6CD;
   margin: 5px;
+  min-height: 100%;
  }
 /* spaço para o conteudo aparecer todo abaixo da navbar */
 .navbar-space{
 	padding-top: 45px;
 }
 
-.navbar-default {
-	background-color: black;
+.navbar-inverse {
+	background-color: #292c2f;
 	border-color: black;
+
+  background: -webkit-linear-gradient(#35383B,  #292c2f, black); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( #35383B, #292c2f, black); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#35383B,  #292c2f, black); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#35383B,  #292c2f, black); /* Standard syntax */
+
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
   color: $yellow2;
@@ -62,6 +69,7 @@ body {
 #main-frame{
   padding: 10px;
   background-color: $main-frame-color;
+  box-shadow: 3px 5px 4px rgba(0, 0, 0, .5);
   border: 1px solid #ccc;
   opacity: .80
 }
@@ -69,6 +77,7 @@ body {
   padding: 10px;
   background-color: $main-frame-color;
   border: 1px solid #ccc;
+  box-shadow: 3px 5px 4px rgba(0, 0, 0, .5);
   opacity: .80
 }
 #sidebar h2 {
@@ -288,15 +297,22 @@ select#rating{
 
 /*  FOOTER  */
 .footer-basic-centered{
-  background-color: black;//#292c2f;
+  background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
   text-align: center;
   font: normal 18px sans-serif;
-
   padding: 45px;
-  margin-top: 80px;
+  margin-top: 200px;
+  margin-bottom: 0px;
+
+  background: -webkit-linear-gradient(black, #292c2f); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(black, #292c2f); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(black, #292c2f); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(black, #292c2f); /* Standard syntax */
+
+
 }
 
 .footer-basic-centered .footer-company-motto{
