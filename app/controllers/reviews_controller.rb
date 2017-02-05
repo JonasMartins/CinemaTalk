@@ -3,6 +3,11 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update]
 
   def index
+
+  	@movie = Movie.find(params[:movie_id])
+  	@reviews_amount = @movie.reviews.count
+  	#@reviews = @movie.reviews
+  	
   end
 
   def show

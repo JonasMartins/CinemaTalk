@@ -2,7 +2,7 @@ $grey21 :#363636;
 $yellow2 :#EEEE00;
 $silver :#C0C0C0;
 $default :#222;
-
+$main-frame-color :#f8f8f8;
 // tables
 $PowderBlue :#B0E0E6;
 $CadetBlue :#5F9EA0;
@@ -19,7 +19,7 @@ body {
 		
    */
   background-color: $silver;
-   margin: 5px;
+  margin: 5px;
  }
 /* spaço para o conteudo aparecer todo abaixo da navbar */
 .navbar-space{
@@ -61,13 +61,13 @@ body {
 
 #main-frame{
   padding: 10px;
-  background-color: #f8f8f8;
+  background-color: $main-frame-color;
   border: 1px solid #ccc;
   opacity: .80
 }
 #sidebar{
   padding: 10px;
-  background-color: #f8f8f8;
+  background-color: $main-frame-color;
   border: 1px solid #ccc;
   opacity: .80
 }
@@ -201,6 +201,10 @@ a.btn.btn-lg.btn-signup{
   position: relative;
   margin: 2em auto;
 }
+.scroll-bar-wrap-review {
+  position: relative;
+  margin: 2em auto;
+}
 .scroll-box {
   width: 100%;
   height: 250px;
@@ -227,8 +231,22 @@ a.btn.btn-lg.btn-signup{
   -webkit-transition: all .5s;
   opacity: 1;
 }
+.cover-bar-review {
+  position: absolute;
+  background: $main-frame-color; /// isso deve mudar para um transparente depois
+  height: 100%;  
+  top: 0;
+  right: 0;
+  width: .4em;
+  -webkit-transition: all .5s;
+  opacity: 1;
+}
 /* MAGIC HAPPENS HERE */
 .scroll-bar-wrap:hover .cover-bar {
+   opacity: 0;
+  -webkit-transition: all .5s;
+}
+.scroll-bar-wrap-review:hover .cover-bar-review{
    opacity: 0;
   -webkit-transition: all .5s;
 }

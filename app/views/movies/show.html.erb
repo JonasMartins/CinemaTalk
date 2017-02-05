@@ -112,37 +112,16 @@
 			  	<% author = User.find(@movie.reviews.last.user_id) %>
 				  <div>
 				  	<h1>"<%= @movie.reviews.last.title %>"</h1>
-				    <h3>Author: <%= link_to author.nickname, user_path(author) %></h3>
+				    <h3>Author: <%= link_to author.nickname, user_path(author) %> </h3>
 				    <h4>Posted at: <%= time_ago_in_words(@movie.reviews.last.created_at)%> ago.</h4>
 				    <h4>Updated at: <%= time_ago_in_words(@movie.reviews.last.updated_at)%> ago.</h4>
+				    <h4><%= link_to 'All reviews to this movie',movie_reviews_path(@movie) %></h4>
 				    <p>
 				    	<%= @movie.reviews.last.body %>
 				    </p>
 				  </div>
-				</div>
  			<%end%>
-
- 			</div>
-  
+ 		</div>
   </div>
   <%=  render 'layouts/sidebar' %>
  </div>
-
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
- <script type="text/javascript">
-
-	$('#grade-toggle').click(function() {
-	  $('#grade-input').fadeToggle(500, function() {
-	    $('#grade').focus();
-	  });
-	});
-
-	$(function() {
-    $( "#accordion" ).accordion({
-    	collapsible: true, active: false
-    });
-  });
-   
- </script>

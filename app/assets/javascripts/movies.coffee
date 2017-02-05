@@ -6,3 +6,15 @@ $(document).on 'turbolinks:load', ->
   $('#striped tr:even').addClass 'stripe1'
   $('#striped tr:odd').addClass 'stripe2'  
   return
+
+$('#grade-toggle').click ->
+  $('#grade-input').fadeToggle 500, ->
+    $('#grade').focus()
+    return
+  return
+$(document).on 'turbolinks:load', ->
+  $('#accordion').accordion
+    collapsible: true
+    active: false
+  return
+return

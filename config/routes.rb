@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
   resources :notes
+
   root 'home#index'
 
   resources :movies, except: :destroy do 
+    resources :reviews
     member do
       post 'grade'
     end 
@@ -15,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :screenwriters, except: :destroy
 
-  resources :reviews, except: :destroy
+  #resources :reviews, except: :destroy
 
   resources :users, except: :destroy 
     

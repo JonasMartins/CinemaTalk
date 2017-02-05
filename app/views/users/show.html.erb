@@ -47,7 +47,10 @@
 	          <% end %>
           </tbody>
           </table>
-          <%=  link_to 'Edit My profile', edit_user_path(@user),class: "btn btn-lg btn-signup" %>
+          <!--  ou se o user for admin...... -->
+          <% if logged_in? && @user == current_user %>
+            <%=  link_to 'Edit My profile', edit_user_path(@user),class: "btn btn-lg btn-signup" %>
+          <% end %>
         </div>
       </div>
     </section>
