@@ -12,6 +12,7 @@ $('#grade-toggle').click ->
     $('#grade').focus()
     return
   return
+  
 $(document).on 'turbolinks:load', ->
   $('#accordion').accordion
     collapsible: true

@@ -21,13 +21,14 @@
     	<% end %>
 
     	<section style="text-align:center;" id="grade-input">
-					<%= form_tag( {controller: 'movies', action: 'grade'}, remote: true, method: 'post') do %>   		
-    				<%= select_tag :rating, options_for_select((10..100).map { |n| n.to_f / 10 }) %><br>
+				<%= form_tag( {controller: 'movies', action: 'grade'}, remote: true, method: 'post') do %>   		
+    			<%= select_tag :rating, options_for_select((10..100).map { |n| n.to_f / 10 }) %><br>
     			<%= submit_tag 'vote', class:"form-group btn-lg btn-success",  data: { confirm: 'Confirm? You can only rate once!' }%>
     		<% end %>
     	</section>
     	<!-- ajax -->
     	<div id="message" style="text-align:center;"></div>
+	    
 	    </div>
 			
 			<div class="media-body">
@@ -85,6 +86,16 @@
                 		<div class="cover-bar"></div>
               	 	</div>
               	</td>
+						  </tr>
+						  <tr>
+							 <th scope="row">Tags</th>
+							  <td>
+							  	<%= link_to "#{@movie.decade.decade}", decade_path(@movie.decade) %>,
+							  	<%= link_to "#{@movie.region.region}", region_path(@movie.region) %>,
+							  	<% @movie.genres.each do |genre|%>
+							  		<%= link_to "#{genre.genre}", genre_path(genre) %>
+							  	<%end%>
+							  </td>
 						  </tr>	
 						</tbody>
 			  	</table>
@@ -92,6 +103,8 @@
             <%=  link_to 'Edit', edit_movie_path(@movie), class: "btn", :id => 'rate'%>
             <!-- sending parameters to action new on reviews controller -->
             <%=  link_to 'Add Review', new_movie_review_path(@movie), class: "btn", :id => 'rate' %>
+
+            <%=  link_to 'Casting', cast_movie_path(@movie), class: "btn", :id => 'rate' %>
           <% end %>
 			  </div>
 			</div>			
@@ -100,12 +113,6 @@
   	<div id="accordion">
 		  <h1 id="rate">Cast</h1>
 		  <div>
-		    <p>
-		    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-		    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-		    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-		    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-		    </p>
 		  </div>
 		  <h3 id="rate">Latest Review</h3>
 		  <%if @movie.reviews.length > 0 %>
@@ -125,3 +132,4 @@
   </div>
   <%=  render 'layouts/sidebar' %>
  </div>
+ 

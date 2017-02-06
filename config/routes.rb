@@ -4,8 +4,19 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :decades, only: [:show]
+  resources :genres, only: [:show] #procurar por generos
+  resources :regions, only: [:show] # procurar por regiões
+
+
+
   resources :movies, except: :destroy do 
     resources :reviews
+    member do
+      post 'cast'
+      get 'cast'
+    end
+
     member do
       post 'grade'
     end 
@@ -28,14 +39,13 @@ Rails.application.routes.draw do
  	# 	E AO BUSCAR NOS ARQUIVOS JSON PODEMOS MOSTRAR UM LINK COM ALGUNS RESULTADOS APRESENTADOS, 
  	# 	MAS DEVEMOS FILTRAR SEMPRE POIS NÃO PODEMOS JUTAR OS TIPOS EM APENAS UM INDEX
 
-  resources :decades, only: [:show] #procurar por decadas
-  resources :genres, only: [:show] #procurar por generos
-  resources :regions, only: [:show] # procurar por regiões 
+   
 
 
   get '/login', to: 'logins#new' 
   post '/login', to: 'logins#create'
   get '/logout', to: 'logins#destroy'
+
 
 
   # com essa rota posso ir para uma pagina onde tem o json dos objetos estrela

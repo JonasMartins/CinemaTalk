@@ -5,9 +5,11 @@
 		<br><br>
 		<% @movie.reviews.each do |review|%>
 			<h3 id="review-title"><%= review.title%></h3>
-			<%= link_to movie_path(@movie)  do  %>
-      	<i class="glyphicon glyphicon-arrow-left"></i> BACK TO MOVIE
-    	<% end %>
+			<h2>
+			  <%= link_to request.referer.present? ? request.referer : root_path do  %>
+			    <i class="glyphicon glyphicon-arrow-left"></i>
+			  <% end %>
+		  </h2>
 			<h4>Author: <%= link_to User.find(review.user_id).nickname, user_path(User.find(review.user_id) ) %></h4>
 			<h4>Posted at: <%= time_ago_in_words(review.created_at)%> ago.</h4>
 			<h4>Updated at: <%= time_ago_in_words(review.updated_at)%> ago.</h4>

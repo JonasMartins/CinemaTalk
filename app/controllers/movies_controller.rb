@@ -40,6 +40,9 @@ class MoviesController < ApplicationController
   end
 
   def new
+    @regions = MoviesHelper::get_regions
+    @categories = MoviesHelper::get_categories
+    @decades = MoviesHelper::get_decades
   	@movie = Movie.new
   end
 
@@ -94,6 +97,10 @@ class MoviesController < ApplicationController
       end
     end
   end  
+
+  def cast
+    @movie = Movie.find(params[:id])
+  end
 
   def destroy
     @movie.destroy

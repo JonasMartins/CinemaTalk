@@ -178,6 +178,14 @@ a.btn.btn-lg.btn-signup{
   }
 }
 
+.ui-widget-content a {
+  &:hover{
+    color: white;
+    background-color: blue;
+    text-decoration: none;
+    }
+}
+
 .login-style {
   max-width: 120px;
   max-height: 27px;
@@ -290,6 +298,7 @@ a.btn.btn-lg.btn-signup{
   //   background: linear-gradient(left, darken($yellow2, 25%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
   // }
 }
+
 h3#rate{
   margin: 0px;
 }

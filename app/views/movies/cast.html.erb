@@ -1,0 +1,99 @@
+<div class="row">
+  <%= render 'shared/errors', obj: @movie %>
+  <div class="col col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 col-sm-offset-1 col-sm-9" id="main-frame" >
+  <h1 id="review-title">Casting</h1>
+  <h2>
+	  <%= link_to request.referer.present? ? request.referer : root_path do  %>
+	    <i class="glyphicon glyphicon-arrow-left"></i>
+	  <% end %>
+  </h2>
+  <br><br>
+  <button type="button" id="add-director" class="btn btn-lg">Add Director</button>
+  <br><br>
+   <section id="search-director-section">
+	   <input id="search-director" type="text" class="form-control" placeholder="Directors">
+			  <div id="results-director">             
+			 </div>
+			 <br><br>
+   </section>
+  <button type="button" id="add-cast" class="btn btn-lg">Add Cast</button>
+  <br><br>
+   <section id="search-cast-section">
+	   <input id="search-cast" type="text" class="form-control" placeholder="Stars">
+			  <div id="results-cast">             
+			 </div>
+   </section>
+   </div>
+ </div>
+ <!-- Busca dinamica -->
+<script type="text/javascript">
+
+	$('#add-director').click(function() {
+	  $('#search-director-section').slideToggle(500, function() {
+	    $('#search-director').focus();
+	  });
+	});
+
+	$('#add-cast').click(function() {
+	  $('#search-cast-section').slideToggle(500, function() {
+	    $('#search-cast').focus();
+	  });
+	});
+
+
+  $('#search-director').keyup(function() {
+  var searchField = $('#search-director').val();
+  var myExp = new RegExp(searchField, "i");
+    $.getJSON("<%= request.protocol + request.host_with_port %>/directors-get-json", function(director){
+      var output3 = '<ul class="list-unstyled">';
+      $.each(director, function(key, val) {
+        if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
+          output3 += '<h3>Stars Results:</h3>';
+          output3 += '<li>';
+          output3 += '<a href="<%= request.protocol + request.host_with_port %>/directors/'+val.id+'">'+val.nickname +'</a>';
+          output3 += '</li>';
+          output3 += '<li> Career:';
+          if(val.also_star){
+            output3 +=' Movie Star ';
+          }if(val.also_screenwriter){
+            output3 +=', Screenwriter</li>';
+          }
+          output3 += '</li>';
+        }if(searchField.length == 0) {/* field em branco */
+          output3 = '<ul class="list-unstyled">';
+        }
+      });    
+    output3 += '</ul>';
+    $('#results-director').html(output3);
+    });
+  });
+
+  $('#search-cast').keyup(function() {
+  var searchField = $('#search-cast').val();
+  var myExp = new RegExp(searchField, "i");
+    $.getJSON("<%= request.protocol + request.host_with_port %>/stars-get-json", function(stars){
+      var output2 = '<ul class="list-unstyled">';
+      $.each(stars, function(key, val) {
+        if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
+          output2 += '<h3>Directors Results:</h3>';
+          output2 += '<li>';
+          output2 += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
+          output2 += '</li>';
+          output2 += '<li> Career:';
+          if(val.also_director){
+            output2 +=' Director ';
+          }if(val.also_screenwriter){
+            output2 +=', Screenwriter</li>';
+          }
+          output2 += '</li>';
+        }if(searchField.length == 0) {/* field em branco */
+          output2 = '<ul class="list-unstyled">';
+        }
+      });    
+    output2 += '</ul>';
+    $('#results-cast').html(output2);
+    });
+  });
+
+
+</script>

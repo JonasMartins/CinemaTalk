@@ -3,9 +3,11 @@
   <div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
     <h3 id="review-title">Hello <%= current_user.nickname %>! </h3>
     <h3 id="review-title">Write your Critic for movie :</h3>
-    <%= link_to movie_path(@movie)  do  %>
-      <i class="glyphicon glyphicon-arrow-left"></i> BACK TO MOVIE
-    <% end %>
+    <h2>
+      <%= link_to movie_path(@movie)  do  %>
+        <i class="glyphicon glyphicon-arrow-left"></i>
+      <% end %>
+    </h2>
     <h2 id="review-title">" <%= Movie.find(params[:movie_id]).original_title %> "</h2>
     
     <%= form_for [@movie, @review] do |f| %>
