@@ -92,15 +92,15 @@ body {
 }
 @font-face {
   font-family: "Prisma";
-  src:url(asset-path('assets/Prisma'));
+  src:font_url('Prisma');
 } 
 @font-face {
   font-family: "PoiretOne-Regular";
-  src:url(asset-path('assets/PoiretOne-Regular'));
+  src:font_url('PoiretOne-Regular');
 } 
 @font-face {
   font-family: "SeasideResortNF";
-  src:url(asset-path('assets/SeasideResortNF'));
+  src:font_url('SeasideResortNF');
 } 
 
 #logo-index{
@@ -131,8 +131,12 @@ h1, h2, h3, h4{
   border: 2px solid $yellow2;
   border-radius: 10px;
   background-color: black;
-  opacity: .9;
   border-color: $yellow2;
+  background: -webkit-linear-gradient(left, black, #292c2f ,#35383B); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, black , #292c2f ,#35383B); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, black , #292c2f ,#35383B); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(right, black, #292c2f ,#35383B); /* Standard syntax */
+
 }
 .welcome-text {
   margin: 25px 50px;
@@ -148,16 +152,20 @@ h1, h2, h3, h4{
 }
 
 .btn-signup {
-  background-color: darken($yellow2, 15%);
+  border-style: none;
   border-radius: 0px;
   font-family: 'SeasideResortNF';
   font-size: 200%;
-  color: black; 
+  background: -webkit-linear-gradient(left, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(right, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
   &:hover{
-    background: darken($yellow2, 30%);
-    border-color: darken($grey21, 15%);
-    border: 2px solid white;
-    color: white;
+    background: -webkit-linear-gradient(right, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(left, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
+    //color: white;
   }
 }
 a.btn.btn-lg.btn-signup{
@@ -165,8 +173,8 @@ a.btn.btn-lg.btn-signup{
   font-family: 'SeasideResortNF';
   font-size: 200%;
   &:hover{
-    border: 2px solid white;
-    color: white;
+    //border: 2px solid white;
+    //color: white;
   }
 }
 
@@ -269,14 +277,18 @@ a.btn.btn-lg.btn-signup{
 
 #rate{
   color: black;
-  background-color: darken($yellow2, 15%);
   font-family: 'SeasideResortNF';
   font-size: 200%;
-  &:hover{
-    border: 2px solid white;
-    background-color: darken($yellow2, 30%);
-    color: white;
-  }
+  background: -webkit-linear-gradient(left, darken($yellow2, 25%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, darken($yellow2, 25%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, darken($yellow2, 25%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(right, darken($yellow2, 25%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
+  // &:hover{
+  //   background: -webkit-linear-gradient(right, darken($yellow2, 25%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
+  //   background: -o-linear-gradient(left, darken($yellow2, 25%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
+  //   background: -moz-linear-gradient(left, darken($yellow2, 25%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
+  //   background: linear-gradient(left, darken($yellow2, 25%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
+  // }
 }
 h3#rate{
   margin: 0px;
