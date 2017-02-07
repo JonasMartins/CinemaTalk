@@ -18,14 +18,14 @@ class MoviesController < ApplicationController
       @critic_media = '?'
     else
       @count_critic ||= Grade.where("user_level = 2 AND movie_id = #{@movie.id}").count
-      @critic_media = sum_critic.to_f/@count_critic #media
+      @critic_media = sum_critic.to_f/ @count_critic #media
     end
 
     if sum_public.to_f == 0    
       @public_media = '?'
     else
-      @count_public ||= Grade.where("user_level = 2 AND movie_id = #{@movie.id}").count
-      @public_media = sum_public.to_f/@count_public #media
+      @count_public ||= Grade.where("user_level = 1 AND movie_id = #{@movie.id}").count
+      @public_media = sum_public.to_f/ @count_public #media
     end
 
   end
@@ -99,7 +99,16 @@ class MoviesController < ApplicationController
   end  
 
   def cast
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])  
+    respond_to do |format|
+      if @movie.valid?
+        format.html { }
+        format.js
+      else
+        format.html { }
+        format.js
+      end
+    end
   end
 
   def destroy

@@ -1,0 +1,11 @@
+testing();
+
+$('#search-director').val('');
+/* SENSACIONAL */
+$('#test').html('<h4><%= params[:director_id]%></h4>')
+
+
+$('#search-director-section').slideUp(500, function() {
+	$(this).hide();
+	$('#results-director').html('');
+});
