@@ -39,6 +39,19 @@
         <br>
       <% end %>
     </div>
+    <div>
+      <h2 id="review-title">Latest Reviews</h2>
+      <% @reviews.each do |review|%>
+        <div class="row">
+          <div class="col col-md-12 col-lg-12 column-sm-12">
+            <% movie = Movie.find(review.movie_id) %>
+            <h3 id="review-title">"<%= link_to review.title, movie_reviews_path(movie) %>"</h3>
+            <h4 style="text-align: center;">Updated at: <%= time_ago_in_words(review.updated_at)%> ago.</h4>
+            <p></p>
+          </div>
+        </div>
+      <%end%>
+    </div>
   
 
   </div><!-- end column --> 

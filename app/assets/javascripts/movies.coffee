@@ -7,9 +7,11 @@ $(document).on 'turbolinks:load', ->
   $('#striped tr:odd').addClass 'stripe2'  
   return
 
-$('#grade-toggle').click ->
-  $('#grade-input').fadeToggle 500, ->
-    $('#grade').focus()
+$(document).on 'turbolinks:load', ->
+  $('#grade-toggle').click ->
+    $('#grade-input').fadeToggle 500, ->
+      $('#grade').focus()
+      return
     return
   return
   

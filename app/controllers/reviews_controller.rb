@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-  	binding.pry
   	@review = Review.new(review_params)
     respond_to do |format|
       if @review.save
