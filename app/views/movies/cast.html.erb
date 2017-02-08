@@ -68,7 +68,7 @@
  function sending_director(value){
     $.ajax({
      type: "POST",
-     url: "/movies/<%= @movie.id %>/cast",
+     url: "/movies/<%= @movie.id %>/director",
      data: { director_id: value },
      dataType: 'script',
      success: function(value){

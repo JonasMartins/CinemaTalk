@@ -2,7 +2,8 @@ class MoviesController < ApplicationController
 
   helper_method :grade_uniquiness?
   before_action :set_movie, only: [:grade, :grade_uniquiness?, :show, :edit, :update]
-
+  before_action :set_movie_only, only: [:cast, :director]
+  
   def index
     @mvies = Movie.all
   end
@@ -99,49 +100,28 @@ class MoviesController < ApplicationController
   end  
 
   def cast
-
-    # um array para adicionar os diretores e os atores 
-
-    @movie = Movie.find(params[:id])  
-    # if params[:director_id]
-    #   @director = Director.find(params[:director_id])
-    # else
-    #   @director = ''  
-    # end
-    
     respond_to do |format|
       if @movie.valid?
         format.html { }
         format.js
-        format.json { }
       else
         format.html { }
         format.js
-        format.json {  }
       end
     end
   end
-=begin
-  def add_director
-    
-    @movie = Movie.find(params[:id])
-    
-    if params[:director_id]
-      @star = Star.find(params[:director_id])  
-    end
+
+  def director
     respond_to do |format|
       if @movie.valid?
         format.html { }
         format.js
-        format.json { }
       else
         format.html { }
         format.js
-        format.json {  }
       end
     end
   end
-=end
 
   def destroy
     @movie.destroy
@@ -162,5 +142,8 @@ class MoviesController < ApplicationController
       @regions = MoviesHelper::get_regions
       @categories = MoviesHelper::get_categories
       @decades = MoviesHelper::get_decades
+    end
+    def set_movie_only
+      @movie = Movie.find(params[:id])
     end
 end

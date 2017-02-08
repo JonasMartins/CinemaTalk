@@ -1,23 +1,9 @@
 
-"<% star = Star.find(params[:star_id]) if !params[:star_id].nil? %>";
-"<% director = Director.find(params[:director_id]) if !params[:director_id].nil? %>";
-var dir = "<%= director %>";
-var str = "<%= star %>";
+"<% star = Star.find(params[:star_id]) %>";
 
-if( str.length > 0){
-	console.log(str.length);
-	$('#selected-cast').append("<%= j render star %>");
-}else{
-	console.log('str é nulo');
-}
-if( dir.length > 0){
-	console.log(dir.length);
-	$('#selected-cast').append("<%= j render director %>");
-}else{
-	console.log('dir é nulo');
-}
+$('#selected-cast').append("<%= j render star %>");
 
-$('#search-director-section').slideUp(500, function() {
+$('#search-cast-section').slideUp(500, function() {
 	$(this).hide();
-	$('#results-director').html('');
+	$('#results-cast').html('');
 });

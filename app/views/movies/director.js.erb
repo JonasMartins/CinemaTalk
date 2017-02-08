@@ -1,0 +1,9 @@
+
+"<% director = Director.find(params[:director_id]) %>";
+
+$('#selected-cast').append("<%= j render director %>");
+
+$('#search-director-section').slideUp(500, function() {
+	$(this).hide();
+	$('#results-director').html('');
+});

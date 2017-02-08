@@ -5,6 +5,13 @@
 	</div>
 	<div class="media-body">
 		<ul class="list-unstyled">
+			<li>
+				<% if star.gender %>
+					<h2> Actor</h2>
+				<% else %>
+					<h2> Actor</h2>
+				<% end %>
+			</li>
 			<li><h3> <%= star.nickname %></h3><button class="btn btn-danger pull-right">Remove</button></li>
 		</ul>
 	</div>	
