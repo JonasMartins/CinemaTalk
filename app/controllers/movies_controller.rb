@@ -99,17 +99,49 @@ class MoviesController < ApplicationController
   end  
 
   def cast
+
+    # um array para adicionar os diretores e os atores 
+
     @movie = Movie.find(params[:id])  
+    # if params[:director_id]
+    #   @director = Director.find(params[:director_id])
+    # else
+    #   @director = ''  
+    # end
+    
     respond_to do |format|
       if @movie.valid?
         format.html { }
         format.js
+        format.json { }
       else
         format.html { }
         format.js
+        format.json {  }
       end
     end
   end
+=begin
+  def add_director
+    
+    @movie = Movie.find(params[:id])
+    
+    if params[:director_id]
+      @star = Star.find(params[:director_id])  
+    end
+    respond_to do |format|
+      if @movie.valid?
+        format.html { }
+        format.js
+        format.json { }
+      else
+        format.html { }
+        format.js
+        format.json {  }
+      end
+    end
+  end
+=end
 
   def destroy
     @movie.destroy

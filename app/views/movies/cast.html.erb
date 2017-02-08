@@ -17,35 +17,78 @@
 			 </div>
 			 <br><br>
    </section>
+  <button type="button" id="add-screen" class="btn btn-lg">Add Screenwriters</button>
+   <br><br>
+   <section id="search-screen-section">
+     <input id="search-screen" type="text" class="form-control" placeholder="Screenwriters">
+        <div id="results-screen">             
+       </div>
+       <br><br>
+   </section>
   <button type="button" id="add-cast" class="btn btn-lg">Add Cast</button>
   <br><br>
    <section id="search-cast-section">
 	   <input id="search-cast" type="text" class="form-control" placeholder="Stars">
 			  <div id="results-cast">             
 			 </div>
+       <br><br>
    </section>
-   <br><br>
-   <button type="button" id="add-cast" class="btn btn-lg">Add Screenwriter</button>
+
+   <div id="selected-cast">
+
    </div>
- </div>
+   
+   </div><!-- column  -->
+ </div><!-- row -->
+
+
+
  <!-- Busca dinamica -->
 <script type="text/javascript">
 
-	$('#add-director').click(function() {
-	  $('#search-director-section').slideToggle(500, function() {
-	    $('#search-director').focus();
-	  });
-	});
+  $('#add-screen').click(function() {
+    $('#search-screen-section').slideToggle(500, function() {
+      $('#search-screen').focus();
+    });
+  });
 
-	$('#add-cast').click(function() {
-	  $('#search-cast-section').slideToggle(500, function() {
-	    $('#search-cast').focus();
-	  });
-	});
+  $('#add-director').click(function() {
+    $('#search-director-section').slideToggle(500, function() {
+      $('#search-director').focus();
+    });
+  });
 
-  function testing(){ 
-    $('#review-title').html('<p>1</p>');
-  };
+  $('#add-cast').click(function() {
+    $('#search-cast-section').slideToggle(500, function() {
+      $('#search-cast').focus();
+    });
+  });
+
+
+ function sending_director(value){
+    $.ajax({
+     type: "POST",
+     url: "/movies/<%= @movie.id %>/cast",
+     data: { director_id: value },
+     dataType: 'script',
+     success: function(value){
+      console.log('sending director');
+      }
+    }); 
+  }
+
+  function sending_star(value){
+    $.ajax({
+     type: "POST",
+     url: "/movies/<%= @movie.id %>/cast",
+     data: { star_id: value },
+     dataType: 'script',
+     success: function(value){
+      console.log('sending star');
+      }
+    }); 
+  }
+
 
   $('#search-director').keyup(function() {
   var searchField = $('#search-director').val();
@@ -58,10 +101,11 @@
           output3 += '<div class="border-casting">';
           output3 += '<li>';
           output3 += '<a href="<%= request.protocol + request.host_with_port %>/directors/'+val.id+'">'+val.nickname +'</a>';
-
-          output3 += '<%= button_to 'Add', {controller: 'movies', action: 'cast', :director_id => 1 },
-          id: 'btn-add-director', class: 'btn btn-primary pull-right', remote: true, method: 'post' %>';
-
+          
+          output3 += '<button id="btn-add-director" class="btn btn-primary pull-right" onclick="sending_director(';
+          output3 += val.id;
+          output3 += ')">Add</button>'
+          
           output3 += '</li>';
           output3 += '<li> Career:';
           if(val.also_star){
@@ -91,6 +135,11 @@
           output2 += '<h3>Star Results:</h3>';
           output2 += '<li>';
           output2 += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
+
+          output2 += '<button id="btn-add-star" class="btn btn-primary pull-right" onclick="sending_star(';
+          output2 += val.id;
+          output2 += ')">Add</button>'
+
           output2 += '</li>';
           output2 += '<li> Career:';
           if(val.also_director){

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :reviews
     member do
       post 'cast'
+      #post 'add_director'
       get 'cast'
     end
 

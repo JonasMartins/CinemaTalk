@@ -1,0 +1,11 @@
+<div class="media">
+	<div class="col col-md-2 col-sm-2 col-xs-2">
+	  <%= image_tag(director.profile_picture.url, class: "img-responsive media-object", 
+	  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{director.nickname}") if director.profile_picture? %>
+	</div>
+	<div class="media-body">
+		<ul class="list-unstyled">
+			<li><h1> Director</h1></li>
+			<li><h3> <%= director.nickname %></h3><button class="btn btn-danger pull-right">Remove</button></li>
+		</ul>
+	</div>	
