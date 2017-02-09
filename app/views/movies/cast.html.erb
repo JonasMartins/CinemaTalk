@@ -1,5 +1,6 @@
 <div class="row">
   <%= render 'shared/errors', obj: @movie %>
+  <% $star_array.clear %> <!-- Quando essa pagina é criada, o hash de atores é limpado  -->
   <div class="col col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 col-sm-offset-1 col-sm-9" id="main-frame" >
   <h1 id="review-title">Casting</h1>
   <div id="test"></div>
@@ -37,7 +38,7 @@
    <div id="selected-cast">
 
    </div>
-   
+    
    </div><!-- column  -->
  </div><!-- row -->
 
@@ -64,7 +65,11 @@
     });
   });
 
+/*
+  $('#selected-cast').children('section').length;
 
+  QUANTIDADE DE ELEMENTOS DO TIPO SECTION DENTRO DOS ELEMENTOS SELECIONADOS....
+*/
  function sending_director(value){
     $.ajax({
      type: "POST",
@@ -89,7 +94,6 @@
     }); 
   }
 
-
   $('#search-director').keyup(function() {
   var searchField = $('#search-director').val();
   var myExp = new RegExp(searchField, "i");
@@ -99,7 +103,6 @@
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
           output3 += '<h3>Director Results:</h3>';
           output3 += '<div class="border-casting">';
-          output3 += '<li>';
           output3 += '<a href="<%= request.protocol + request.host_with_port %>/directors/'+val.id+'">'+val.nickname +'</a>';
           
           output3 += '<button id="btn-add-director" class="btn btn-primary pull-right" onclick="sending_director(';
@@ -133,9 +136,7 @@
       $.each(stars, function(key, val) {
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
           output2 += '<h3>Star Results:</h3>';
-          output2 += '<li>';
           output2 += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
-
           output2 += '<button id="btn-add-star" class="btn btn-primary pull-right" onclick="sending_star(';
           output2 += val.id;
           output2 += ')">Add</button>'
@@ -158,4 +159,4 @@
   });
 
 
-</script>
+</script> 

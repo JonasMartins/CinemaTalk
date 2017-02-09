@@ -1,11 +1,25 @@
-<div class="media">
-	<div class="col col-md-2 col-sm-2 col-xs-2">
-	  <%= image_tag(director.profile_picture.url, class: "img-responsive media-object", 
-	  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{director.nickname}") if director.profile_picture? %>
+<section id="added-director-<%= director.id%>">
+	<div class="media">
+		<div class="col col-md-2 col-sm-2 col-xs-2">
+		  <%= image_tag(director.profile_picture.url, class: "img-responsive media-object", 
+		  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{director.nickname}") if director.profile_picture? %>
+		</div>
+		<div class="media-body">
+			<ul class="list-unstyled">
+				<li><h2> Director</h2></li>
+				<li><h3> <%= director.nickname %></h3><button id="remove-director-<%= director.id %>" class="btn btn-danger pull-right"
+				 onclick="remove_director(<%= director.id %>)">Remove</button></li>
+			</ul>
+		</div>	
 	</div>
-	<div class="media-body">
-		<ul class="list-unstyled">
-			<li><h2> Director</h2></li>
-			<li><h3> <%= director.nickname %></h3><button class="btn btn-danger pull-right">Remove</button></li>
-		</ul>
-	</div>	
+
+</section>
+<script type="text/javascript">
+
+	function remove_director(value){
+    $('section#added-director-'+value).slideUp(500, function(){
+      $(this).remove();
+    });
+  }
+
+</script>

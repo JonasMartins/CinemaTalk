@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     member do
       post 'cast'
       post 'director'
+      post 'remove_star'
+      post 'remove_director'
       get 'cast'
     end
 

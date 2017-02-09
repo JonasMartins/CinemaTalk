@@ -1,5 +1,6 @@
-
 "<% star = Star.find(params[:star_id]) %>";
+"<% $star_array[star] = star.id %>";
+"<% puts $star_array.length %> "
 
 $('#selected-cast').append("<%= j render star %>");
 

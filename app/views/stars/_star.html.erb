@@ -1,17 +1,47 @@
-<div class="media">
-	<div class="col col-md-2 col-sm-2 col-xs-2">
-	  <%= image_tag(star.profile_picture.url, class: "img-responsive media-object", 
-	  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{star.nickname}") if star.profile_picture? %>
+<section id="added-star-<%= star.id %>">
+	<div class="media">
+		<div class="col col-md-2 col-sm-2 col-xs-2">
+		  <%= image_tag(star.profile_picture.url, class: "img-responsive media-object", 
+		  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{star.nickname}") if star.profile_picture? %>
+		</div>
+		<div class="media-body">
+			<ul class="list-unstyled">
+				<li>
+					<% if star.gender %>
+						<h2> Actor</h2>
+					<% else %>
+						<h2> Actor</h2>
+					<% end %>
+				</li>
+				<li><h3> <%= star.nickname %></h3><button id="remove-star-<%= star.id %>" class="btn btn-danger pull-right"
+				onclick="remove_star(<%= star.id %>)" >Remove</button></li>
+			</ul>
+		</div>	
 	</div>
-	<div class="media-body">
-		<ul class="list-unstyled">
-			<li>
-				<% if star.gender %>
-					<h2> Actor</h2>
-				<% else %>
-					<h2> Actor</h2>
-				<% end %>
-			</li>
-			<li><h3> <%= star.nickname %></h3><button class="btn btn-danger pull-right">Remove</button></li>
-		</ul>
-	</div>	
+</section>
+<script type="text/javascript">
+	/*
+		ISSO VAI EXECUTAR OUTRO AJAX, QUE VAI PARA A FUNÇÃO MENCIONADA NA URL QUE POR SUA VEZ
+		VAI RENDERIZAR O ARQUIVO remove_star.js.erb E NESSE ARQUIVO, A UNICA COISA QUE VOU FAZER É
+		REMOVER O ARTISTA QUE FOI ADICIONADO
+	*/
+	function removing_star(value){
+    $.ajax({
+     type: "POST",
+     url: "/movies/<%= params[:id] %>/remove_star",
+     data: { remove_star_id: value },
+     dataType: 'script',
+     success: function(value){
+      console.log('removing star');
+      }
+    }); 
+  }
+
+	
+	function remove_star(value){
+		
+    removing_star(value); // isso vai executar a função acima
+  }
+  // #fetch para pegar um valor a partir de uma key de um hash
+
+</script>

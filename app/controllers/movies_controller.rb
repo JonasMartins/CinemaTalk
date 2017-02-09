@@ -2,8 +2,11 @@ class MoviesController < ApplicationController
 
   helper_method :grade_uniquiness?
   before_action :set_movie, only: [:grade, :grade_uniquiness?, :show, :edit, :update]
-  before_action :set_movie_only, only: [:cast, :director]
-  
+  before_action :set_movie_only, only: [:cast, :director, :comfirm_cast]
+  before_action :require_user_critic, only: [:cast, :edit, :new, :update]
+
+  $star_array ||= Hash.new
+
   def index
     @mvies = Movie.all
   end
@@ -100,10 +103,12 @@ class MoviesController < ApplicationController
   end  
 
   def cast
+
     respond_to do |format|
       if @movie.valid?
         format.html { }
         format.js
+
       else
         format.html { }
         format.js
@@ -112,12 +117,21 @@ class MoviesController < ApplicationController
   end
 
   def director
+    @director_array ||= Hash.new
     respond_to do |format|
       if @movie.valid?
-        format.html { }
         format.js
       else
-        format.html { }
+        format.js
+      end
+    end
+  end
+
+  def remove_star
+    respond_to do |format|
+      if params[:remove_star_id]
+        format.js
+      else
         format.js
       end
     end

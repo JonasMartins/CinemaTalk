@@ -1,6 +1,7 @@
 class DirectorsController < ApplicationController
   before_action :set_director, only: [:show, :edit, :update]
-  
+  before_action :require_user_critic, only: [:edit, :new, :update]
+    
   def index    
     respond_to do |format|
       format.html {   } # se o cliente quiser html, esse bloco é executado

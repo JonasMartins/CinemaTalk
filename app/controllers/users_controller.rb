@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_user_admin, only: [:destroy]
+  
   def index
   end
 
@@ -53,6 +55,22 @@ class UsersController < ApplicationController
     end
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def get_user
+      if @user
+        return @user
+      end
+    end
+    
+    def require_same_user
+      if logged_in?
+        if (current_user != get_user)
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 
 end
