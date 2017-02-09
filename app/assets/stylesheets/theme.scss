@@ -51,19 +51,31 @@ body {
 
 .dropdown-menu {
 	background-color: $default;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 .dropdown-menu > li > a{
+
 	color: $yellow2;
-	&:hover{
-		background: darken($grey21, 5%);
-		color: $yellow2;
-		border-color: darken($grey21, 5%);
-	}
+  //background-color: black;
+	background: -webkit-linear-gradient(#292c2f, black, #292c2f); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#292c2f, black, #292c2f); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#292c2f, black,#292c2f); /* For Firefox 3.6 to 15 */
+  background: linear-gradient( #292c2f, black, #292c2f); /* Standard syntax */
+  &:hover{
+    color: $yellow2;
+    background: -webkit-linear-gradient(darken($yellow2, 30%),black, darken($yellow2, 30%) ); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient( darken($yellow2, 30%), black,  darken($yellow2, 30%) ); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(darken($yellow2, 30%), black,  darken($yellow2, 30%) ); /* For Firefox 3.6 to 15 */
+    background: linear-gradient( darken($yellow2, 30%),black,  darken($yellow2, 30%) ); /* Standard syntax */
+  }
+	
 }
 /* finalmente ao clicar no dropdow a cor fica no estilo do site */
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
 	color: $yellow2;
 	background-color: $grey21;
+
 }
 
 #main-frame{
@@ -156,15 +168,15 @@ h1, h2, h3, h4{
   border-radius: 0px;
   font-family: 'SeasideResortNF';
   font-size: 200%;
-  background: -webkit-linear-gradient(left, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(right, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
+  background: -webkit-linear-gradient(left, darken($yellow2, 30%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, darken($yellow2, 30%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, darken($yellow2, 30%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(right, darken($yellow2, 30%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
   &:hover{
-    background: -webkit-linear-gradient(right, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(left, darken($yellow2, 35%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(left, darken($yellow2, 35%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
+    background: -webkit-linear-gradient(right, darken($yellow2, 30%), darken($yellow2, 15%) ,$yellow2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, darken($yellow2, 30%) , darken($yellow2, 15%) ,$yellow2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, darken($yellow2, 30%) , darken($yellow2, 15%) ,$yellow2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(left, darken($yellow2, 30%), darken($yellow2, 15%) ,$yellow2); /* Standard syntax */
     //color: white;
   }
 }
@@ -312,7 +324,7 @@ select#rating{
   width: 65px;
   //height:50px;
   font-family: 'SeasideResortNF';
-  //font-size: 240%;
+  //font-size: 230%;
   //border-color: 3px solid black;
 }
 
@@ -328,10 +340,10 @@ select#rating{
   margin-top: 200px;
   margin-bottom: 0px;
 
-  background: -webkit-linear-gradient(black, #292c2f); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(black, #292c2f); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(black, #292c2f); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(black, #292c2f); /* Standard syntax */
+  background: -webkit-linear-gradient(black, #292c2f,#35383B); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(black, #292c2f,#35383B); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(black, #292c2f,#35383B); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(black, #292c2f,#35383B); /* Standard syntax */
 
 
 }
