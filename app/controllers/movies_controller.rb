@@ -108,7 +108,6 @@ class MoviesController < ApplicationController
       if @movie.valid?
         format.html { }
         format.js
-
       else
         format.html { }
         format.js
