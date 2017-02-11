@@ -1,7 +1,7 @@
 <section id="added-director-<%= director.id%>">
 	<div class="media">
 		<div class="col col-md-2 col-sm-2 col-xs-2">
-		  <%= image_tag(director.profile_picture.url, class: "img-responsive media-object", 
+		  <%= image_tag(director.profile_picture.url, class: "thumbnail img-responsive media-object", 
 		  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{director.nickname}") if director.profile_picture? %>
 		</div>
 		<div class="media-body">
@@ -16,10 +16,28 @@
 </section>
 <script type="text/javascript">
 
-	function remove_director(value){
-    $('section#added-director-'+value).slideUp(500, function(){
-      $(this).remove();
-    });
+	function removing_director(value){
+    $.ajax({
+     type: "POST",
+     url: "/movies/<%= params[:id] %>/remove_director",
+     data: { remove_director_id: value },
+     dataType: 'script',
+     success: function(value){
+      console.log('removing director');
+      }
+    }); 
   }
+
+  function remove_director(value){
+    desable_save_button();
+		removing_director(value); // isso vai executar a função acima
+  }
+
+
+	// function remove_director(value){
+ //    $('section#added-director-'+value).slideUp(500, function(){
+ //      $(this).remove();
+ //    });
+ //  }
 
 </script>

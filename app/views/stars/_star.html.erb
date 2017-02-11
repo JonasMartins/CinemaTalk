@@ -1,7 +1,7 @@
 <section id="added-star-<%= star.id %>">
 	<div class="media">
 		<div class="col col-md-2 col-sm-2 col-xs-2">
-		  <%= image_tag(star.profile_picture.url, class: "img-responsive media-object", 
+		  <%= image_tag(star.profile_picture.url, class: "thumbnail img-responsive media-object", 
 		  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{star.nickname}") if star.profile_picture? %>
 		</div>
 		<div class="media-body">
@@ -39,7 +39,7 @@
 
 	
 	function remove_star(value){
-		
+    desable_save_button(); //+++++++++++++++++++++++++++++++++++++++++++++++++++++++ NOT WORKING
     removing_star(value); // isso vai executar a função acima
   }
   // #fetch para pegar um valor a partir de uma key de um hash

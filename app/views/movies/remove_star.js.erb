@@ -1,7 +1,9 @@
 "<% star_to_remove = Star.find(params[:remove_star_id]) %>";
 "<% $star_array.delete(star_to_remove) %>";
-"<% puts $star_array.length %> "
+"<% puts 'add star: ' %>" 
+"<% puts $star_array.length %> ";
 
   $('section#added-star-'+"<%= params[:remove_star_id] %>").slideUp(500, function(){
     $(this).remove();
   });
+

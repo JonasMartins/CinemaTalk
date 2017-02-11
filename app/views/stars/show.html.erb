@@ -30,11 +30,14 @@
             <% if (@star.also_director || @star.also_screenwriter) %>
               <tr>
                 <th scope="row">Other</th>
-                <% if @star.also_director %>
-                  <td>Also director</td>
+                <% if ( @star.also_director && !@star.also_screenwriter )%>
+                  <td> Also Director </td>
                 <% end %>
-                <% if @star.also_screenwriter %>
-                  <td>Also screenwriter</td>
+                <% if ( @star.also_screenwriter && !@star.also_director )%>
+                  <td>Also Screenwriter</td>
+                <% end %>
+                <% if ( @star.also_screenwriter && @star.also_director )%>
+                  <td> Also Screenwriter and Director </td>
                 <% end %>
               </tr>
             <% end %>

@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   before_action :require_user_critic, only: [:cast, :edit, :new, :update]
 
   $star_array ||= Hash.new
+  $director_array ||= Hash.new
 
   def index
     @mvies = Movie.all
@@ -103,7 +104,6 @@ class MoviesController < ApplicationController
   end  
 
   def cast
-
     respond_to do |format|
       if @movie.valid?
         format.html { }
@@ -116,7 +116,6 @@ class MoviesController < ApplicationController
   end
 
   def director
-    @director_array ||= Hash.new
     respond_to do |format|
       if @movie.valid?
         format.js
@@ -129,6 +128,15 @@ class MoviesController < ApplicationController
   def remove_star
     respond_to do |format|
       if params[:remove_star_id]
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+  def remove_star
+    respond_to do |format|
+      if params[:remove_director_id]
         format.js
       else
         format.js

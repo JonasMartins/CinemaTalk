@@ -1,6 +1,7 @@
 <div class="row">
   <%= render 'shared/errors', obj: @movie %>
   <% $star_array.clear %> <!-- Quando essa pagina é criada, o hash de atores é limpado  -->
+  <% $director_array.clear %>
   <div class="col col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 col-sm-offset-1 col-sm-9" id="main-frame" >
   <h1 id="review-title">Casting</h1>
   <div id="test"></div>
@@ -38,14 +39,17 @@
    <div id="selected-cast">
 
    </div>
-    
-   </div><!-- column  -->
+   <button id="save-cast" class="btn btn-lg btn-success pull-right">Save cast</button>
+ 
+    </div>
  </div><!-- row -->
 
 
 
  <!-- Busca dinamica -->
 <script type="text/javascript">
+
+  desable_save_button();
 
   $('#add-screen').click(function() {
     $('#search-screen-section').slideToggle(500, function() {
@@ -78,6 +82,7 @@
      dataType: 'script',
      success: function(value){
       console.log('sending director');
+      able_save_button();
       }
     }); 
   }
@@ -89,10 +94,24 @@
      data: { star_id: value },
      dataType: 'script',
      success: function(value){
-      console.log('sending star');
+     console.log('sending star');
+     able_save_button();     
       }
     }); 
   }
+
+  function able_save_button(){
+    if ( $('#selected-cast').children().length > 0 ) {
+      $("#save-cast").removeAttr('disabled');
+    }
+  }
+
+  function desable_save_button(){
+    if ( $('#selected-cast').children().length < 1 ) {
+      $("#save-cast").attr('disabled','disabled');
+    }
+  }
+
 
   $('#search-director').keyup(function() {
   var searchField = $('#search-director').val();
