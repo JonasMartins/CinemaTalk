@@ -32,7 +32,6 @@ validates :region_id, presence: true
 
 
 mount_uploader :poster, PictureUploader
-validate :picture_size
 
 =begin
 
@@ -46,11 +45,5 @@ def thumbs_down_total
 end
 =end
 
-	private
-		def picture_size
-			if poster.size > 4.megabytes
-				errors.add(:poster, "Image must be less than 4MB")
-			end
-		end
 
 end

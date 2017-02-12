@@ -13,15 +13,6 @@ validates :country, presence: true
 validates :hometown, presence: true
 
 mount_uploader :profile_picture, PictureUploader
-validate :picture_size
-
-
-	private
-		def picture_size
-			if profile_picture.size > 4.megabytes
-				errors.add(:profile_picture, "Image must be less than 4MB")
-			end
-		end
 
 
 end

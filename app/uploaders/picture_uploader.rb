@@ -1,8 +1,6 @@
 class PictureUploader < CarrierWave::Uploader::Base
 
-  def cache_dir
-    '/tmp/projectname-cache'
-  end
+  include CarrierWaveDirect::Uploader
 
   include CarrierWave::MiniMagick
   process resize_to_limit: [600, 600] #limite de tamanho
@@ -36,7 +34,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  storage :fog
+  #storage :fog
 
   # Create different versions of your uploaded files:
   # version :thumb do

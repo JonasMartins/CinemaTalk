@@ -45,10 +45,10 @@ group :development do
   gem 'spring'
 end
 
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk-v1'
 
 gem 'figaro'
-
 gem "fog-aws"
 
 gem 'unf'
@@ -57,7 +57,8 @@ gem 'unf'
 gem 'puma'
 
 # upload de arquivos
-gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'carrierwave_direct'
+
 gem 'mini_magick'
 
 gem 'pry'
