@@ -1,5 +1,9 @@
 class PictureUploader < CarrierWave::Uploader::Base
 
+  def cache_dir
+    '/tmp/projectname-cache'
+  end
+
   include CarrierWave::MiniMagick
   process resize_to_limit: [600, 600] #limite de tamanho
 
@@ -32,13 +36,8 @@ class PictureUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  if Rails.env.production?
-    storage :fog
-  else
-    storage :file
-  end
-  
-  
+  storage :fog
+
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process resize_to_fit: [50, 50]

@@ -48,7 +48,9 @@ end
 gem 'aws-sdk', '~> 2'
 
 gem 'figaro'
-gem 'fog', '1.38.0' # antes era 1.38.0 esse .23 é o do video 
+
+gem "fog-aws"
+
 gem 'unf'
 
 # #### webservises recomendations 
