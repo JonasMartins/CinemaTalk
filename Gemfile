@@ -46,6 +46,8 @@ group :development do
 end
 
 
+gem 'figaro'
+
 # #### webservises recomendations 
 gem 'puma'
 

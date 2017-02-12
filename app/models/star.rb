@@ -18,8 +18,8 @@ validate :picture_size
 
 	private
 		def picture_size
-			if profile_picture.size > 4.megabytes
-				errors.add(:profile_picture, "Image must be less than 4MB")
+			if profile_picture.size > 2.megabytes
+				errors.add(:profile_picture, "Image must be less than 2MB")
 			end
 		end
 
