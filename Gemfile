@@ -45,7 +45,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '< 2.0'
 
 gem 'figaro'
 
