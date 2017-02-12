@@ -7,6 +7,7 @@ if Rails.env.production?
 		}
 
 		config.fog_directory 	= ENV['AWS_BUCKET']
-		config.fog_public 		= false
+		config.s3_access_policy = :public_read 
 	end
+	 config.cache_dir = "#{Rails.root}/tmp/uploads" 
 end

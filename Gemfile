@@ -45,9 +45,10 @@ group :development do
   gem 'spring'
 end
 
+gem 'aws-sdk', '~> 2'
 
 gem 'figaro'
-gem 'fog'
+gem 'fog', '1.23.0' # antes era 1.38.0 esse .23 é o do video 
 gem 'unf'
 
 # #### webservises recomendations 
