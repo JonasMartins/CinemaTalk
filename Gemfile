@@ -47,6 +47,8 @@ end
 
 
 gem 'figaro'
+gem 'fog'
+gem 'unf'
 
 # #### webservises recomendations 
 gem 'puma'
