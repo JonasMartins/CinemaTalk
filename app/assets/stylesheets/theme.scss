@@ -3,6 +3,7 @@ $yellow2 :#EEEE00;
 $silver :#C0C0C0;
 $default :#222;
 $main-frame-color :#f8f8f8;
+$light-sky-blue :#87CEFA;
 // tables
 $PowderBlue :#B0E0E6;
 $CadetBlue :#5F9EA0;
@@ -180,6 +181,11 @@ h1, h2, h3, h4{
     //color: white;
   }
 }
+
+a:hover{
+  background-color: transparent;
+}
+
 a.btn.btn-lg.btn-signup{
   color: black;
   font-family: 'SeasideResortNF';
@@ -189,14 +195,35 @@ a.btn.btn-lg.btn-signup{
     //color: white;
   }
 }
-
-.ui-widget-content a {
-  &:hover{
-    color: white;
-    background-color: blue;
-    text-decoration: none;
-    }
+a.glow, a.glow:hover, a.glow:focus{
+  text-decoration: none;
+  color: black;
+  text-shadow: none;
+  -webkit-transition: 500ms linear 0s;
+  -moz-transition: 500ms linear 0s;
+  -o-transition: 500ms linear 0s;
+  transition: 500ms linear 0s;
+  outline: 0 none;
 }
+a.glow:hover, a.glow:focus{
+  color: black;
+  text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
+}
+a.glow-black, a.glow-black:hover, a.glow-black:focus{
+  text-decoration: none;
+  color: black;
+  text-shadow: none;
+  -webkit-transition: 500ms linear 0s;
+  -moz-transition: 500ms linear 0s;
+  -o-transition: 500ms linear 0s;
+  transition: 500ms linear 0s;
+  outline: 0 none;
+}
+a.glow-black:hover, a.glow-black:focus{
+  color: black;
+  text-shadow: -1px 1px 3px $light-sky-blue, 1px -1px 3px $light-sky-blue;
+}
+
 
 .login-style {
   max-width: 120px;
@@ -408,4 +435,61 @@ select#rating{
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(81, 203, 238, 1);
   padding: 2em;
+}
+
+p#review-paragraph {
+  margin-left: 2.0em;
+  margin-right: 2.0em;
+}
+
+#accordion-theme {
+  border: none;
+  box-shadow: 3px 5px 4px rgba(0, 0, 0, .5);
+  font-size: 150%;
+  font-family: 'arial';
+  font-weight: bold;
+  color: black;
+  background: -webkit-linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( $main-frame-color, $main-frame-color, darken($yellow2, 15%)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($main-frame-color,$main-frame-color, darken($yellow2, 15%) ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* Standard syntax */
+   
+}
+// default accordion
+
+.ui-state-active {
+  border: 1px solid black;
+}
+
+.ui-accordion-header {outline: none; color: black;}
+
+#accordion .ui-state-focus{
+  outline: none;
+  color: black;
+}
+.ui-accordion-header-active {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: none;
+  color: black;
+}
+
+#action-btn{
+  display: inline-block;
+  vertical-align: top;
+  border: none;
+  box-shadow: 3px 5px 4px rgba(0, 0, 0, .5);
+  font-size: 140%;
+  font-family: 'arial';
+  font-weight: bold;
+  color: black;
+  background: -webkit-linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( $main-frame-color, $main-frame-color, darken($yellow2, 15%)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($main-frame-color,$main-frame-color, darken($yellow2, 15%) ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* Standard syntax */
+}
+a#action-btn{
+  font-size: 170%;
 }

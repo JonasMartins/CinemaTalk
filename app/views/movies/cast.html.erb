@@ -122,7 +122,7 @@
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
           output3 += '<h3>Director Results:</h3>';
           output3 += '<div class="border-casting">';
-          output3 += '<a href="<%= request.protocol + request.host_with_port %>/directors/'+val.id+'">'+val.nickname +'</a>';
+          output3 += '<a href="<%= request.protocol + request.host_with_port %>/directors/'+val.id+'" class="glow-black">'+val.nickname +'</a>';
           
           output3 += '<button id="btn-add-director" class="btn btn-primary pull-right" onclick="sending_director(';
           output3 += val.id;
@@ -155,7 +155,7 @@
       $.each(stars, function(key, val) {
         if((val.nickname.search(myExp) != -1 ) && (searchField.length > 2)){
           output2 += '<h3>Star Results:</h3>';
-          output2 += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'">'+val.nickname +'</a>';
+          output2 += '<a href="<%= request.protocol + request.host_with_port %>/stars/'+val.id+'" class="glow-black">'+val.nickname +'</a>';
           output2 += '<button id="btn-add-star" class="btn btn-primary pull-right" onclick="sending_star(';
           output2 += val.id;
           output2 += ')">Add</button>'

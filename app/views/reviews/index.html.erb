@@ -4,20 +4,20 @@
 		<h1 id="review-title"><%= @movie.original_title %> ( <%= @reviews_amount %> ) </h1>
 		<br><br>
 		<% @movie.reviews.each do |review|%>
-			<h3 id="review-title"><%= link_to review.title, movie_review_path(@movie, review) %></h3>
+			<h3 id="review-title"><%= link_to review.title, movie_review_path(@movie, review), class: 'glow-black' %></h3>
 			<h2>
 			  <%= link_to request.referer.present? ? request.referer : root_path do  %>
 			    <i class="glyphicon glyphicon-arrow-left"></i>
 			  <% end %>
 		  </h2>
 		  <% user = User.find(review.user_id) %>
-			<h4>Author: <%= link_to user.nickname, user_path(user)%></h4>
+			<h4>Author: <%= link_to user.nickname, user_path(user), class: 'glow-black'%></h4>
 			<h4>Posted at: <%= time_ago_in_words(review.created_at)%> ago.</h4>
 			<h4>Updated at: <%= time_ago_in_words(review.updated_at)%> ago.</h4>
 			<div class="scroll-bar-wrap-review">
       	<div class="hidden-sm scroll-box">
 					<br><br>
-					<p><%=review.body%></p>
+					<p id="review-paragraph" class="text-justify">&nbsp;&nbsp;&nbsp;&nbsp;<%=review.body%></p>
 				</div>
 				<div class="cover-bar-review"></div>
       </div>
