@@ -12,7 +12,7 @@
 		<br><br>
 		<p id="review-paragraph" class="text-justify">&nbsp;&nbsp;&nbsp;&nbsp;<%= @review.body %></p>
 		<br><br>
-		<h4><%= link_to 'See All comments in detail', movie_review_comments_path(@movie, @review, @review.comments), class: 'pull-right glow-black' %></h4>
+		<h4><%= link_to 'See All comments in detail', movie_review_comments_path(@movie, @review, @review.comments ), class: 'pull-right glow-black' %></h4>
 		<!-- COMENTARIOS  -->
 		<button class="btn btn-lg action-btn", id="comment-toggle">Comments</button>
 		<br>

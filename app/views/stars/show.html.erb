@@ -63,7 +63,7 @@
           </tbody>
           </table>
           <% if logged_in? && current_user.user_level_id > 1%>
-            <%=  link_to 'Edit this profile:', edit_star_path(@star), class: "btn btn-lg btn-signup"%>
+            <%=  link_to 'Edit this profile', edit_star_path(@star), class: "btn btn-lg action-btn"%>
           <% end %>
         </div>
       </div>
