@@ -4,6 +4,7 @@ $silver :#C0C0C0;
 $default :#222;
 $main-frame-color :#f8f8f8;
 $light-sky-blue :#87CEFA;
+$Gainsboro :#DCDCDC;
 // tables
 $PowderBlue :#B0E0E6;
 $CadetBlue :#5F9EA0;
@@ -490,6 +491,23 @@ p#review-paragraph {
   background: -moz-linear-gradient($main-frame-color,$main-frame-color, darken($yellow2, 15%) ); /* For Firefox 3.6 to 15 */
   background: linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* Standard syntax */
 }
+.action-btn{
+  display: inline-block;
+  vertical-align: top;
+  border: none;
+  box-shadow: 3px 5px 4px rgba(0, 0, 0, .5);
+  font-size: 140%;
+  font-family: 'arial';
+  font-weight: bold;
+  color: black;
+  background: -webkit-linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient( $main-frame-color, $main-frame-color, darken($yellow2, 15%)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($main-frame-color,$main-frame-color, darken($yellow2, 15%) ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($main-frame-color, $main-frame-color, darken($yellow2, 15%) ); /* Standard syntax */
+}
 a#action-btn{
   font-size: 170%;
+}
+.well {
+  background-color: $Gainsboro;
 }

@@ -12,7 +12,27 @@
 		<br><br>
 		<p id="review-paragraph" class="text-justify">&nbsp;&nbsp;&nbsp;&nbsp;<%= @review.body %></p>
 		<br><br>
+		<h4><%= link_to 'See All comments in detail', movie_review_comments_path(@movie, @review, @review.comments), class: 'pull-right glow-black' %></h4>
 		<!-- COMENTARIOS  -->
+		<button class="btn btn-lg action-btn", id="comment-toggle">Comments</button>
+		<br>
+		<section id="comments-section">
+			<ol id='comments', class="list-unstyled">
+	  		<%= render(partial: 'comments/comment', collection: @review.comments) %>
+			</ol>
+			<br>
+			<% if logged_in? %>
+				<%= form_for [@movie, @review, Comment.new ], remote: true do |f| %>
+					<fieldset>
+						<%= f.text_area :body, rows: 3, placeholder: "Add a comment", class: 'form-group form-control' %>
+						<div class="pull-right">
+							<%= f.submit 'Share', class: "btn btn-sm form-group action-btn" %>
+						</div>
+					</fieldset>
+				<% end %>
+			<% end %>
+		</section>
+
 	</div>
 	<%=  render 'layouts/sidebar' %>
 </div>

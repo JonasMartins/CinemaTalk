@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/index'
+
   resources :notes
 
   root 'home#index'
@@ -11,7 +13,10 @@ Rails.application.routes.draw do
 
 
   resources :movies, except: :destroy do 
-    resources :reviews
+    resources :reviews do 
+      resources :comments
+    end
+    
     member do
       post 'cast'
       post 'director'

@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7 col-sm-offset-1 col-sm-7" id="main-frame" >
+		<h2 id="review-title"><%= @review.title %> Comments</h2>
+		<br><br>
+		<% @comments.each do | comment |%>
+			<section>
+				<div class="well">
+					<h3>Author: <%= link_to comment.user.nickname, user_path(comment.user_id), class: 'glow-black', target: '_blank'%>
+						Said about: <span class="date"> <%= time_ago_in_words(comment.created_at) %></span> ago:
+					</h3>
+					<p class="text-justify">
+						<i>" <%= comment.body %>"</i>
+					</p>
+				</div>
+			</section>
+			<br><br>
+		<%end%>
+	
+	</div>
+	<%=  render 'layouts/sidebar' %>
+</div>

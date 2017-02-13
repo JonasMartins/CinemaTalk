@@ -1,0 +1,8 @@
+<li>
+	<div class="well">
+		<i>Author: <%= link_to comment.user.nickname, user_path(comment.user_id), class: 'glow-black', target: '_blank'%>
+			Said about: <span class="date"> <%= time_ago_in_words(comment.created_at) %></span> ago:
+		</i>
+		<p class="text-justify"><i> "<%= comment.body %> "</i></p>
+	</div>
+</li>
