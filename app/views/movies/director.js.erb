@@ -1,7 +1,6 @@
 "<% director = Director.find(params[:director_id]) %>";
 "<% $director_array[director] = director.id %>";
-"<% puts 'add direct: ' %>" 
-"<% puts $director_array.length %> ";
+console.log('director_array: <%= $director_array.length %>'); 
 
 $('#selected-cast').append("<%= j render director %>");
 

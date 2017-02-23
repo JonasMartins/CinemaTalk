@@ -1,8 +1,6 @@
 "<% director_to_remove = Director.find(params[:remove_director_id]) %>";
 "<% $director_array.delete(director_to_remove) %>";
-"<% puts 'rm direct: ' %>" 
-"<% puts $director_array.length %> ";
- 
+console.log('director_array: <%= $director_array.length %>'); 
 
   $('section#added-director-'+"<%= params[:remove_director_id] %>").slideUp(500, function(){
     $(this).remove();

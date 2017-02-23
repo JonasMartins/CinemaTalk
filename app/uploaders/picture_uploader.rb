@@ -1,6 +1,6 @@
 class PictureUploader < CarrierWave::Uploader::Base
 
-  include CarrierWaveDirect::Uploader
+  #include CarrierWaveDirect::Uploader
 
   include CarrierWave::MiniMagick
   process resize_to_limit: [600, 600] #limite de tamanho
@@ -34,7 +34,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  #storage :file #----------------------------- QUANDO FOR USAR LOCAL DESMARCAR ESTE E MARCAR LINHA 3
+  storage :file #----------------------------- QUANDO FOR USAR LOCAL DESMARCAR ESTE E MARCAR LINHA 3
 
   # Create different versions of your uploaded files:
   # version :thumb do

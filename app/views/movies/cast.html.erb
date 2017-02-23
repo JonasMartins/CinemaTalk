@@ -1,7 +1,7 @@
 <div class="row">
   <%= render 'shared/errors', obj: @movie %>
-  <% $star_array.clear %> <!-- Quando essa pagina é criada, o hash de atores é limpado  -->
   <% $director_array.clear %>
+  <% $star_array.clear %>
   <div class="col col-md-offset-1 col-md-9 col-lg-offset-1 col-lg-9 col-sm-offset-1 col-sm-9" id="main-frame" >
   <h1 id="review-title">Casting</h1>
   <div id="test"></div>
@@ -11,7 +11,7 @@
 	  <% end %>
   </h2>
   <br><br>
-  <button type="button" id="add-director" class="btn btn-lg">Add Director</button>
+  <button type="button" id="add-director" class="btn btn-lg action-btn">Add Director</button>
   <br><br>
    <section id="search-director-section">
 	   <input id="search-director" type="text" class="form-control" placeholder="Directors">
@@ -19,7 +19,7 @@
 			 </div>
 			 <br><br>
    </section>
-  <button type="button" id="add-screen" class="btn btn-lg">Add Screenwriters</button>
+  <button type="button" id="add-screen" class="btn btn-lg action-btn">Add Screenwriters</button>
    <br><br>
    <section id="search-screen-section">
      <input id="search-screen" type="text" class="form-control" placeholder="Screenwriters">
@@ -27,7 +27,7 @@
        </div>
        <br><br>
    </section>
-  <button type="button" id="add-cast" class="btn btn-lg">Add Cast</button>
+  <button type="button" id="add-cast" class="btn btn-lg action-btn">Add Cast</button>
   <br><br>
    <section id="search-cast-section">
 	   <input id="search-cast" type="text" class="form-control" placeholder="Stars">
@@ -39,8 +39,14 @@
    <div id="selected-cast">
 
    </div>
-   <button id="save-cast" class="btn btn-lg btn-success pull-right">Save cast</button>
- 
+
+    <%= form_tag( {controller: 'movies', action: 'save_cast'}, method: 'post') do %>      
+      <%= submit_tag 'Save', class:"btn btn-lg action-btn pull-right", id: "save-cast"%>
+    <% end %>
+  
+  <!-- 
+   <button id="save-cast" class="btn btn-lg action-btn pull-right">Save cast</button>
+   -->
     </div>
  </div><!-- row -->
 
@@ -165,7 +171,7 @@
           if(val.also_director){
             output2 +=' Director ';
           }if(val.also_screenwriter){
-            output2 +=', Screenwriter</li>';
+            output2 +=' Screenwriter</li>';
           }
           output2 += '</li>';
         }if(searchField.length == 0) {/* field em branco */

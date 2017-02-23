@@ -33,6 +33,8 @@ validates :region_id, presence: true
 
 mount_uploader :poster, PictureUploader
 
+attr_accessor :cast
+
 =begin
 
 # calculo de likes/dislkes

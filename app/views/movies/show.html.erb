@@ -48,8 +48,8 @@
 							</tr>
 							<tr >
 								<th scope="row">Director</th>
-								<td><% @movie.directors.each do |_director| %> 
-										<%= _director.nickaname %>
+								<td><% @movie.directors.each do |director| %> 
+										<%= director.nickname %>
 										<% end %>
 								</td>
 							</tr>
@@ -111,6 +111,43 @@
   	<div id="accordion">
 		  <h1 id="accordion-theme">Cast</h1>
 		  <div>
+		  	<% if @movie.directors.length > 0 %>
+					<h3>Director(s):</h3>
+					<% @movie.directors.each do |director|%>
+							<div class="media">
+								<div class="col col-md-2 col-sm-2 col-xs-2">
+								<%= link_to director_path(director) do %>
+								  <%= image_tag(director.profile_picture.url, class: "thumbnail img-responsive media-object", 
+								  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{director.nickname}") if director.profile_picture? %>
+								<% end %>
+								</div>
+								<div class="media-body">
+									<ul class="list-unstyled">
+										<li><h2> Director</h2></li>
+										<li><h3><%= director.nickname %></h3>
+									</ul>
+								</div>	
+							</div>	
+		  		<%end%>
+		  	<%end%>
+		  	<% if @movie.stars.length > 0 %>
+					<h3>Cast:</h3>
+					<% @movie.stars.each do |star|%>
+							<div class="media">
+								<div class="col col-md-2 col-sm-2 col-xs-2">
+								<%= link_to star_path(star) do %>
+								  <%= image_tag(star.profile_picture.url, class: "thumbnail img-responsive media-object", 
+								  alt: "Profile", 'data-toggle' => 'tooltip', 'data-placement' => 'top', title: "#{star.nickname}") if star.profile_picture? %>
+								<% end %>
+								</div>
+								<div class="media-body">
+									<ul class="list-unstyled">
+										<li><h3><%= star.nickname %></h3>
+									</ul>
+								</div>	
+							</div>	
+		  		<%end%>
+		  	<%end%>
 		  </div>
 		  <h3 id="accordion-theme">Latest Review</h3>
 		  <%if @movie.reviews.length > 0 %>

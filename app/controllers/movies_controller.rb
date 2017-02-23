@@ -2,11 +2,12 @@ class MoviesController < ApplicationController
 
   helper_method :grade_uniquiness?
   before_action :set_movie, only: [:grade, :grade_uniquiness?, :show, :edit, :update]
-  before_action :set_movie_only, only: [:cast, :director, :comfirm_cast]
+  before_action :set_movie_only, only: [:cast, :director, :comfirm_cast, :save_cast]
   before_action :require_user_critic, only: [:cast, :edit, :new, :update]
 
-  $star_array ||= Hash.new
   $director_array ||= Hash.new
+  $star_array ||= Hash.new
+
 
   def index
     @mvies = Movie.all
@@ -104,6 +105,7 @@ class MoviesController < ApplicationController
   end  
 
   def cast
+
     respond_to do |format|
       if @movie.valid?
         format.html { }
@@ -134,12 +136,33 @@ class MoviesController < ApplicationController
       end
     end
   end
-  def remove_star
+  def remove_director
     respond_to do |format|
       if params[:remove_director_id]
         format.js
       else
         format.js
+      end
+    end
+  end
+  def save_cast
+   # render 'shared/errors', obj: @movie dentro do ajax
+    respond_to do |format|
+      if !$star_array.empty? || !$director_array.empty?
+        if !$director_array.empty?
+          $director_array.each_key { |director| @movie.directors << director }
+          @movie.save
+        end
+        if !$star_array.empty?
+          $star_array.each_key { |star| @movie.stars << star }
+          @movie.save
+        end
+        format.html { redirect_to movie_path(@movie) }
+      else
+        format.html { 
+          @movie.errors.add(:cast, :message => "Cast cant be empty.")
+          redirect_to cast_movie_path(@movie)
+        }        
       end
     end
   end

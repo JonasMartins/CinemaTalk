@@ -1,0 +1,14 @@
+var errors = "<%= @movie.errors.count %>";
+console.log('Erros count: '+ errors)
+if( errors > 0){
+	alert('Cast can\'t be empty!');
+	// $('#selected-cast').slideDown(1000, function(){
+	 //	$(this).html("<h1 style='text-align: center'>Cast can't be empty!</h1>");
+		
+	// 	$(this).slideUp(1000, function() {
+	// 	 	$(this).hide();
+	// 	 });
+	 //});
+} else {
+	console.log('star: <%= $star_array.length %>, direct: <%= $director_array.length %>')
+}

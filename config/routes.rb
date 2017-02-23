@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post 'director'
       post 'remove_star'
       post 'remove_director'
+      post 'save_cast'
       get 'cast'
     end
 
