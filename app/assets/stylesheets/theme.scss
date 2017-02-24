@@ -250,6 +250,7 @@ a.glow-black:hover, a.glow-black:focus{
     font-weight: bold;
     color: black;
 }
+
 .stripe2 {
     background-color: $CadetBlue;
     font-weight: bold;
@@ -288,7 +289,7 @@ a.glow-black:hover, a.glow-black:focus{
 }
 .cover-bar {
   position: absolute;
-  background: $CadetBlue; /// isso deve mudar para um transparente depois
+  background: inherit; /// isso deve mudar para um transparente depois
   height: 100%;  
   top: 0;
   right: 0;
@@ -296,6 +297,7 @@ a.glow-black:hover, a.glow-black:focus{
   -webkit-transition: all .5s;
   opacity: 1;
 }
+
 .cover-bar-review {
   position: absolute;
   background: $main-frame-color; /// isso deve mudar para um transparente depois

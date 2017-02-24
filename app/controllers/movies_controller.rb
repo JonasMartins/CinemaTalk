@@ -105,7 +105,6 @@ class MoviesController < ApplicationController
   end  
 
   def cast
-
     respond_to do |format|
       if @movie.valid?
         format.html { }
@@ -136,6 +135,7 @@ class MoviesController < ApplicationController
       end
     end
   end
+
   def remove_director
     respond_to do |format|
       if params[:remove_director_id]
@@ -145,8 +145,8 @@ class MoviesController < ApplicationController
       end
     end
   end
+
   def save_cast
-   # render 'shared/errors', obj: @movie dentro do ajax
     respond_to do |format|
       if !$star_array.empty? || !$director_array.empty?
         if !$director_array.empty?
