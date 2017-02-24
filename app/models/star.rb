@@ -1,7 +1,7 @@
 require 'json'
 
 class Star < ActiveRecord::Base
-
+has_many :roles
 has_many :movie_stars
 has_many :movies, through: :movie_stars
 
